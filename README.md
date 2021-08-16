@@ -1,6 +1,5 @@
-# Template
+# TORC Repository
 
+General purpose applications and libraries for the TORC85 Project.
 
-INDIface2 Face Image Processing Projects for EclipseIR.
-
-Copyright &copy; 1993-2020 Eclipse Identity Recognition Corporation. All rights reserved worldwide. See the adjacent LICENSE.txt file for details.
+Copyright &copy; 1979-2021 Anthony Otto dba Tony Otto Research Company. See the adjacent LICENSE.txt file for details.
