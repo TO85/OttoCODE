@@ -1,8 +1,8 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    cons \
-    desk \
+    	console \
+	desktop \
 	winsvc \
 	daemon \
 	

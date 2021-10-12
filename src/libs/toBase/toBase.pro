@@ -10,9 +10,15 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    AbstractString.cpp \
+    ModuleObject.cpp \
+    Uid.cpp \
     toBase.cpp
 
 HEADERS += \
+    AbstractString.h \
+    ModuleObject.h \
+    Uid.h \
     toBase_global.h \
     toBase.h
 
