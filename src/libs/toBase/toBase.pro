@@ -11,12 +11,14 @@ CONFIG += c++11
 
 SOURCES += \
     AbstractString.cpp \
+    BaseString.cpp \
     ModuleObject.cpp \
     Uid.cpp \
     toBase.cpp
 
 HEADERS += \
     AbstractString.h \
+    BaseString.h \
     ModuleObject.h \
     Uid.h \
     toBase_global.h \
