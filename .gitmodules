@@ -1,0 +1,3 @@
+[submodule "INDI6"]
+	path = INDI6
+	url = https://github.com/TOtto-EclipseIR/INDI6.git
