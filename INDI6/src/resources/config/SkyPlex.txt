@@ -1,0 +1,13 @@
+# file {EIRC repo}./src/cons/ /SkyPlex.txt
+
+/Output/BaseDir=/INDIface/INDIout/console/SkyPlex-Alpha4mq
+/Output/Dirs/PreQualRect=PreQualRect-%M
+#/PreQual/RectFinder/Neighbors=4
+#/PreQual/RectFinder/ScaleFactor=120
+/PreQual/RectGrouper/MinQuality=900
+
+### Face (Frontal) PreQual
+/ObjectDetector/Resources/RectFinder/BaseDir=../detectors
+#/ObjectDetector/Resources/RectFinder/PreQual/XmlFile=v2/Aim8A001-32-NoSplit.xml
+#/ObjectDetector/Resources/RectFinder/PreQual/XmlFile=v4/haarcascade_frontalface_alt.xml
+/ObjectDetector/Resources/RectFinder/PreQual/XmlFile=v4/haarcascade_frontalface_default.xml

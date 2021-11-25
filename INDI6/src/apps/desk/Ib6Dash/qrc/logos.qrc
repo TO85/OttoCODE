@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/svg">
+        <file>INDIonlyH.svg</file>
+        <file>INDIbase6.svg</file>
+    </qresource>
+</RCC>

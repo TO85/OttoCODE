@@ -1,0 +1,8 @@
+# file {EIRC repo}./src/cons/If2Console/DetectCascades.txt
+
+/Resources/RectFinder/BaseDir=../detectors
+#/Resources/RectFinder/Catalog/XmlFile=Detectors.XML
+
+### Face (Frontal)
+#/Resources/RectFinder/PreQual/XmlFile=v2/Aim8A001-32-NoSplit.Xml
+/Resources/RectFinder/PreQual/XmlFile=v4/haarcascade_frontalface_alt.Xml

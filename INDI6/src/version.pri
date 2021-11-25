@@ -1,0 +1,21 @@
+# file: {EIRC2 repo}./src/version.pri
+
+message(----------------In version.pri)
+
+EIRC_VER_MAJOR = 6
+EIRC_VER_MINOR = 17
+EIRC_VER_RELEASE = 4
+EIRC_VER_BRANCH = 0
+EIRC_VER_STRING = "v6.17D"
+EIRC_VER_TRUNKNAME = "develop"
+EIRC_VER_QT = $${QT_VERSION}
+EIRC_VER_BRANCHNAME = "origin"
+EIRC_VER_QT = $${QT_VERSION}
+
+windows:VERSION = 6.17.4.0
+!windows:VERSION = 6.17.0
+VER_MAJ = $${EIRC_VER_MAJOR}
+VER_MIN = $${EIRC_VER_MINOR}
+VER_PAT = $${EIRC_VER_BRANCH}
+
+message("Version = $${EIRC_VER_STRING}+$${EIRC_VER_BRANCHNAME} $${EIRC_VER_TRUNKNAME}")

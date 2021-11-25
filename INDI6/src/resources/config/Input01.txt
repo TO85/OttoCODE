@@ -1,0 +1,4 @@
+# file {EIRC repo}./resource/config/Input01.txt
+
+
+

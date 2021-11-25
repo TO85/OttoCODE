@@ -1,0 +1,6 @@
+# file {EIRC repo}./src/cons/If2Console/OutputRD.txt
+
+/Output/BaseDir=/INDIface/INDIout/console/@
+/Output/Dirs/MarkedRect=Rectangles
+/Marker/MarkedPreQual/PenWidth=3
+/Marker/MarkedPreQual/PenColor=cyan

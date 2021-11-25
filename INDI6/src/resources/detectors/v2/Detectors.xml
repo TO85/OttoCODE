@@ -1,0 +1,55 @@
+<!DOCTYPE DDT-HaarDetectors>
+<HaarDetectors>
+  <DetectorClass Name="FaceFrontal" Default="Aim8A-320">
+    <Detector Name="GenericA" Width="24" Height="24">
+      <Description>
+        Generic Frontal Face Detector #1 (24x24 core)
+      </Description>
+      <XmlFile>
+        ./haarcascade_frontalface_default.xml
+      </XmlFile>
+    </Detector>
+    <Detector Name="Aim8A-320" Width="32" Height="32">
+      <Description>
+        Aim8 A-series with no splits (32x32)
+      </Description>
+      <XmlFile>
+        ./Aim8A001-32-NoSplit.xml
+      </XmlFile>
+    </Detector>
+  </DetectorClass>
+  <DetectorClass Name="Eye" Default="EyeA">
+    <Detector Name="EyeA" Width="20" Height="20">
+      <Description>
+        Stump-based 20x20 frontal eye detector.
+      </Description>
+      <XmlFile>
+        ./haarcascade_eye.xml
+      </XmlFile>
+    </Detector>
+    <Detector Name="LEye" Width="20" Height="20">
+      <Description>
+        Tree-based 20x20 left eye detector.
+      </Description>
+      <XmlFile>
+        ./haarcascade_lefteye_2splits.xml
+      </XmlFile>
+    </Detector>
+    <Detector Name="REye" Width="20" Height="20">
+      <Description>
+        Tree-based 20x20 right eye detector.
+      </Description>
+      <XmlFile>
+        ./haarcascade_righteye_2splits.xml
+      </XmlFile>
+    </Detector>
+    <Detector Name="EyeGlass" Width="20" Height="20">
+      <Description>
+        Tree-based 20x20 frontal eye detector with better handling of eyeglasses.
+      </Description>
+      <XmlFile>
+        ./haarcascade_eye_tree_eyeglasses.xml
+      </XmlFile>
+    </Detector>
+  </DetectorClass>
+</HaarDetectors>
