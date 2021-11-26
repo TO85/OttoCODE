@@ -1,7 +1,7 @@
-QT += gui
+QT -= gui
 
 TEMPLATE = lib
-DEFINES += TOGUI_LIBRARY
+DEFINES += OCBASE_LIBRARY
 
 CONFIG += c++11
 
@@ -10,11 +10,13 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    toGui.cpp
+    Uid.cpp \
+    ocBase.cpp
 
 HEADERS += \
-    toGui_global.h \
-    toGui.h
+    Uid.h \
+    ocBase_global.h \
+    ocBase.h
 
 # Default rules for deployment.
 unix {

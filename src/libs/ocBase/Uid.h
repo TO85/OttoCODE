@@ -2,9 +2,9 @@
 
 #include <QUuid>
 
-class LogUid : public QUuid
+class Uid : public QUuid
 {
 public:
-    LogUid();
+    Uid() {;}
 };
 

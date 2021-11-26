@@ -1,7 +1,7 @@
 QT -= gui
 
 TEMPLATE = lib
-DEFINES += TOEXE_LIBRARY
+DEFINES += OCLOGCORE_LIBRARY
 
 CONFIG += c++11
 
@@ -10,11 +10,17 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    toExe.cpp
+    LogItem.cpp \
+    LogLevel.cpp \
+    log.cpp \
+    ocLogCore.cpp
 
 HEADERS += \
-    toExe_global.h \
-    toExe.h
+    LogItem.h \
+    LogLevel.h \
+    log.h \
+    ocLogCore_global.h \
+    ocLogCore.h
 
 # Default rules for deployment.
 unix {

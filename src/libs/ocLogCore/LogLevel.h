@@ -1,9 +1,9 @@
-//! @file LogLevel.h in {torc repo}./src/lib/toLogCore
+//! @file LogLevel.h in {torc repo}./src/lib/ocLogCore
 #pragma once
-#include "toLogCore.h"
+#include "ocLogCore.h"
 
 
-class TOLOGCORE_EXPORT LogLevel
+class OCLOGCORE_EXPORT LogLevel
 {
 public:
     LogLevel();

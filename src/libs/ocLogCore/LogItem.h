@@ -1,12 +1,12 @@
-//! @file LogItem.h in {torc repo}./src/lib/toLogCore
+//! @file LogItem.h in {torc repo}./src/lib/ocLogCore
 #pragma once
-#include "toLogCore.h"
+#include "ocLogCore.h"
 
 #include <QSharedDataPointer>
 
 class LogItemData;
 
-class TOLOGCORE_EXPORT LogItem
+class OCLOGCORE_EXPORT LogItem
 {
 public:
     LogItem();

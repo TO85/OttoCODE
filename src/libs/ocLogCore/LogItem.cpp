@@ -2,15 +2,14 @@
 
 #include <QDateTime>
 
-#include "../toBase/Uid.h"
+#include "../ocBase/Uid.h"
 
 #include "LogLevel.h"
-#include "LogUid.h"
 
 class LogItemData : public QSharedData
 {
 public:
-    LogUid          LogContextUid;
+    Uid             LogContextUid;
     LogLevel        Level;
     QDateTime       Timestamp;
 

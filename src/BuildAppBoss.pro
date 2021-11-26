@@ -3,11 +3,6 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-        toBase \
-        toCore \
-        toGui \
-        toWidgets \
-        toExe \
         eirXfr \
         eirBase \
         eirType \

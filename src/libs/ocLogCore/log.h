@@ -1,12 +1,12 @@
-//! @file log.h Log Namespace Wrapper (in {torc repo}./src/lib/toLogCore
+//! @file log.h Log Namespace Wrapper (in {torc repo}./src/lib/toLogCore)
 #pragma once
-#include "toLogCore.h"
+#include "ocLogCore.h"
 
 #include <QObject>
 
 #include <QMetaEnum>
 
-class TOLOGCORE_EXPORT log : public QObject
+class OCLOGCORE_EXPORT log : public QObject
 {
     Q_GADGET
 public:
