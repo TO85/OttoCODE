@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/ActionManager
+#include "../libs/ocqGui/ActionManager.h"

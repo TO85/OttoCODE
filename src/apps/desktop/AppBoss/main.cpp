@@ -1,4 +1,4 @@
-#include "MainWindow.h"
+#include "LancealotMainWindow.h"
 
 #include <QApplication>
 

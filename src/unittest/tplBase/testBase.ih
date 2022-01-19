@@ -1,0 +1,8 @@
+//! @file testBase.ih In {repo}./src/unittest/autotest
+
+private slots:
+    void test_tplBase();
+
+private:
+    const tplBase cmBase85 = tplBase(85);
+

@@ -1,0 +1,28 @@
+//! @file testBase.icpp In {repo}./src/unittest/autotest
+
+void autotest::test_tplBase()
+{
+    tplBase baseNull;
+    QCOMPARE(0, baseNull.base());
+    QCOMPARE(0, baseNull());
+    QVERIFY(0 == baseNull());
+    QCOMPARE(0, baseNull);
+    QCOMPARE(0, baseNull.sign());
+    QVERIFY(1 != baseNull);
+
+    tplBase baseFortyOne(41);
+    QCOMPARE(41, baseFortyOne);
+    QVERIFY(40 != baseFortyOne());
+    QVERIFY(41 == baseFortyOne());
+    QVERIFY(42 != baseFortyOne());
+    QCOMPARE(baseFortyOne.addition(1), baseFortyOne.addition(1));
+    QCOMPARE(40, baseFortyOne.addition(-1));
+    QCOMPARE(42, baseFortyOne.addition(+1));
+    QCOMPARE(82, baseFortyOne.multiplication(2));
+    QVERIFY(baseFortyOne.add(1) != baseFortyOne.add(1));
+    QCOMPARE(43, baseFortyOne);
+
+    baseFortyOne.sign(-85);
+    QVERIFY(-85 != baseFortyOne);
+    QCOMPARE(-43, baseFortyOne);
+}

@@ -10,12 +10,12 @@ CONFIG += c++11
 
 SOURCES += \
     BaseMdiWindow.cpp \
-    main.cpp \
-    MainWindow.cpp
+    LancealotMainWindow.cpp \
+    main.cpp
 
 HEADERS += \
     BaseMdiWindow.h \
-    MainWindow.h
+    LancealotMainWindow.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,0 +1,2 @@
+// file: {Lancelot}./src/include/QQMainWindow
+#include "../libs/ocqWidgets/QQMainWindow.h"

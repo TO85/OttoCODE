@@ -1,0 +1,4 @@
+# {OTTOcode} src/apps/console.pri
+
+include(../apps.pri)
+

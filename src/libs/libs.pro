@@ -1,11 +1,12 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    toBase \
-    toCore \
-    toExe \
-    toGui \
-    toMath \
-    toWidgets
+    ocBase \
+    ocExe \
+    ocMath \
+    ocqCore \
+    ocqGui \
+    ocqWidgets \
+    
 
 
