@@ -7,20 +7,46 @@
 
 #include <QtDebug>
 
-/*! Creates a null or random unique identification token
+/*! Creates a nil or random unique identification token
  */
 Uid::Uid(const bool create)
-    : QUuid(create ? QUuid::createUuid() : QUuid())
 {
+    set(create);
     qDebug() << Q_FUNC_INFO << trace();
 }
 
+Uid::Value Uid::set(const bool create)
+{
+    mUuid = create ? QUuid::createUuid() : QUuid();
+    return setValue();
+}
+
+QString Uid::toString() const
+{
+    return mUuid.toString(QUuid::WithBraces);
+}
+
+
+/*! Returns last 14 characters showing last portion of unique idenfifier
+ *  @returns Fourteen character string in format "-XXXXXXXXXXXX}"
+ */
+QString Uid::tail() const
+{
+    return toString().right(14);
+}
+
+Uid::Value Uid::setValue()
+{
+    memcpy(mValues.byte, mUuid.toRfc4122(), sizeof(mValues));
+    return mValues.oword;
+}
+#if 0
 /*! Creates a new unique identification token based upon text
  *  @param name Seeds generator
  */
-Uid::Uid(const QByteArray name)
-    : QUuid(name)
+Uid::Uid(const QByteArray &other)
 {
+    set(other);
     qDebug() << Q_FUNC_INFO << trace();
 }
 
@@ -31,6 +57,27 @@ Uid::Uid(const QString name)
     : QUuid(name)
 {
     qDebug() << Q_FUNC_INFO << trace();
+}
+
+Uid::Value Uid::set(const bool create)
+{
+    mUuid =  create ? QUuid::createUuid() : QUuid();
+    memcpy(mValues.byte, )
+}
+
+Uid::Value Uid::set(const QByteArray &other)
+{
+
+}
+
+Uid::Value Uid::set(const QString &fromString)
+{
+
+}
+
+Uid::Value Uid::set(const Variant variant, const QByteArray name)
+{
+
 }
 
 /*! Creates a new unique identification token based upon previous @a Uid and text
@@ -52,11 +99,4 @@ Uid::Uid(const Uid base, const QString name)
     qDebug() << Q_FUNC_INFO << trace();
 
 }
-
-/*! Returns last 14 characters showing last portion of unique idenfifier
- *  @returns Fourteen character string in format "-XXXXXXXXXXXX}"
- */
-QString Uid::tail()
-{
-    return toString(StringFormat::WithBraces).right(14);
-}
+#endif

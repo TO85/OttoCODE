@@ -1,3 +1,9 @@
 [submodule "INDI6"]
 	path = INDI6
 	url = https://github.com/TOtto-EclipseIR/INDI6.git
+[submodule "vlc"]
+	path = vlc
+	url = ../vlc.git
+[submodule "libvlcpp"]
+	path = libvlcpp
+	url = ../libvlcpp.git

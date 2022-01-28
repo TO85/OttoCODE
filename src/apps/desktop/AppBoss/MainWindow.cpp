@@ -1,4 +1,4 @@
-#include "LancealotMainWindow.h"
+#include "MainWindow.h"
 
 #include <QtGui/QAction>
 #include <QtWidgets/QMdiArea>

@@ -8,19 +8,22 @@ CONFIG += c++11
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+message(======== in Excelsior.pro)
 include(../desktop.pri)
-include(../../../useBase.pri)
-include(../../../useCore.pri)
-include(../../../useGui.pri)
-include(../../../useWidgets.pri)
-include(../../../useExe.pri)
+include(../../../libs/useBase.pri)
+include(../../../libs/useCore.pri)
+include(../../../libs/useGui.pri)
+include(../../../libs/useWidgets.pri)
+
+message(INCLUDEPATH = $${INCLUDEPATH})
+message(LIBS = $${LIBS})
 
 SOURCES += \
-    BossMainWindow.cpp \
+    MainWindow.cpp \
     main.cpp
 
 HEADERS += \
-    BossMainWindow.h
+    MainWindow.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

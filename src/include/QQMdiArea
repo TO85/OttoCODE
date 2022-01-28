@@ -1,0 +1,2 @@
+// file: {Lancelot}./src/include/QQMdiArea
+#include "../libs/ocqWidgets/QQMdiArea.h"

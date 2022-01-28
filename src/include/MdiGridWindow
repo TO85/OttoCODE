@@ -1,0 +1,2 @@
+// file: {Lancelot}./src/include/MdiGridWindow
+#include "../libs/ocqWidgets/MdiGridWindow.h"

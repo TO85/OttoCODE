@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/MenuManager
+#include "../libs/ocqWidgets/MenuManager.h"

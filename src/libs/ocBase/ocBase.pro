@@ -12,7 +12,9 @@ include(../libs.pri)
 SOURCES += \
 #    AbstractString.cpp \
  #   BaseString.cpp \
-    ModuleObject.cpp \
+    AsciiChar.cpp \
+    AsciiString.cpp \
+    Error.cpp \
     Uid.cpp \
     Key.cpp \
     Sortable.cpp \
@@ -21,7 +23,12 @@ SOURCES += \
 HEADERS += \
 #    AbstractString.h \
  #   BaseString.h \
-    ModuleObject.h \
+    ../../include/Key \
+    ../../include/KeyMap \
+    AsciiChar.h \
+    AsciiString.h \
+    Error.h \
+    TypeDefs.h \
     Uid.h \
     Key.h \
     KeyMap.h \

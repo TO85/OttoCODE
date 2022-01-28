@@ -1,5 +1,8 @@
 #include "ActionManager.h"
 
+#include <QtDebug>
+#include <QAction>
+
 ActionManager::ActionManager(QObject *parent)
     : QObject{parent}
 {
@@ -19,7 +22,7 @@ QAction *ActionManager::action(const Key &key) const
 
 QAction *ActionManager::add(const Key &key, const QString &text)
 {
-    QAction *pAction = new QAction(text.isEmpty() ? key.last() : text, this);
+    QAction *pAction = new QAction(text.isEmpty() ? key.last().toString() : text, this);
     add(key, pAction);
     return pAction;
 }
