@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/FunctionInfo
+#include "../libs/ocBase/FunctionInfo.h"

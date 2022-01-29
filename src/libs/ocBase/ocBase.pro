@@ -1,4 +1,5 @@
 QT -= gui
+QT *= network
 
 TEMPLATE = lib
 DEFINES += TOBASE_LIBRARY
@@ -15,7 +16,12 @@ SOURCES += \
     AsciiChar.cpp \
     AsciiString.cpp \
     Error.cpp \
+    FunctionInfo.cpp \
+    HostId.cpp \
     KeyUidDMap.cpp \
+    Millisecond.cpp \
+    NetworkId.cpp \
+    ProcessId.cpp \
     Uid.cpp \
     Key.cpp \
     Sortable.cpp \
@@ -24,12 +30,27 @@ SOURCES += \
 HEADERS += \
 #    AbstractString.h \
  #   BaseString.h \
+    ../../include/AsciiChar \
+    ../../include/AsciiString \
+    ../../include/FunctionInfo \
+    ../../include/HostId \
     ../../include/Key \
     ../../include/KeyMap \
+    ../../include/KeyUidDMap \
+    ../../include/Millisecond \
+    ../../include/NetworkId \
+    ../../include/Sortable \
+    ../../include/TypeDefs \
+    ../../include/Uid \
     AsciiChar.h \
     AsciiString.h \
     Error.h \
+    FunctionInfo.h \
+    HostId.h \
     KeyUidDMap.h \
+    Millisecond.h \
+    NetworkId.h \
+    ProcessId.h \
     TypeDefs.h \
     Uid.h \
     Key.h \

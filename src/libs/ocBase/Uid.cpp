@@ -9,23 +9,33 @@
 
 /*! Creates a nil or random unique identification token
  */
+Uid::Uid()
+{
+    mValues.oword = 0;
+}
+
 Uid::Uid(const bool create)
 {
     set(create);
     qDebug() << Q_FUNC_INFO << trace();
 }
 
-Uid::Value Uid::set(const bool create)
+Uid::Value Uid::value() const
 {
-    mUuid = create ? QUuid::createUuid() : QUuid();
-    return setValue();
+    return mValues.oword;
+}
+
+QUuid Uid::toUuid() const
+{
+    QUuid result;
+    memcpy((BYTE *)(&result), &mValues.oword, sizeof(result));
+    return result;
 }
 
 QString Uid::toString() const
 {
-    return mUuid.toString(QUuid::WithBraces).toUpper();
+    return toUuid().toString(QUuid::WithBraces).toUpper();
 }
-
 
 /*! Returns last 14 characters showing last portion of unique idenfifier
  *  @returns Fourteen character string in format "-XXXXXXXXXXXX}"
@@ -35,11 +45,46 @@ QString Uid::tail() const
     return toString().right(14);
 }
 
-Uid::Value Uid::setValue()
+Uid::Value Uid::set(const bool create)
 {
-    memcpy(mValues.byte, mUuid.toRfc4122(), sizeof(mValues));
-    return mValues.oword;
+    it() = create ? createVersion4() : Uid();
+    return value();
 }
+
+Uid::Value Uid::set(const Half upper, const Half lower)
+{
+    mValues.qword[0] = upper, mValues.qword[1] = lower;
+    return value();
+}
+
+/* --------------------------- static ------------------------ */
+
+QRandomGenerator Uid::mGenerator;
+
+void Uid::randomize(const Seed seed)
+{
+    mGenerator.seed(seed ? seed : QRandomGenerator::global()->generate());
+}
+
+Uid Uid::createVersion4(const DWORD type, const QWORD seq)
+{
+    Uid result;
+    result.set(mGenerator.generate64(), mGenerator.generate64());
+    if ($nullType != type)
+    {
+        const NIBBLE typeHi = (type & 0b11110000) >> 4, typeLo = type & 0b00001111;
+        result.mValues.typeHi = typeHi, result.mValues.typeLo = typeLo;
+    }
+    if (seq) result.mValues.qword8 = seq;
+    result.mValues.version = 4;
+    return result;
+}
+
+/* --------------------------- protected ------------------------ */
+
+/* --------------------------- debug ------------------------ */
+
+
 #if 0
 /*! Creates a new unique identification token based upon text
  *  @param name Seeds generator

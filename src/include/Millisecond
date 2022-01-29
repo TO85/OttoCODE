@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/Millisecond
+#include "../libs/ocBase/Millisecond.h"

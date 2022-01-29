@@ -13,10 +13,8 @@ public:
     LogItem(const LogItem &);
     LogItem &operator=(const LogItem &);
     ~LogItem();
-    Uid uid() const { return mUid; }
 
 private:
     QSharedDataPointer<LogItemData> data;
-    Uid mUid;
 };
 

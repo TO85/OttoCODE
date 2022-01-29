@@ -5,18 +5,19 @@
 
 #include <QMetaType>
 
-class TOBASE_EXPORT AsciiChar : public QChar
+class TOBASE_EXPORT AsciiChar
 {
 public:
-    AsciiChar(const QChar &aChar) : QChar(aChar) {;}
-    AsciiChar(const char *psz) : QChar(*psz) {;}
-    AsciiChar(const char ch) : QChar(ch) {;}
+    AsciiChar(const QChar &aChar) : mChar(aChar.cell()) {;}
+    AsciiChar(const char *psz) : mChar(*psz) {;}
+    AsciiChar(const char ch) : mChar(ch) {;}
     AsciiChar() = default;
     ~AsciiChar() = default;
     AsciiChar(const AsciiChar &other) = default;
     AsciiChar &operator = (const AsciiChar &other) = default;
 
+private:
+    CHAR mChar;
 };
-
 
 Q_DECLARE_METATYPE(AsciiChar);

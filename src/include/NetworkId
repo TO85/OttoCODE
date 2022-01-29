@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/NetworkId
+#include "../libs/ocBase/NetworkId.h"

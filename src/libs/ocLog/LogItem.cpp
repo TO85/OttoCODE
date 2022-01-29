@@ -1,21 +1,24 @@
 #include "LogItem.h"
 
+#include <FunctionInfo>
+
 class LogItemData : public QSharedData
 {
 public:
-
+    Uid uid;
+    SQWORD currentUtcMsec=0;
+    QWORD logLevel=0;
+    FunctionInfo functionInfo;
 };
 
 LogItem::LogItem()
     : data(new LogItemData)
-    , mUid(true)
 {
 
 }
 
 LogItem::LogItem(const LogItem &rhs)
     : data{rhs.data}
-    , mUid(rhs.uid())
 {
 
 }
@@ -23,7 +26,7 @@ LogItem::LogItem(const LogItem &rhs)
 LogItem &LogItem::operator=(const LogItem &rhs)
 {
     if (this != &rhs)
-        data.operator=(rhs.data), mUid = rhs.uid();
+        data.operator=(rhs.data);
     return *this;
 }
 
