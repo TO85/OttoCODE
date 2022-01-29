@@ -17,10 +17,12 @@ include(../../../useExe.pri)
 
 SOURCES += \
     BossMainWindow.cpp \
+    EtcSubWindow.cpp \
     main.cpp
 
 HEADERS += \
-    BossMainWindow.h
+    BossMainWindow.h \
+    EtcSubWindow.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

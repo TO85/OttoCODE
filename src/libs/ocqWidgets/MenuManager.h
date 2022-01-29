@@ -7,10 +7,13 @@ class QApplication;
 class QMenu;
 class QMenuBar;
 
-//#include <ActionManager>
+#include <Key>
 #include <KeyMap>
+#include <QQString>
 class ActionManager;
 class QQMainWindow;
+
+template class KeyMap<QMenu*>;
 
 class MenuManager : public QObject
 {
@@ -22,10 +25,12 @@ public:
     QQMainWindow *main() const;
     QMenuBar *bar() const;
     QMenu *menu(const Key &key) const;
+    ActionManager *actions() const;
     QAction *action(const Key &key) const;
 
 public:
-    QAction *add(const Key &key);
+    QMenu *addPrimary(const Key &key, const QQString &text=QQString());
+    QAction *add(const Key &key, const QQString &text=QQString());
     bool add(const Key &key, QAction *action);
 
 signals:

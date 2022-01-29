@@ -13,6 +13,7 @@ SOURCES += \
     ocType.cpp
 
 HEADERS += \
+    DualMap.h \
     ocType_global.h \
     ocType.h
 

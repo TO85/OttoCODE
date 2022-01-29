@@ -50,7 +50,6 @@ private:
         BYTE        byte[16];
     } mValues;
     QRandomGenerator mGenerator;
-
 };
 
 Q_DECLARE_METATYPE(Uid);

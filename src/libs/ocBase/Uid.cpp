@@ -23,7 +23,7 @@ Uid::Value Uid::set(const bool create)
 
 QString Uid::toString() const
 {
-    return mUuid.toString(QUuid::WithBraces);
+    return mUuid.toString(QUuid::WithBraces).toUpper();
 }
 
 

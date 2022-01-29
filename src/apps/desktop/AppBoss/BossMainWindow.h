@@ -12,7 +12,14 @@ public:
     BossMainWindow(QApplication *pApp);
     ~BossMainWindow();
 
-public:
+public slots:
+    void viewEtc();
+
+private:
+    virtual void setupMenus() override;
+    virtual void setupConnections() override;
+
+signals:
 
 private:
 };

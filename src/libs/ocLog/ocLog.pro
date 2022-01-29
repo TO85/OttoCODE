@@ -1,23 +1,26 @@
 QT -= gui
 
 TEMPLATE = lib
-DEFINES += OCQCORE_LIBRARY
+DEFINES += OCLOG_LIBRARY
 
 CONFIG += c++11
 
+# You can make your code fail to compile if it uses deprecated APIs.
+# In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 include(../libs.pri)
+include(../useBase.pri)
+
 
 SOURCES += \
-    QQString.cpp \
-    ocqCore.cpp
+    LogItem.cpp \
+    ocLog.cpp
 
 HEADERS += \
-    ../../include/QQString \
-    QQString.h \
-    ocqCore_global.h \
-    ocqCore.h
+    LogItem.h \
+    ocLog_global.h \
+    ocLog.h
 
 # Default rules for deployment.
 unix {

@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/TypeDefs
+#include "../libs/ocBase/TypeDefs.h"

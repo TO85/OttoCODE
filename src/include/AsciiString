@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/AsciiString
+#include "../libs/ocBase/AsciiString.h"

@@ -11,39 +11,68 @@ MenuManager::MenuManager(QQMainWindow *main, ActionManager *actions, QObject *pa
     : QObject{parent}
     , mpMainWindow(main)
     , mpActionManager(actions)
+    , mpMenuBar(mpMainWindow->menuBar())
 {
     setObjectName("MenuManager");
-    qDebug("MenuManager::MenuManager()");
+    qDebug(Q_FUNC_INFO);
 }
 
 QQMainWindow *MenuManager::main() const
 {
+    Q_ASSERT(mpMainWindow);
     return mpMainWindow;
 }
 
 QMenuBar *MenuManager::bar() const
 {
+    Q_ASSERT(main()->menuBar());
     return main()->menuBar();
 }
 
 QMenu *MenuManager::menu(const Key &key) const
 {
+    Q_ASSERT(mKeyMenuMap.contains(key));
     return mKeyMenuMap.value(key);
+}
+
+ActionManager *MenuManager::actions() const
+{
+    Q_ASSERT(mpActionManager);
+    return mpActionManager;
 }
 
 QAction *MenuManager::action(const Key &key) const
 {
+    Q_ASSERT(mpActionManager);
+    Q_ASSERT(mpActionManager->contains(key));
     return mpActionManager->action(key);
 }
 
-QAction *MenuManager::add(const Key &key)
+QMenu * MenuManager::addPrimary(const Key &key, const QQString &text)
 {
-    QAction * result = mpActionManager->add(key);
-    return result;
+    qDebug() << Q_FUNC_INFO << key.toString() << text;
+    if (mKeyMenuMap.contains(key)) return mKeyMenuMap.value(key);       /* /====\ */
+    QMenu *pMenu = bar()->addMenu(text.isEmpty() ? "&"+key.last() : text);
+    mKeyMenuMap.insert(key, pMenu);
+    return pMenu;
+}
+
+QAction *MenuManager::add(const Key &key, const QQString &text)
+{
+    qDebug() << Q_FUNC_INFO << key.toString() << text;
+    QMenu *pMenu = mKeyMenuMap.value(key.first(-1));
+    if (nullptr == pMenu) return nullptr;                               /* /====\ */
+    QAction *pAction = pMenu->addAction(text.isEmpty() ? "&"+key.last() : text);
+    actions()->add(key, pAction);
+    return pAction;
 }
 
 bool MenuManager::add(const Key &key, QAction *action)
 {
-    bool result = false;
+    qDebug() << Q_FUNC_INFO << key.toString() << action->objectName();
+    Q_ASSERT(false); // MUSTDO if used
     QMenu * pMenu = mKeyMenuMap.value(key.first(-1));
+    if (nullptr == pMenu) return false;                                /* /====\ */
+    pMenu->addAction(action);
+    return true;
 }

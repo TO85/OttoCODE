@@ -2,8 +2,10 @@
 
 message(----------------In paths.pri)
 
-INCLUDEPATH *= ../../libs
+INCLUDEPATH *= ../include
+INCLUDEPATH *= ../libs
 INCLUDEPATH *= ../../include
-INCLUDEPATH *= ../../../libs
+INCLUDEPATH *= ../../libs
 INCLUDEPATH *= ../../../include
+INCLUDEPATH *= ../../../libs
 message(INCLUDEPATH = $${INCLUDEPATH})

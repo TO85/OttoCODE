@@ -1,8 +1,6 @@
 #pragma once
 #include "ocBase.h"
 
-#include <QString>
-
 #include "Key.h"
 #include "Sortable.h"
 
@@ -21,4 +19,3 @@ public:
 private:
     QMap<Sortable, T> mSortTMap;
 };
-

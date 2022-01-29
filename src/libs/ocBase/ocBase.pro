@@ -15,6 +15,7 @@ SOURCES += \
     AsciiChar.cpp \
     AsciiString.cpp \
     Error.cpp \
+    KeyUidDMap.cpp \
     Uid.cpp \
     Key.cpp \
     Sortable.cpp \
@@ -28,6 +29,7 @@ HEADERS += \
     AsciiChar.h \
     AsciiString.h \
     Error.h \
+    KeyUidDMap.h \
     TypeDefs.h \
     Uid.h \
     Key.h \
