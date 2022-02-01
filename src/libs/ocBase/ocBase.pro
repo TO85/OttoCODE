@@ -18,6 +18,7 @@ SOURCES += \
     Error.cpp \
     FunctionInfo.cpp \
     HostId.cpp \
+    KeyItem.cpp \
     KeyUidDMap.cpp \
     Millisecond.cpp \
     NetworkId.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     ../../include/Key \
     ../../include/KeyMap \
     ../../include/KeyUidDMap \
+    ../../include/List \
     ../../include/Millisecond \
     ../../include/NetworkId \
     ../../include/Sortable \
@@ -47,7 +49,9 @@ HEADERS += \
     Error.h \
     FunctionInfo.h \
     HostId.h \
+    KeyItem.h \
     KeyUidDMap.h \
+    List.h \
     Millisecond.h \
     NetworkId.h \
     ProcessId.h \

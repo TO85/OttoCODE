@@ -11,11 +11,13 @@ include(../libs.pri)
 
 SOURCES += \
     QQString.cpp \
+    QQStringList.cpp \
     ocqCore.cpp
 
 HEADERS += \
     ../../include/QQString \
     QQString.h \
+    QQStringList.h \
     ocqCore_global.h \
     ocqCore.h
 

@@ -50,26 +50,26 @@ QAction *MenuManager::action(const Key &key) const
 
 QMenu * MenuManager::addPrimary(const Key &key, const QQString &text)
 {
-    qDebug() << Q_FUNC_INFO << key.toString() << text;
+    qDebug() << Q_FUNC_INFO << key.toQString() << text;
     if (mKeyMenuMap.contains(key)) return mKeyMenuMap.value(key);       /* /====\ */
-    QMenu *pMenu = bar()->addMenu(text.isEmpty() ? "&"+key.last() : text);
+    QMenu *pMenu = bar()->addMenu(text.isEmpty() ? "&"+key.last().toQString() : text);
     mKeyMenuMap.insert(key, pMenu);
     return pMenu;
 }
 
 QAction *MenuManager::add(const Key &key, const QQString &text)
 {
-    qDebug() << Q_FUNC_INFO << key.toString() << text;
+    qDebug() << Q_FUNC_INFO << key.toQString() << text;
     QMenu *pMenu = mKeyMenuMap.value(key.first(-1));
     if (nullptr == pMenu) return nullptr;                               /* /====\ */
-    QAction *pAction = pMenu->addAction(text.isEmpty() ? "&"+key.last() : text);
+    QAction *pAction = pMenu->addAction(text.isEmpty() ? "&"+key.last().toQString() : text);
     actions()->add(key, pAction);
     return pAction;
 }
 
 bool MenuManager::add(const Key &key, QAction *action)
 {
-    qDebug() << Q_FUNC_INFO << key.toString() << action->objectName();
+    qDebug() << Q_FUNC_INFO << key.toQString() << action->objectName();
     Q_ASSERT(false); // MUSTDO if used
     QMenu * pMenu = mKeyMenuMap.value(key.first(-1));
     if (nullptr == pMenu) return false;                                /* /====\ */

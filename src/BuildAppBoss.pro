@@ -8,6 +8,7 @@ SUBDIRS += \
         ocqCore \
         ocqGui \
         ocqWidgets \
+        ocIO \
         ocExe \
         AppBoss \
 
@@ -16,14 +17,16 @@ ocLog.subdir            = libs/ocLog
 ocqCore.subdir          = libs/ocqCore
 ocqGui.subdir           = libs/ocqGui
 ocqWidgets.subdir       = libs/ocqWidgets
+ocIO.subdir             = libs/ocIO
 ocExe.subdir            = libs/ocExe
 AppBoss.subdir          = apps/desktop/AppBoss
 
-toBase.depends          =
+ocBase.depends          =
 ocLog.depends           =                                       ocBase
-toCore.depends          =
-toGui.depends           =                                       ocBase
-toWidgets.depends       =                        ocqGui         ocBase
-toExe.depends           =
+ocqCore.depends         =                                       ocBase
+ocqGui.depends          =                                       ocBase
+ocqWidgets.depends      =                        ocqGui         ocBase
+ocIO.depends            =                                       ocBase
+ocExe.depends           =                                       ocBase
 AppBoss.depends         =           ocqWidgets   ocqGui ocqCore ocBase
 

@@ -34,14 +34,14 @@ bool ActionManager::connect(const Key &key, const QObject *actor, const QByteArr
 
 QAction *ActionManager::add(const Key &key, const QString &text)
 {
-    QAction *pAction = new QAction(text.isEmpty() ? key.last().toString() : text, this);
+    QAction *pAction = new QAction(text.isEmpty() ? key.last().toQString() : text, this);
     add(key, pAction);
     return pAction;
 }
 
 void ActionManager::add(const Key &key, QAction *action)
 {
-    action->setObjectName("ActionManager:"+key.toString());
+    action->setObjectName("ActionManager:"+key.toQString());
     mKeyActionMap.insert(key, action);
     emit actionAdded(key, action);
 }

@@ -6,6 +6,7 @@
 class QByteArray;
 
 class Key;
+class KeyItem;
 
 class TOBASE_EXPORT Sortable : public QString
 {
@@ -15,6 +16,7 @@ public:
     Sortable(const QVariant &variant) { set(variant); }
     Sortable(const QByteArray &bytes) { set(bytes); }
     Sortable(const Key &key) { set(key); }
+    Sortable(const KeyItem &item) { set(item); }
 
 public: // access
     QString source();
@@ -26,6 +28,7 @@ public:
     void set(const QVariant &variant);
     void set(const QByteArray &bytes);
     void set(const Key &key);
+    void set(const KeyItem &item);
 
 private:
     QString mSource;

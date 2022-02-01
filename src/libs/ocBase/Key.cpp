@@ -1,13 +1,44 @@
 #include "Key.h"
 
+#include "Sortable.h"
 
-Key::Key(const QString &qs) : mSegments(qs.split(separator())) {;}
-Key::Key(const QStringList &qsl) : mSegments(qsl) {;}
-Key::Key(const char *pch) : mSegments(QString(pch).split(separator())) {;}
+Key::Key(const KeyItem &ki) { set(ki); }
+Key::Key(const QList<KeyItem> &kl) : mSegments(kl) {;}
+Key::Key(const QString &qs) { set(qs); }
+Key::Key(const QStringList &qsl) { set(qsl); }
+Key::Key(const char *pch) { set(pch); }
+
+void Key::set(const KeyItem &ki)
+{
+    clear();
+    mSegments.append(ki);
+}
+
+void Key::set(const QString &qs)
+{
+    set(qs.split(separator()));
+}
+
+void Key::set(const QStringList &qsl)
+{
+    clear();
+    for (QString qs : qsl)
+        mSegments.append(qs);
+}
+
+void Key::set(const char *pch)
+{
+    set(QString(pch));
+}
 
 int Key::count() const
 {
     return mSegments.count();
+}
+
+KeyItem Key::first() const
+{
+    return mSegments.first();
 }
 
 Key Key::first(const int k) const
@@ -20,17 +51,31 @@ Key Key::first(const int k) const
         if (n > 0)
             return mSegments.first(n);
     }
-    return QString();
+    return Key();
 }
 
-Key Key::last() const
+KeyItem Key::last() const
 {
     return mSegments.isEmpty() ? QString() : mSegments.last();
 }
 
-QString Key::toString() const
+bool Key::less(const Key &other)
 {
-    return mSegments.join(separator());
+    return Sortable(it()) < Sortable(other);
+}
+
+void Key::clear()
+{
+    mSegments.clear();
+}
+
+QString Key::toQString() const
+{
+    QString result;
+    result = mSegments.first().toQString();
+    for (KeyItem ki : mSegments.mid(1))
+        result.append(separator() + ki.toQString());
+    return result;
 }
 
 /* ----------------------- static --------------------------- */

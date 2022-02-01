@@ -4,3 +4,4 @@ SUBDIRS += \
     apps \
     libs \
     plugins \
+    unittest

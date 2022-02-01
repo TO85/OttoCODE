@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/DirectoryInfo
+#include "../libs/ocIO/DirectoryInfo.h"

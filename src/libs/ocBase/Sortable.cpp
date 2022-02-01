@@ -5,6 +5,7 @@
 #include <QVariant>
 
 #include "Key.h"
+#include "KeyItem.h"
 
 QString Sortable::source()
 {
@@ -43,5 +44,10 @@ void Sortable::set(const QByteArray &bytes)
 
 void Sortable::set(const Key &key)
 {
-    set(key.toString());
+    set(key.toQString());
+}
+
+void Sortable::set(const KeyItem &item)
+{
+    set(item.toQString());
 }

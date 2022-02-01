@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/FileSystemObject
+#include "../libs/ocIO/FileSystemObject.h"

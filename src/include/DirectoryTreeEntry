@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/DirectoryTreeEntry
+#include "../libs/ocIO/DirectoryTreeEntry.h"
