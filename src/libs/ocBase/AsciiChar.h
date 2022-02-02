@@ -5,7 +5,7 @@
 
 #include <QMetaType>
 
-class TOBASE_EXPORT AsciiChar
+class OCBASE_EXPORT AsciiChar
 {
 public:
     AsciiChar(const QChar &aChar) : mChar(aChar.cell()) {;}

@@ -4,8 +4,8 @@
 
 #include "TypeDefs.h"
 
-class TOBASE_EXPORT toBase
+class OCBASE_EXPORT ocBase
 {
 public:
-    toBase();
+    ocBase();
 };

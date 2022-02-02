@@ -8,7 +8,7 @@
 
 #include "KeyItem.h"
 
-class TOBASE_EXPORT Key
+class OCBASE_EXPORT Key
 {
 public:
     Key(const KeyItem &ki);

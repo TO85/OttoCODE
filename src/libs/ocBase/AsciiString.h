@@ -5,7 +5,7 @@
 #include <QMetaType>
 #include <QString>
 
-class TOBASE_EXPORT AsciiString : public QByteArray
+class OCBASE_EXPORT AsciiString : public QByteArray
 {
 public:
     AsciiString(const QString &aString) : QByteArray(aString.toLocal8Bit()) {;}

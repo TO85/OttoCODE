@@ -5,7 +5,7 @@
 #include <QTimeZone>
 #include <QString>
 
-class TOBASE_EXPORT Millisecond
+class OCBASE_EXPORT Millisecond
 {
 public:
     Millisecond(const bool isUTC=false);

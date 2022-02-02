@@ -2,8 +2,8 @@
 
 #include <QtCore/qglobal.h>
 
-#if defined(TOBASE_LIBRARY)
-#  define TOBASE_EXPORT Q_DECL_EXPORT
+#if defined(OCBASE_LIBRARY)
+#  define OCBASE_EXPORT Q_DECL_EXPORT
 #else
-#  define TOBASE_EXPORT Q_DECL_IMPORT
+#  define OCBASE_EXPORT Q_DECL_IMPORT
 #endif

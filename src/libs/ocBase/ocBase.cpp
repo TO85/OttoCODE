@@ -1,5 +1,5 @@
 #include "ocBase.h"
 
-toBase::toBase()
+ocBase::ocBase()
 {
 }

@@ -8,7 +8,7 @@ class QByteArray;
 class Key;
 class KeyItem;
 
-class TOBASE_EXPORT Sortable : public QString
+class OCBASE_EXPORT Sortable : public QString
 {
 public:
     Sortable() { set(); }
