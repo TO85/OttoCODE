@@ -15,6 +15,7 @@ public:
 
 public:
     SQWORD msec() const;
+    SQWORD msecUtc() const;
     QDateTime time() const;
     QString timestamp() const;
 

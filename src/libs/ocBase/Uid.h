@@ -14,30 +14,44 @@ class Uid
 {
 public:
     typedef DWORD Seed;
+    typedef DWORD Id;
     typedef NIBBLE Version;
     typedef TRIBIT Variant;
     typedef QWORD Half;
-    typedef OWORD Value;
-
+    typedef OWORD Whole;
+    typedef WORD Type;
+    typedef QWORD Value;
 
 public:
     Uid();
     Uid(const bool create);
 
 public:
-    Value value() const;
+    bool isNull() const;
+    bool notNull() const { return  ! isNull(); }
+    bool isValid() const;
+    bool notValid() const { return  ! isValid(); }
+    Whole whole() const;
+    Half upper() const;
+    Half lower() const;
     QUuid toUuid() const;
+    Id id() const;
+    Type type() const;
+    Value value() const;
     AsciiString toHex() const;
     QString toString() const;
     QString tail() const;
 
 public:
-    Value set(const bool create);
-    Value set(const Half upper, const Half lower);
+    Whole set(const bool create);
+    Whole set(const Variant variant);
+    Whole set(const Id id);
+    Whole set(const Half upper, const Half lower);
+    Whole set(const Type type, const Value value);
 
 public: // static
     static void randomize(const Seed seed=0);
-    static Uid createVersion4(const DWORD type=$nullType, const QWORD seq=0);
+    static Uid createVersion4(const Type type=$nullType, const Value value=0);
 
 protected:
     const Uid it() const { return *this; }
@@ -62,7 +76,7 @@ private:
                 DWORD       flags;
                 DWORD       version : 4,
                             typeHi  : 4,
-                            bit63   : 1,
+                            valid   : 1,
                             variant : 3,
                             typeLo  : 4;
             };
@@ -92,47 +106,41 @@ public:
         UidVariantMicrosoft = 0b0000000011000000,
         UidVarReserved7     = 0b0000000011100000,
         UidVariantMask      = 0b0000000011100000,
-        UidNibble6Bit3      = 0b0000000000010000,
+        UidValid            = 0b0000000000010000,
         UidNibble7Mask      = 0b0000000000001111,
         UidTypeMask         = UidNibble5Mask | UidNibble7Mask
     };
-    enum Type
+    enum Types
     {
         $nullType           = 0b0000000000000000,
-        ReservedType01      = 0b0000000000000001,
-        ReservedType02      = 0b0000000000000010,
-        ReservedType03      = 0b0000000000000011,
-        ReservedType04      = 0b0000000000000100,
-        ReservedType05      = 0b0000000000000101,
-        ReservedType06      = 0b0000000000000110,
-        ReservedType07      = 0b0000000000000111,
-        ReservedType08      = 0b0000000000001000,
-        ReservedType09      = 0b0000000000001001,
-        ReservedType0A      = 0b0000000000001010,
-        ReservedType0B      = 0b0000000000001011,
-        ReservedType0C      = 0b0000000000001100,
-        ReservedType0D      = 0b0000000000001101,
-        ReservedType0E      = 0b0000000000001110,
-        ReservedType0F      = 0b0000000000001111,
-        ReservedType10      = 0b0000000100000000,
-        ReservedType20      = 0b0000001000000000,
-        ReservedType30      = 0b0000001100000000,
-        ReservedType40      = 0b0000010000000000,
-        ReservedType50      = 0b0000010100000000,
-        ReservedType60      = 0b0000011000000000,
-        ReservedType70      = 0b0000011100000000,
-        ReservedType80      = 0b0000100000000000,
-        ReservedType90      = 0b0000100100000000,
-        ReservedTypeA0      = 0b0000101000000000,
-        ReservedTypeB0      = 0b0000101100000000,
-        ReservedTypeC0      = 0b0000110000000000,
-        ReservedTypeD0      = 0b0000110100000000,
-        ReservedTypeE0      = 0b0000111000000000,
-        ReservedTypeF0      = 0b0000111100000000,
+        ReservedType00min   = 0b0000000000000001,
+        ReservedType00max   = 0b0111111111111111,
+        ReservedType01min   = 0b1000000000000001,
+        ReservedType01max   = 0b1011111111111111,
+        ReservedType02min   = 0b1100000000000001,
+        ReservedType02max   = 0b1101111111111111,
+        ReservedType03min   = 0b1110000000000001,
+        ReservedType03max   = 0b1110111111111111,
+        ReservedType04min   = 0b1111000000000001,
+        ReservedType04max   = 0b1111011111111111,
+        ReservedType05min   = 0b1111100000000001,
+        ReservedType05max   = 0b1111101111111111,
+        ReservedType06min   = 0b1111110000000001,
+        ReservedType06max   = 0b1111110111111111,
+        ReservedType07min   = 0b1111111000000001,
+        ReservedType07max   = 0b1111111011111111,
+        ReservedType08min   = 0b1111111100000001,
+        ReservedType08max   = 0b1111111101111111,
+        ReservedType09min   = 0b1111111110000001,
+        ReservedType09max   = 0b1011111110111111,
+        ReservedType10min   = 0b1111111111000001,
+        ReservedType10max   = 0b1101111111011111,
+        ReservedType11min   = 0b1111111111100001,
+        ReservedType11max   = 0b1110111111101111,
+        ReservedType12min   = 0b1111111111110001,
+        ReservedType12max   = 0b1111011111110111,
     };
-
 };
-
 
 #if 0
 Uid(const QByteArray &other);

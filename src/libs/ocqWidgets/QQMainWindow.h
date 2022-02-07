@@ -13,9 +13,9 @@ class OCQWIDGETS_EXPORT QQMainWindow : public QMainWindow
     Q_OBJECT
 public:
     explicit QQMainWindow(QApplication *pApp);
-    const QApplication *gui() const { return mpApplication; }
-    ActionManager *actions() const { return mpActionManager; }
-    MenuManager *menus() const { return mpMenuManager; }
+    const QApplication *gui() const;
+    ActionManager *actions() const;
+    MenuManager *menus() const;
 
 public slots:
     void setup();

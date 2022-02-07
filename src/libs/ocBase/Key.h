@@ -6,13 +6,13 @@
 #include <QString>
 #include <QStringList>
 
-#include "KeyItem.h"
+#include "KeySeg.h"
 
 class OCBASE_EXPORT Key
 {
 public:
-    Key(const KeyItem &ki);
-    Key(const QList<KeyItem> &kl);
+    Key(const KeySeg &ki);
+    Key(const QList<KeySeg> &kl);
     Key(const QString &qs);
     Key(const QStringList &qsl);
     Key(const char *pch);
@@ -20,22 +20,24 @@ public:
     ~Key() = default;
     Key(const Key &other) = default;
     Key &operator = (const Key &other) = default;
-    void set(const KeyItem &ki);
-    void set(const QString &qs);
-    void set(const QStringList &qsl);
-    void set(const char *pch);
+
+public:
 
 public:
     int count() const;
-    KeyItem first() const;
+    KeySeg first() const;
     Key first(const int k) const;
-    KeyItem last() const;
+    KeySeg last() const;
     bool less(const Key &other);
     QString toQString() const;
     operator QString () const { return toQString(); }
 
 public:
     void clear();
+    void set(const KeySeg &ki);
+    void set(const QString &qs);
+    void set(const QStringList &qsl);
+    void set(const char *pch);
 
 protected:
     static QChar separator();
@@ -49,7 +51,7 @@ protected:
     static QChar smSeparator;
 
 private:
-    QList<KeyItem> mSegments;
+    QList<KeySeg> mSegments;
 };
 
 Q_DECLARE_METATYPE(Key);

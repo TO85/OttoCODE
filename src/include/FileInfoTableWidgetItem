@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/FileInfoTableWidgetItem
+#include "../libs/ocIO/FileInfoTableWidgetItem.h"

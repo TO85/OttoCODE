@@ -1,17 +1,17 @@
 #pragma once
+#include "ocIO.h"
 
+#include <QSharedDataPointer>
 class FileSystemTreeData;
 
-#include <QDir>
-#include <QSharedDataPointer>
+#include <QFileInfo>
 
-#include <QQString>
+#include <QQDir>
+#include <QQFileInfo>
+#include <List>
+#include <String>
 
-#include "DirectoryTreeEntry.h"
-#include "FileTreeEntry.h"
-class DirectoryInfo;
-
-class FileSystemTree
+class OCIO_EXPORT FileSystemTree
 {
 public:
     FileSystemTree();
@@ -20,16 +20,17 @@ public:
     ~FileSystemTree();
 
 public: // access
-    DirectoryInfo rootPath() const;
-    DirectoryInfo rootPath(const DirectoryInfo &rootDir);
-    DirectoryInfo rootPath(const QQString &pathName);
-    DirectoryInfo rootPath(const QDir &qdir);
-    List<FileTreeEntry> fileEntryList() const;
-    List<DirectoryTreeEntry> dirEntryList() const;
+    QQDir rootDir() const;
+    QQDir rootDir(const String &pathName);
+    QQDir rootDir(const QDir &qdir);
+    int fileCount() const;
+    int dirCount() const;
+    List<QQFileInfo> fileEntryList() const;
+    List<QQDir> dirEntryList() const;
 
 public: // command
-    int add(FileTreeEntry);
-    int add(DirectoryTreeEntry);
+    int add(QFileInfo fi);
+    int add(QQDir dir);
 
 private:
     QSharedDataPointer<FileSystemTreeData> data;

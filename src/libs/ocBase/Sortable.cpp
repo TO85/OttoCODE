@@ -5,7 +5,7 @@
 #include <QVariant>
 
 #include "Key.h"
-#include "KeyItem.h"
+#include "KeySeg.h"
 
 QString Sortable::source()
 {
@@ -17,37 +17,55 @@ QVariant Sortable::variant()
     return mVariant;
 }
 
-void Sortable::set()
+void Sortable::clear()
 {
-    const quint64 tRandom = QRandomGenerator::securelySeeded().generate64();
-    QByteArray ba((char *)(&tRandom), sizeof(tRandom));
-    set(ba.toBase64());
+    mSource.clear();
+    mVariant.clear();
+    QString::clear();
+    append(random());
 }
 
 void Sortable::set(const QString &string)
 {
+    mSource = string;
     set(QVariant(string));
+    mVariant = QVariant(string);
 }
 
 void Sortable::set(const QVariant &variant)
 {
-    mVariant = variant;
     mSource = mVariant.toString();
     clear();
     append(mSource.toCaseFolded());
+    mVariant = variant;
 }
 
 void Sortable::set(const QByteArray &bytes)
 {
     set(QVariant(bytes));
+    mSource = bytes;
+    mVariant = QVariant(bytes);
 }
 
 void Sortable::set(const Key &key)
 {
     set(key.toQString());
+    mSource = key;
+    mVariant = QVariant(key);
 }
 
-void Sortable::set(const KeyItem &item)
+void Sortable::set(const KeySeg &seg)
 {
-    set(item.toQString());
+    set(seg.toQString());
+    mSource = seg;
+    mVariant = QVariant(seg);
+}
+
+/* --------------------- static ----------------------- */
+
+QByteArray Sortable::random()
+{
+    const quint64 tRandom = QRandomGenerator::securelySeeded().generate64();
+    const QByteArray ba((char *)(&tRandom), sizeof(tRandom));
+    return ba.toBase64();
 }

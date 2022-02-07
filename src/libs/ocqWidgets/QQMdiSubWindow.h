@@ -10,7 +10,7 @@ class OCQWIDGETS_EXPORT QQMdiSubWindow : public QMdiSubWindow
     Q_OBJECT
 public:
     QQMdiSubWindow(QQMdiArea *parent = nullptr, Qt::WindowFlags flags = Qt::WindowFlags());
-    QQMdiArea *mdiArea() { return mpMdiArea; }
+    QQMdiArea *mdiArea();
 
 public slots:
     virtual void setup();

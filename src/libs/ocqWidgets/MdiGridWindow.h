@@ -17,7 +17,7 @@ class OCQWIDGETS_EXPORT MdiGridWindow : public QQMdiSubWindow
 public:
     MdiGridWindow(const Key &key, QQMdiArea *parent, Qt::WindowFlags flags = Qt::WindowFlags());
     Key key() const { return mKey; }
-    QGridLayout *layout() const { return mpGridLayout; }
+    QGridLayout *layout() const;
 
 public slots:
     virtual void setup();

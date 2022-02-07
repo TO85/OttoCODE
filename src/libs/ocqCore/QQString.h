@@ -4,32 +4,32 @@
 
 #include <QMetaType>
 
-class QQStringList;
+class StringList;
 
-class QQString : public QString
+class String : public QString
 {
 public:
-    QQString(const QString &other) : QString(other) {;}
-    QQString(const char *psz) : QString(psz) {;}
-    QQString() = default;
-    QQString(const QQString &other) = default;
-    ~QQString() = default;
-    QQString &operator = (const QQString &other) = default;
+    String(const QString &other) : QString(other) {;}
+    String(const char *psz) : QString(psz) {;}
+    String() = default;
+    String(const String &other) = default;
+    ~String() = default;
+    String &operator = (const String &other) = default;
 
 public:
     bool notNull() const { return ! QString::isNull(); }
     bool notEmpty() const { return ! QString::isEmpty(); }
-    QQStringList split(const QChar &separator) const;
+    StringList split(const QChar &separator) const;
     int sectionCount() const;
-    QQString firstSection() const;
-    QQString firstSections(const int n) const;
-    QQString lastSection() const;
-    QQString lastSections(const int n) const;
-    QQStringList sectionList() const;
+    String firstSection() const;
+    String firstSections(const int n) const;
+    String lastSection() const;
+    String lastSections(const int n) const;
+    StringList sectionList() const;
 
 
 protected:
-    QQString(const QChar &sectionDelimiter);
+    String(const QChar &sectionDelimiter);
 
 protected: // static
     static QChar sectionDelimiter();
@@ -42,7 +42,7 @@ private: // static
     static SectionFlags smSectionFlags;
 };
 
-Q_DECLARE_METATYPE(QQString);
+Q_DECLARE_METATYPE(String);
 
 #if 0
 #include <QtCore/QByteArray>

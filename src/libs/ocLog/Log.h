@@ -4,15 +4,16 @@
 
 #include <QtDebug>
 
-class KeyItem;
+class KeySeg;
 
-class Log : public QObject
+class Log
 {
     Q_GADGET
 public:
     enum Severity
     {
         $nullSeverity   = 0,
+        Minimum         = 0x00000001,
         Detail          = 0x00000004,
         Dump            = 0x00000010,
         Trace           = 0x00000040,
@@ -27,11 +28,12 @@ public:
         AExpect         = 0x04000000,
         System          = 0x08000000,
         Nuclear         = 0x10000000,
-        Maximum         = 0x80000000,
+        Maximum         = 0xE0000000,
     };
+    Q_DECLARE_FLAGS(SeverityFlags, Severity);
     Q_ENUM(Severity);
-    KeyItem severityKey(const Severity value) const;
-    Severity severityValue(const KeyItem &key) const;
+    KeySeg severityKey(const Severity value) const;
+    Severity severityValue(const KeySeg &key) const;
     QtMsgType severityMsgType(const Severity value) const;
 
 public:

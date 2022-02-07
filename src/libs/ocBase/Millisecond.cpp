@@ -26,6 +26,11 @@ SQWORD Millisecond::msec() const
     return mLocalMsec;
 }
 
+SQWORD Millisecond::msecUtc() const
+{
+    return msec() - localUtcOffset();
+}
+
 QDateTime Millisecond::time() const
 {
     return QDateTime::fromMSecsSinceEpoch(msec());

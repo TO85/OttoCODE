@@ -20,9 +20,29 @@ Uid::Uid(const bool create)
     qDebug() << Q_FUNC_INFO << trace();
 }
 
-Uid::Value Uid::value() const
+bool Uid::isNull() const
+{
+    return 0 == mValues.oword;
+}
+
+bool Uid::isValid() const
+{
+    return mValues.valid;
+}
+
+OWORD Uid::whole() const
 {
     return mValues.oword;
+}
+
+Uid::Half Uid::upper() const
+{
+    return mValues.qword[0];
+}
+
+Uid::Half Uid::lower() const
+{
+    return mValues.qword[1];
 }
 
 QUuid Uid::toUuid() const
@@ -30,6 +50,16 @@ QUuid Uid::toUuid() const
     QUuid result;
     memcpy((BYTE *)(&result), &mValues.oword, sizeof(result));
     return result;
+}
+
+Uid::Type Uid::type() const
+{
+    return Types((mValues.typeHi << 4) | mValues.typeLo);
+}
+
+Uid::Value Uid::value() const
+{
+    return mValues.qword8;
 }
 
 QString Uid::toString() const
@@ -45,16 +75,37 @@ QString Uid::tail() const
     return toString().right(14);
 }
 
-Uid::Value Uid::set(const bool create)
+Uid::Whole Uid::set(const bool create)
 {
     it() = create ? createVersion4() : Uid();
-    return value();
+    return whole();
 }
 
-Uid::Value Uid::set(const Half upper, const Half lower)
+Uid::Whole Uid::set(const Id id)
+{
+    mValues.dword0 = id;
+    return whole();
+}
+
+Uid::Whole Uid::set(const Variant variant)
+{
+    mValues.variant = variant;
+    return whole();
+}
+
+Uid::Whole Uid::set(const Half upper, const Half lower)
 {
     mValues.qword[0] = upper, mValues.qword[1] = lower;
-    return value();
+    return whole();
+}
+
+Uid::Whole Uid::set(const Type type, const Value value)
+{
+    if (type)
+        mValues.typeHi = (type & 0x00F0) << 4, mValues.typeLo = type & 0x000F;
+    if (value)
+        mValues.qword8 = value;
+    return whole();
 }
 
 /* --------------------------- static ------------------------ */
@@ -66,16 +117,16 @@ void Uid::randomize(const Seed seed)
     mGenerator.seed(seed ? seed : QRandomGenerator::global()->generate());
 }
 
-Uid Uid::createVersion4(const DWORD type, const QWORD seq)
+Uid Uid::createVersion4(const Type type, const Value value)
 {
     Uid result;
     result.set(mGenerator.generate64(), mGenerator.generate64());
     if ($nullType != type)
     {
-        const NIBBLE typeHi = (type & 0b11110000) >> 4, typeLo = type & 0b00001111;
-        result.mValues.typeHi = typeHi, result.mValues.typeLo = typeLo;
+        result.set(type, value);
     }
-    if (seq) result.mValues.qword8 = seq;
+    result.mValues.valid = true;
+    // TODO mValues.variant = ???
     result.mValues.version = 4;
     return result;
 }

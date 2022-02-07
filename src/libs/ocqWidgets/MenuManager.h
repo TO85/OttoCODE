@@ -9,7 +9,7 @@ class QMenuBar;
 
 #include <Key>
 #include <KeyMap>
-#include <QQString>
+#include <String>
 class ActionManager;
 class QQMainWindow;
 
@@ -29,8 +29,8 @@ public:
     QAction *action(const Key &key) const;
 
 public:
-    QMenu *addPrimary(const Key &key, const QQString &text=QQString());
-    QAction *add(const Key &key, const QQString &text=QQString());
+    QMenu *addPrimary(const Key &key, const String &text=String());
+    QAction *add(const Key &key, const String &text=String());
     bool add(const Key &key, QAction *action);
 
 signals:

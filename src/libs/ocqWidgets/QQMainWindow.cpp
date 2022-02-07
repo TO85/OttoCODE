@@ -13,8 +13,34 @@ QQMainWindow::QQMainWindow(QApplication *pApp)
     setObjectName("QQMainWindow");
 }
 
+const QApplication *QQMainWindow::gui() const
+{
+    Q_ASSERT(this);
+    Q_ASSERT(mpApplication);
+    qDebug() << Q_FUNC_INFO << objectName() << mpApplication->objectName();
+    return mpApplication;
+}
+
+ActionManager *QQMainWindow::actions() const
+{
+    Q_ASSERT(this);
+    Q_ASSERT(mpActionManager);
+    qDebug() << Q_FUNC_INFO << objectName() << mpActionManager->objectName();
+    return mpActionManager;
+}
+
+MenuManager *QQMainWindow::menus() const
+{
+    Q_ASSERT(this);
+    Q_ASSERT(mpMenuManager);
+    qDebug() << Q_FUNC_INFO << objectName() << mpMenuManager->objectName();;
+    return mpMenuManager;
+}
+
 void QQMainWindow::setup()
 {
+    Q_ASSERT(this);
+    qDebug() << Q_FUNC_INFO << objectName();
     setupStart();
     setupMenus();
     setupActions();

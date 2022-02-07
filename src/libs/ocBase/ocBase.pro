@@ -15,32 +15,38 @@ SOURCES += \
  #   BaseString.cpp \
     AsciiChar.cpp \
     AsciiString.cpp \
-    Enumeration.cpp \
     Error.cpp \
+    FourCC.cpp \
     FunctionInfo.cpp \
     HostId.cpp \
-    KeyItem.cpp \
     KeyItemList.cpp \
     KeyList.cpp \
+    KeySeg.cpp \
     KeyUidDMap.cpp \
     Millisecond.cpp \
     NetworkId.cpp \
     ProcessId.cpp \
+    SortableMap.cpp \
+    String.cpp \
+    StringList.cpp \
+    StringTree.cpp \
     Uid.cpp \
     Key.cpp \
     Sortable.cpp \
+    Variable.cpp \
+    VariableList.cpp \
+    VariableMap.cpp \
+    VariablePack.cpp \
     ocBase.cpp
 
 HEADERS += \
-#    AbstractString.h \
- #   BaseString.h \
     ../../include/AsciiChar \
     ../../include/AsciiString \
     ../../include/Enumeration \
     ../../include/FunctionInfo \
     ../../include/HostId \
     ../../include/Key \
-    ../../include/KeyItem \
+    ../../include/KeySeg \
     ../../include/KeyMap \
     ../../include/KeyUidDMap \
     ../../include/List \
@@ -48,28 +54,40 @@ HEADERS += \
     ../../include/NetworkId \
     ../../include/ProcessId \
     ../../include/Sortable \
+    ../../include/SortableMap \
     ../../include/TypeDefs \
     ../../include/Uid \
+    ../../include/Variable \
+    ../../include/VariableList \
+    ../../include/VariableMap \
+    ../../include/VariablePack \
     AsciiChar.h \
     AsciiString.h \
-    Enumeration.h \
     Error.h \
+    FourCC.h \
     FunctionInfo.h \
     HostId.h \
-    KeyItem.h \
     KeyItemList.h \
     KeyList.h \
+    KeySeg.h \
     KeyUidDMap.h \
     List.h \
     Millisecond.h \
-    Named.h \
     NetworkId.h \
     ProcessId.h \
+    SortableMap.h \
+    String.h \
+    StringList.h \
+    StringTree.h \
     TypeDefs.h \
     Uid.h \
     Key.h \
     KeyMap.h \
     Sortable.h \
+    Variable.h \
+    VariableList.h \
+    VariableMap.h \
+    VariablePack.h \
     ocBase.h \
     ocBase_global.h
 

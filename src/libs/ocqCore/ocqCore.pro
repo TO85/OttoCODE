@@ -10,14 +10,16 @@ CONFIG += c++11
 include(../libs.pri)
 
 SOURCES += \
-    QQString.cpp \
-    QQStringList.cpp \
+    ObjectHelper.cpp \
+    QQDir.cpp \
+    QQFileInfo.cpp \
     ocqCore.cpp
 
 HEADERS += \
-    ../../include/QQString \
-    QQString.h \
-    QQStringList.h \
+    ../../include/QQDir \
+    ObjectHelper.h \
+    QQDir.h \
+    QQFileInfo.h \
     ocqCore_global.h \
     ocqCore.h
 

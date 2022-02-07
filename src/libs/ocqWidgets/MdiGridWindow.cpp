@@ -13,9 +13,18 @@ MdiGridWindow::MdiGridWindow(const Key &key, QQMdiArea *parent, Qt::WindowFlags 
     setWindowTitle(key.last().toQString());
 }
 
+QGridLayout *MdiGridWindow::layout() const
+{
+    Q_ASSERT(this);
+    Q_ASSERT(mpGridLayout);
+    qDebug() << Q_FUNC_INFO << objectName() << mpGridLayout->objectName();;
+    return mpGridLayout;
+}
+
 void MdiGridWindow::setup()
 {
-    qDebug(Q_FUNC_INFO);
+    Q_ASSERT(this);
+    qDebug() << Q_FUNC_INFO << objectName();
     QQMdiSubWindow::setup();
 }
 

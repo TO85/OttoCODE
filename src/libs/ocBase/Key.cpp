@@ -2,13 +2,13 @@
 
 #include "Sortable.h"
 
-Key::Key(const KeyItem &ki) { set(ki); }
-Key::Key(const QList<KeyItem> &kl) : mSegments(kl) {;}
+Key::Key(const KeySeg &ki) { set(ki); }
+Key::Key(const QList<KeySeg> &kl) : mSegments(kl) {;}
 Key::Key(const QString &qs) { set(qs); }
 Key::Key(const QStringList &qsl) { set(qsl); }
 Key::Key(const char *pch) { set(pch); }
 
-void Key::set(const KeyItem &ki)
+void Key::set(const KeySeg &ki)
 {
     clear();
     mSegments.append(ki);
@@ -36,7 +36,7 @@ int Key::count() const
     return mSegments.count();
 }
 
-KeyItem Key::first() const
+KeySeg Key::first() const
 {
     return mSegments.first();
 }
@@ -54,9 +54,9 @@ Key Key::first(const int k) const
     return Key();
 }
 
-KeyItem Key::last() const
+KeySeg Key::last() const
 {
-    return mSegments.isEmpty() ? QString() : mSegments.last();
+    return mSegments.isEmpty() ? KeySeg() : mSegments.last();
 }
 
 bool Key::less(const Key &other)
@@ -73,7 +73,7 @@ QString Key::toQString() const
 {
     QString result;
     result = mSegments.first().toQString();
-    for (KeyItem ki : mSegments.mid(1))
+    for (KeySeg ki : mSegments.mid(1))
         result.append(separator() + ki.toQString());
     return result;
 }

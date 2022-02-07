@@ -1,10 +1,12 @@
 #pragma once
 #include "ocBase.h"
 
+#include "KeyMap.h"
+
 #include "Key.h"
 #include "Sortable.h"
 
-template <typename T> class TOBASE_EXPORT KeyMap
+template <typename T> class OCBASE_EXPORT KeyMap
 {
 public:
     KeyMap() {;}

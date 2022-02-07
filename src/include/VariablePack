@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/VariablePack
+#include "../libs/ocBase/VariablePack.h"

@@ -19,7 +19,8 @@ const QDir EtcSubWindow::dir()
 
 void EtcSubWindow::setup()
 {
-    qDebug(Q_FUNC_INFO);
+    Q_ASSERT(this);
+    qDebug() << Q_FUNC_INFO << objectName();
     MdiGridWindow::setup();
     enum Row { DirFileTitleRow=0, DirFileRow, Separator1, FileTitleRow, FileRow };
     enum DirFileColumn { DirView=0, Separator2, FileView };

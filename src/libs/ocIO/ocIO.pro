@@ -1,4 +1,5 @@
 #QT -= gui
+QT *= widgets
 
 TEMPLATE = lib
 DEFINES += OCIO_LIBRARY
@@ -11,27 +12,28 @@ include(../libs.pri)
 include(../useBase.pri)
 
 SOURCES += \
-    DirectoryInfo.cpp \
-    DirectoryTreeEntry.cpp \
-    FileInfo.cpp \
+    DirectoryTreeWidget.cpp \
+    DirectoryTreeWidgetItem.cpp \
+    FileInfoTableWidget.cpp \
+    FileInfoTableWidgetItem.cpp \
     FileSystemObject.cpp \
     FileSystemTree.cpp \
-    FileTreeEntry.cpp \
     ocIO.cpp
 
 HEADERS += \
-    ../../include/DirectoryInfo \
     ../../include/DirectoryTreeEntry \
-    ../../include/FileInfo \
+    ../../include/DirectoryTreeWidget \
+    ../../include/DirectoryTreeWidgetItem \
+    ../../include/FileInfoTableWidget \
+    ../../include/FileInfoTableWidgetItem \
     ../../include/FileSystemObject \
     ../../include/FileSystemTree \
-    ../../include/FileTreeEntry \
-    DirectoryInfo.h \
-    DirectoryTreeEntry.h \
-    FileInfo.h \
+    DirectoryTreeWidget.h \
+    DirectoryTreeWidgetItem.h \
+    FileInfoTableWidget.h \
+    FileInfoTableWidgetItem.h \
     FileSystemObject.h \
     FileSystemTree.h \
-    FileTreeEntry.h \
     ocIO_global.h \
     ocIO.h
 
@@ -40,3 +42,5 @@ unix {
     target.path = /usr/lib
 }
 !isEmpty(target.path): INSTALLS += target
+
+QT += widgets

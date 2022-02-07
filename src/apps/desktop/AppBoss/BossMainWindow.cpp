@@ -29,7 +29,8 @@ BossMainWindow::~BossMainWindow()
 
 void BossMainWindow::viewEtc()
 {
-    qDebug(Q_FUNC_INFO);
+    Q_ASSERT(this);
+    qDebug() << Q_FUNC_INFO << objectName();
     EtcSubWindow *pEtcWindow = new EtcSubWindow(QDir("/etc"), mdiArea());
     addSubWindow(pEtcWindow);
     pEtcWindow->setup();
@@ -37,6 +38,9 @@ void BossMainWindow::viewEtc()
 
 void BossMainWindow::setupMenus()
 {
+    Q_ASSERT(this);
+    qDebug() << Q_FUNC_INFO << objectName();
+
     QMenu * pView = menus()->addPrimary("View");
     Q_UNUSED(pView); // TODO need?
     QAction *pViewEtc = menus()->add("View/Etc");
@@ -62,6 +66,9 @@ void BossMainWindow::setupMenus()
 
 void BossMainWindow::setupConnections()
 {
+    Q_ASSERT(this);
+    qDebug() << Q_FUNC_INFO << objectName();
+
     actions()->connect("Help/AboutQt", gui(), "aboutQt()");
     actions()->connect("Window/SubWindow", this, "windowSubView()");
     actions()->connect("Window/Tabbed", this, "windowTabbed()");

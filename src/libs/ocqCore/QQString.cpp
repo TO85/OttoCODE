@@ -1,42 +1,42 @@
 #include "QQString.h"
 
-#include "QQStringList.h"
+#include "StringList.h"
 
-QQStringList QQString::split(const QChar &separator) const
+StringList String::split(const QChar &separator) const
 {
     return QString::split(separator,
                           Qt::SplitBehavior((sectionFlags() & QString::SectionSkipEmpty) ? Qt::SkipEmptyParts : 0),
                           Qt::CaseSensitivity((sectionFlags() & SectionCaseInsensitiveSeps) ? Qt::CaseInsensitive : 0));
 }
 
-int QQString::sectionCount() const
+int String::sectionCount() const
 {
     return sectionList().count();
 }
 
-QQString QQString::firstSection() const
+String String::firstSection() const
 {
     return section(sectionDelimiter(), 0, 0, sectionFlags());
 }
 
-QQString QQString::firstSections(const int n) const
+String String::firstSections(const int n) const
 {
     const int k = (n < 0) ? (sectionCount() - n) : n;
     return section(sectionDelimiter(), 0, k, sectionFlags());
 }
 
-QQString QQString::lastSection() const
+String String::lastSection() const
 {
-    QQString result;
+    String result;
     const int ixLast = sectionCount() - 1;
     if (ixLast >= 0)
         result = section(sectionDelimiter(), ixLast, ixLast, sectionFlags());
     return result;
 }
 
-QQString QQString::lastSections(const int n) const
+String String::lastSections(const int n) const
 {
-    QQString result;
+    String result;
     const int ixLast = sectionCount() - 1;
     const int ixBegin = ixLast - n;
     if (ixLast > ixBegin)
@@ -44,35 +44,35 @@ QQString QQString::lastSections(const int n) const
     return result;
 }
 
-QQStringList QQString::sectionList() const
+StringList String::sectionList() const
 {
     return split(sectionDelimiter());
 }
 
 /* ------------------------ static ------------------------- */
 
-QChar QQString::smSectionDelimiter('/');
-QQString::SectionFlags QQString::smSectionFlags
+QChar String::smSectionDelimiter('/');
+String::SectionFlags String::smSectionFlags
         = QString::SectionSkipEmpty
             | QString::SectionIncludeTrailingSep
             | QString::SectionCaseInsensitiveSeps;
 
-QChar QQString::sectionDelimiter()
+QChar String::sectionDelimiter()
 {
     return smSectionDelimiter;
 }
 
-QChar QQString::sectionDelimiter(const QChar &delimiter)
+QChar String::sectionDelimiter(const QChar &delimiter)
 {
     return smSectionDelimiter = delimiter;
 }
 
-QQString::SectionFlags QQString::sectionFlags()
+String::SectionFlags String::sectionFlags()
 {
     return smSectionFlags;
 }
 
-QString::SectionFlags QQString::sectionFlags(const SectionFlags &flags)
+QString::SectionFlags String::sectionFlags(const SectionFlags &flags)
 {
     return smSectionFlags = flags;
 }

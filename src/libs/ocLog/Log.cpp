@@ -4,20 +4,20 @@
 #include <QMetaEnum>
 #include <QMetaObject>
 
-#include <KeyItem>
+#include <KeySeg>
 
-Log::Log() : QObject{qApp} {;}
+Log::Log() {;}
 
-KeyItem Log::severityKey(const Severity value) const
+KeySeg Log::severityKey(const Severity value) const
 {
     const QMetaObject logMetaObject = staticMetaObject;
     const int severityIndex = logMetaObject.indexOfEnumerator("Severity");
-    if (severityIndex < 0) return KeyItem();                            /* /====\ */
+    if (severityIndex < 0) return KeySeg();                            /* /====\ */
     QMetaEnum severityMetaEnum = logMetaObject.enumerator(severityIndex);
-    return KeyItem(severityMetaEnum.valueToKey(value));
+    return KeySeg(severityMetaEnum.valueToKey(value));
 }
 
-Log::Severity Log::severityValue(const KeyItem &key) const
+Log::Severity Log::severityValue(const KeySeg &key) const
 {
     const QMetaObject logMetaObject = staticMetaObject;
     const int severityIndex = logMetaObject.indexOfEnumerator("Severity");
