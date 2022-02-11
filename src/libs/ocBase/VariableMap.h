@@ -8,7 +8,7 @@
 
 #include "Key.h"
 
-class VariableMap : public QMap<Sortable, Variable>
+class VariableMap : public QMap<Key, Variable>
 {
 public:
     VariableMap() = default;

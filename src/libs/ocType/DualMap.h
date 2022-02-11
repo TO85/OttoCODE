@@ -1,4 +1,4 @@
-/*! @file DualMap.h Declare DualMap template class
+/*! @file DualMap.h {OttoCODE repo}./src/libs/ocType
  *  @ingroup ocType
  */
 #pragma once

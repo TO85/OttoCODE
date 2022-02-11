@@ -1,19 +1,16 @@
 #include "FileSystemTree.h"
 
-#include <QFileInfo>
 #include <QMap>
 
-#include <QQFileInfo>
-#include <QQDir>
-#include <Sortable>
-#include <SortableMap>
+#include <String>
 
 class FileSystemTreeData : public QSharedData
 {
 public:
     QQDir dmRootDir;
-    SortableMap<QQFileInfo> dmSortFileMap;
-    SortableMap<QQDir> dmSortDirMap;
+    QMap<String, QQFileInfo> dmFileNameInfoMap;
+    QMap<String, QQDir> dmPathNameDirMap;
+    QMap<QQDir, QQFileInfoList> dmDirFileInfoListMap;
 };
 
 FileSystemTree::FileSystemTree() : data(new FileSystemTreeData)
@@ -59,30 +56,35 @@ QQDir FileSystemTree::rootDir(const QDir &qdir)
 
 int FileSystemTree::fileCount() const
 {
-    return data ? data->dmSortFileMap.count() : -1;
+    return data ? data->dmFileNameInfoMap.count() : -1;
 }
 
 int FileSystemTree::dirCount() const
 {
-    return data ? data->dmSortDirMap.count() : -1;
+    return data ? data->dmPathNameDirMap.count() : -1;
 }
 
-List<QQFileInfo> FileSystemTree::fileEntryList() const
+QList<QQFileInfo> FileSystemTree::fileEntryList() const
 {
-    return data ? data->dmSortFileMap.values() : List<QQFileInfo>();
+    return data ? data->dmFileNameInfoMap.values() : QList<QQFileInfo>();
 }
 
-List<QQDir> FileSystemTree::dirEntryList() const
+QList<QQDir> FileSystemTree::dirEntryList() const
 {
-    return data ? data->dmSortDirMap.values() : List<QQDir>();
+    return data ? data->dmPathNameDirMap.values() : QList<QQDir>();
 }
 
 int FileSystemTree::add(QFileInfo fi)
 {
-
+    Q_ASSERT(false); // MUSTDO
+    Q_UNUSED(fi);
+    return -1;
 }
 
 int FileSystemTree::add(QQDir dir)
 {
-
+    Q_ASSERT(data);
+    data->dmPathNameDirMap.insert(dir.path(), dir);
+    data->dmDirFileInfoListMap.insert(dir, QQFileInfoList());
+    return data->dmPathNameDirMap.count();
 }

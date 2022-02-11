@@ -1,12 +1,12 @@
 #pragma once
 
-#include <List>
+#include <QList>
 #include "String.h"
 
-class StringList : public List<String>
+class StringList : public QList<String>
 {
 public:
-    StringList();
+    StringList() {;}
     StringList(const QList<QString> other);
     StringList(const int size, const String &fill=String());
 };

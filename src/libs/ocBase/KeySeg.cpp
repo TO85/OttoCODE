@@ -1,5 +1,6 @@
 #include "KeySeg.h"
 
+#include "Key.h"
 #include "Sortable.h"
 
 KeySeg::KeySeg() {;}
@@ -8,11 +9,6 @@ KeySeg::KeySeg(const QString &qs) : mString(qs) {;}
 bool KeySeg::startsWith(const KeySeg &stub) const
 {
     return mString.startsWith(stub.toQString());
-}
-
-bool KeySeg::less(const KeySeg &other) const
-{
-    return Sortable(toQString()) < Sortable(other.toQString());
 }
 
 QString KeySeg::toQString() const
@@ -25,7 +21,14 @@ void KeySeg::clear()
     mString.clear();
 }
 
-bool operator < (const KeySeg & lhs, const KeySeg & rhs)
+/* ---------------------- static ---------------------- */
+
+QList<KeySeg> KeySeg::split(const String segNames)
 {
-    return lhs.less(rhs);
+    const String tSimplified = segNames.simplified();
+    const Key tKey = tSimplified.replaced(' ', '/');
+    return tKey.list();
 }
+
+/* ---------------------- extern ---------------------- */
+

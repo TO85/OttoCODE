@@ -33,7 +33,7 @@ MenuManager *QQMainWindow::menus() const
 {
     Q_ASSERT(this);
     Q_ASSERT(mpMenuManager);
-    qDebug() << Q_FUNC_INFO << objectName() << mpMenuManager->objectName();;
+//    qDebug() << Q_FUNC_INFO << objectName() << mpMenuManager->objectName();;
     return mpMenuManager;
 }
 

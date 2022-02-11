@@ -50,14 +50,11 @@ StringList String::sectionList() const
     return split(sectionDelimiter());
 }
 
-bool String::equal(const String &other)
+String String::replaced(QChar before, QChar after) const
 {
-    return Sortable(mid(0)) == Sortable(other);
-}
-
-bool String::less(const String &other)
-{
-    return Sortable(mid(0)) < Sortable(other);
+    String result = qstring();
+    result.replace(before, after, Qt::CaseInsensitive);
+    return result;
 }
 
 /* ------------------------ static ------------------------- */

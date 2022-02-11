@@ -8,6 +8,7 @@ MdiMainWindow::MdiMainWindow(QApplication *pApp)
 {
     setObjectName("MdiMainWindow");
     setCentralWidget(mpMdiArea);
+    mpMdiArea->setViewMode(QMdiArea::TabbedView);
 }
 
 QQMdiArea *MdiMainWindow::mdiArea() const

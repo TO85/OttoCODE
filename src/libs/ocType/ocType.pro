@@ -10,9 +10,11 @@ CONFIG += c++11
 include(../libs.pri)
 
 SOURCES += \
+    CommaString.cpp \
     ocType.cpp
 
 HEADERS += \
+    CommaString.h \
     DualMap.h \
     ocType_global.h \
     ocType.h

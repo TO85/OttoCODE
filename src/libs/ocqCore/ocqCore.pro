@@ -13,13 +13,17 @@ SOURCES += \
     ObjectHelper.cpp \
     QQDir.cpp \
     QQFileInfo.cpp \
+    QQFileInfoList.cpp \
     ocqCore.cpp
 
 HEADERS += \
     ../../include/QQDir \
+    ../../include/QQFileInfo \
+    ../../include/QQFileInfoList \
     ObjectHelper.h \
     QQDir.h \
     QQFileInfo.h \
+    QQFileInfoList.h \
     ocqCore_global.h \
     ocqCore.h
 

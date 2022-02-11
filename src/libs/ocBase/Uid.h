@@ -14,7 +14,7 @@ class Uid
 {
 public:
     typedef DWORD Seed;
-    typedef DWORD Id;
+    typedef QWORD Id;
     typedef NIBBLE Version;
     typedef TRIBIT Variant;
     typedef QWORD Half;
@@ -25,6 +25,7 @@ public:
 public:
     Uid();
     Uid(const bool create);
+    Uid(const Type type, const Value value);
 
 public:
     bool isNull() const;
@@ -44,10 +45,11 @@ public:
 
 public:
     Whole set(const bool create);
-    Whole set(const Variant variant);
-    Whole set(const Id id);
+    Whole variant(const Variant aVariant);
     Whole set(const Half upper, const Half lower);
-    Whole set(const Type type, const Value value);
+    Whole set(const Type type, const Value value=0);
+    Whole create(const Type type, const Value value=0);
+    Whole id(const Id aId);
 
 public: // static
     static void randomize(const Seed seed=0);
@@ -70,7 +72,7 @@ private:
         BYTE        byte[16];
         struct
         {
-            DWORD       dword0;
+            DWORD       dword0; // Value
             union
             {
                 DWORD       flags;
@@ -80,7 +82,7 @@ private:
                             variant : 3,
                             typeLo  : 4;
             };
-            QWORD       qword8;
+            QWORD       qword8; // Id
         };
     } mValues;
     static QRandomGenerator mGenerator;
@@ -102,7 +104,7 @@ public:
         uidVarReserved2     = 0b0000000001000000,
         uidVarReserved3     = 0b0000000001100000,
         UidVariantDCE       = 0b0000000010000000,
-        UidVarReserved5     = 0b0000000010100000,
+        UidVarOttoCODE      = 0b0000000010100000,
         UidVariantMicrosoft = 0b0000000011000000,
         UidVarReserved7     = 0b0000000011100000,
         UidVariantMask      = 0b0000000011100000,
@@ -110,35 +112,51 @@ public:
         UidNibble7Mask      = 0b0000000000001111,
         UidTypeMask         = UidNibble5Mask | UidNibble7Mask
     };
+    enum QVariant
+    {
+        VariantApollo       = 0,
+        VariantReserved1    = 1,
+        VariantReserved2    = 2,
+        VariantReserved3    = 3,
+        VariantDCE          = 4,
+        VariantOttoCODE     = 5,
+        VariantReserved6    = 6,
+        VariantReserved7    = 7
+    };
+
     enum Types
     {
         $nullType           = 0b0000000000000000,
-        ReservedType00min   = 0b0000000000000001,
-        ReservedType00max   = 0b0111111111111111,
-        ReservedType01min   = 0b1000000000000001,
-        ReservedType01max   = 0b1011111111111111,
-        ReservedType02min   = 0b1100000000000001,
-        ReservedType02max   = 0b1101111111111111,
-        ReservedType03min   = 0b1110000000000001,
-        ReservedType03max   = 0b1110111111111111,
-        ReservedType04min   = 0b1111000000000001,
-        ReservedType04max   = 0b1111011111111111,
-        ReservedType05min   = 0b1111100000000001,
-        ReservedType05max   = 0b1111101111111111,
-        ReservedType06min   = 0b1111110000000001,
-        ReservedType06max   = 0b1111110111111111,
-        ReservedType07min   = 0b1111111000000001,
-        ReservedType07max   = 0b1111111011111111,
-        ReservedType08min   = 0b1111111100000001,
-        ReservedType08max   = 0b1111111101111111,
-        ReservedType09min   = 0b1111111110000001,
-        ReservedType09max   = 0b1011111110111111,
-        ReservedType10min   = 0b1111111111000001,
-        ReservedType10max   = 0b1101111111011111,
-        ReservedType11min   = 0b1111111111100001,
-        ReservedType11max   = 0b1110111111101111,
-        ReservedType12min   = 0b1111111111110001,
-        ReservedType12max   = 0b1111011111110111,
+        $type00min          = 0b0000000000000001,
+        $type00max          = 0b0111111111111111,
+        $type01min          = 0b1000000000000001,
+        $type01max          = 0b1011111111111111,
+        $type02min          = 0b1100000000000001,
+        $type02max          = 0b1101111111111111,
+        $type03min          = 0b1110000000000001,
+        LogType             = 0b1110000000000010,
+        LogItemType         = 0b1110000000000011,
+        LogChannelType      = 0b1110000000000100,
+        $LogMaxType         = 0b1110000000011111,
+        $type03max          = 0b1110111111111111,
+        $type04min          = 0b1111000000000001,
+        $type04max          = 0b1111011111111111,
+        $type05min          = 0b1111100000000001,
+        $type05max          = 0b1111101111111111,
+        $type06min          = 0b1111110000000001,
+        $type06max          = 0b1111110111111111,
+        $type07min          = 0b1111111000000001,
+        $type07max          = 0b1111111011111111,
+        $type08min          = 0b1111111100000001,
+        $type08max          = 0b1111111101111111,
+        $type09min          = 0b1111111110000001,
+        $type09max          = 0b1111111110111111,
+        $type10min          = 0b1111111111000001,
+        $type10max          = 0b1101111111011111,
+        $type11min          = 0b1111111111100001,
+        $type11max          = 0b1110111111101111,
+        $type12min          = 0b1111111111110001,
+        $type12max          = 0b1111011111110111,
     };
 };
 

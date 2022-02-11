@@ -1,7 +1,6 @@
 #pragma once
 #include "ocBase.h"
 
-#include <QList>
 #include <QMetaType>
 #include <QString>
 #include <QStringList>
@@ -28,8 +27,10 @@ public:
     KeySeg first() const;
     Key first(const int k) const;
     KeySeg last() const;
+    QList<KeySeg> list() const;
     bool less(const Key &other);
     QString toQString() const;
+    bool operator < (const Key &other) { return less(other); }
     operator QString () const { return toQString(); }
 
 public:

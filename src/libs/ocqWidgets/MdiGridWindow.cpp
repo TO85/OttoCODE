@@ -17,7 +17,7 @@ QGridLayout *MdiGridWindow::layout() const
 {
     Q_ASSERT(this);
     Q_ASSERT(mpGridLayout);
-    qDebug() << Q_FUNC_INFO << objectName() << mpGridLayout->objectName();;
+//    qDebug() << Q_FUNC_INFO << objectName() << mpGridLayout->objectName();;
     return mpGridLayout;
 }
 

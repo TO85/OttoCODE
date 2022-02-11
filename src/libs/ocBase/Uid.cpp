@@ -20,6 +20,11 @@ Uid::Uid(const bool create)
     qDebug() << Q_FUNC_INFO << trace();
 }
 
+Uid::Uid(const Type type, const Value value)
+{
+
+}
+
 bool Uid::isNull() const
 {
     return 0 == mValues.oword;
@@ -52,6 +57,11 @@ QUuid Uid::toUuid() const
     return result;
 }
 
+Uid::Id Uid::id() const
+{
+    return mValues.qword8;
+}
+
 Uid::Type Uid::type() const
 {
     return Types((mValues.typeHi << 4) | mValues.typeLo);
@@ -59,7 +69,7 @@ Uid::Type Uid::type() const
 
 Uid::Value Uid::value() const
 {
-    return mValues.qword8;
+    return mValues.dword0;
 }
 
 QString Uid::toString() const
@@ -81,15 +91,15 @@ Uid::Whole Uid::set(const bool create)
     return whole();
 }
 
-Uid::Whole Uid::set(const Id id)
+Uid::Whole Uid::id(const Id aId)
 {
-    mValues.dword0 = id;
+    mValues.qword8 = aId;
     return whole();
 }
 
-Uid::Whole Uid::set(const Variant variant)
+Uid::Whole Uid::variant(const Variant aVariant)
 {
-    mValues.variant = variant;
+    mValues.variant = aVariant;
     return whole();
 }
 
@@ -104,8 +114,14 @@ Uid::Whole Uid::set(const Type type, const Value value)
     if (type)
         mValues.typeHi = (type & 0x00F0) << 4, mValues.typeLo = type & 0x000F;
     if (value)
-        mValues.qword8 = value;
+        mValues.dword0 = value;
     return whole();
+}
+
+Uid::Whole Uid::create(const Type type, const Value value)
+{
+    set(true);
+    return set(type, value);
 }
 
 /* --------------------------- static ------------------------ */
@@ -126,7 +142,7 @@ Uid Uid::createVersion4(const Type type, const Value value)
         result.set(type, value);
     }
     result.mValues.valid = true;
-    // TODO mValues.variant = ???
+    result.mValues.variant = VariantOttoCODE;
     result.mValues.version = 4;
     return result;
 }

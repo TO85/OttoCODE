@@ -10,6 +10,7 @@ class QMenuBar;
 #include <Key>
 #include <KeyMap>
 #include <String>
+#include <StringList>
 class ActionManager;
 class QQMainWindow;
 
@@ -35,6 +36,8 @@ public:
 
 signals:
 
+private:
+    StringList dumpKeyMenuMap() const;
 
 private:
     QQMainWindow *mpMainWindow=nullptr;

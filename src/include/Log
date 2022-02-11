@@ -1,0 +1,4 @@
+// file: {OttoCODE}./src/include/QQDir
+#include "../libs/ocLog/Log.h"
+#include "../libs/ocLog/LogItem.h"
+#include "../libs/ocLog/LogMacros.h"

@@ -1,9 +1,8 @@
 #pragma once
 
+#include <QList>
 #include <QMap>
 #include "Sortable.h"
-
-#include "List.h"
 
 template <typename T>
 class SortableMap : public QMap<Sortable, T>
@@ -15,6 +14,6 @@ public:
     T & value(const T & t) { value(Sortable(t)); }
     T & operator [] (const T & t) { return value(t); }
     T operator [] (const T & t) const  { return value(t); }
-    List<T> values() const { return values(); }
+    QList<T> values() const { return values(); }
 };
 

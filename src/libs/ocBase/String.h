@@ -19,21 +19,27 @@ public:
 public:
     bool notNull() const { return ! QString::isNull(); }
     bool notEmpty() const { return ! QString::isEmpty(); }
-    StringList split(const QChar &separator) const;
+    StringList split(const QChar &separator=sectionDelimiter()) const;
     int sectionCount() const;
     String firstSection() const;
     String firstSections(const int n) const;
     String lastSection() const;
     String lastSections(const int n) const;
     StringList sectionList() const;
-    bool equal(const String &other);
-    bool less(const String &other);
-    bool operator == (const String &other) { return equal(other); }
-    bool operator <  (const String &other) { return less(other); }
+    bool equal(const String &other) const;
+    bool less(const String &other) const;
+    bool operator == (const String &other) const { return equal(other); }
+    bool operator <  (const String &other) const { return less(other); }
+    String replaced(QChar before, QChar after) const;
 
+public:
 
 protected:
-    String(const QChar &sectionDelimiter);
+    String(const QChar & sectionDelimiter, const SectionFlags sectionFlags, const QString & other);
+
+private:
+    QString qstring() const { return *this; }
+    QString & qstring() { return *this; }
 
 protected: // static
     static QChar sectionDelimiter();

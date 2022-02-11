@@ -15,15 +15,19 @@ include(../useBase.pri)
 
 SOURCES += \
     Log.cpp \
+    LogChannel.cpp \
     LogItem.cpp \
     LogLevel.cpp \
     LogObject.cpp \
     ocLog.cpp
 
 HEADERS += \
+    ../../include/Log \
     Log.h \
+    LogChannel.h \
     LogItem.h \
     LogLevel.h \
+    LogMacros.h \
     LogObject.h \
     ocLog_global.h \
     ocLog.h

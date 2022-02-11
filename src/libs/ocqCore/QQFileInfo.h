@@ -1,10 +1,11 @@
 #pragma once
+#include "ocqCore.h"
 
 #include <QFileInfo>
 
 #include <QMetaType>
 
-class QQFileInfo : public QFileInfo
+class OCQCORE_EXPORT QQFileInfo : public QFileInfo
 {
 public:
     QQFileInfo() = default;
@@ -14,3 +15,4 @@ public:
 };
 
 Q_DECLARE_METATYPE(QQFileInfo);
+

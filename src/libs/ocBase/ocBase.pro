@@ -49,12 +49,13 @@ HEADERS += \
     ../../include/KeySeg \
     ../../include/KeyMap \
     ../../include/KeyUidDMap \
-    ../../include/List \
     ../../include/Millisecond \
     ../../include/NetworkId \
     ../../include/ProcessId \
     ../../include/Sortable \
     ../../include/SortableMap \
+    ../../include/String \
+    ../../include/StringList \
     ../../include/TypeDefs \
     ../../include/Uid \
     ../../include/Variable \
@@ -71,7 +72,6 @@ HEADERS += \
     KeyList.h \
     KeySeg.h \
     KeyUidDMap.h \
-    List.h \
     Millisecond.h \
     NetworkId.h \
     ProcessId.h \

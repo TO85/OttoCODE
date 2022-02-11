@@ -3,7 +3,7 @@
 #include "Sortable.h"
 
 Key::Key(const KeySeg &ki) { set(ki); }
-Key::Key(const QList<KeySeg> &kl) : mSegments(kl) {;}
+Key::Key(const QList<KeySeg> &kql) : mSegments(kql) {;}
 Key::Key(const QString &qs) { set(qs); }
 Key::Key(const QStringList &qsl) { set(qsl); }
 Key::Key(const char *pch) { set(pch); }
@@ -59,9 +59,9 @@ KeySeg Key::last() const
     return mSegments.isEmpty() ? KeySeg() : mSegments.last();
 }
 
-bool Key::less(const Key &other)
+QList<KeySeg> Key::list() const
 {
-    return Sortable(it()) < Sortable(other);
+    return mSegments;
 }
 
 void Key::clear()
@@ -91,3 +91,7 @@ void Key::setSeparator(const QChar &c)
 {
     smSeparator = c;
 }
+
+/* ----------------------- extern --------------------------- */
+
+

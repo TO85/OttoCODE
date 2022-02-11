@@ -3,9 +3,11 @@
 
 #include <QTreeWidget>
 #include <QWidget>
+class QFont;
 
 #include <QQDir>
 #include <VariableMap>
+class FileSystemTree;
 
 class OCIO_EXPORT DirectoryTreeWidget : public QTreeWidget
 {
@@ -46,8 +48,19 @@ public:
     DirectoryTreeWidget(QWidget * parent=nullptr);
 
 public slots:
+    void clear();
     void configure(const VariableMap & config);
-    void add(const Item & item);
+    void setup();
+    void add(const DirectoryTreeWidget::Item & item);
+    void set(const QList<KeySeg> & columnNames);
+    void set(const FileSystemTree & tree);
 
+private:
+    QFont mFont;
+    Columns mColumns;
+    QList<Columns> mColumnPositionList;
+    QList<String> mColumnNamePositionList;
+    QMap<Column, String> mColumnStringMap;
+    QMap<Column, int> mColumnCharacterWidthMap;
 };
 

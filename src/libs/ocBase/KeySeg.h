@@ -1,7 +1,10 @@
 #pragma once
 #include "ocBase.h"
 
+#include <QList>
 #include <QString>
+
+#include "String.h"
 
 class OCBASE_EXPORT KeySeg
 {
@@ -11,13 +14,15 @@ public:
 
 public:
     bool startsWith(const KeySeg & stub) const;
-    bool less(const KeySeg & other) const;
     QString toQString() const;
-    bool operator < (const KeySeg & other) const { return less(other); }
     operator QString () const { return toQString(); }
 
 public:
     void clear();
+    void set(const QString & string);
+
+public: // static
+    QList<KeySeg> split(const String segNames);
 
 private:
     KeySeg it() const { return *this; }
@@ -27,5 +32,4 @@ private:
     QString mString;
 };
 
-extern OCBASE_EXPORT bool operator < (const KeySeg & lhs, const KeySeg & rhs);
 
