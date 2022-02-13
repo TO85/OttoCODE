@@ -1,7 +1,7 @@
 #include <QtTest>
 
 // add necessary includes here
-#include <QQString>
+#include <String>
 
 class ctors : public QObject
 {
@@ -26,10 +26,10 @@ void ctors::test_ctors1()
 {
     QString qs("This is a Qt String");
 
-    QQString voidCtor;
-    QQString emptyCtor("");
-    QQString pszCtor("This is a c-style string literal constructor");
-    QQString qsCtor(qs);
+    String voidCtor;
+    String emptyCtor("");
+    String pszCtor("This is a c-style string literal constructor");
+    String qsCtor(qs);
 
     QVERIFY(voidCtor.isEmpty());
     QVERIFY(voidCtor.isNull());

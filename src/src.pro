@@ -1,7 +1,8 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    apps \
+    console \
+    desktop \
     libs \
     plugins \
-    unittest
+#    unittest \

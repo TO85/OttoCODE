@@ -9,11 +9,11 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 include(../desktop.pri)
-include(../../../useBase.pri)
-include(../../../useCore.pri)
-include(../../../useGui.pri)
-include(../../../useWidgets.pri)
-include(../../../useExe.pri)
+include(../../useBase.pri)
+include(../../useCore.pri)
+include(../../useGui.pri)
+include(../../useWidgets.pri)
+include(../../useExe.pri)
 
 SOURCES += \
     BossMainWindow.cpp \

@@ -19,6 +19,7 @@ public:
         bool isNull() const;
         bool contains(const LogLevel level) const;
         bool contains(const Value value) const;
+        bool contains(const int value) const;
         bool contains(const Key & key) const;
         LogLevel level(const Value value) const;
         LogLevel level(const Key key) const;

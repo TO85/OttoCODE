@@ -2,6 +2,8 @@
 
 #include <FunctionInfo>
 
+#include "LogLevel.h"
+
 class LogItemData : public QSharedData
 {
 public:
@@ -16,8 +18,10 @@ public:
     void logItemUid(const Uid &newUid);
     SQWORD utcMsec() const;
     void utcMsec(SQWORD newCurrentUtcMsec);
+    Uid & uid() const;
+    Uid & uid(const Uid ui) const;
     QWORD logLevel() const;
-    void logLevel(QWORD newLogLevel);
+    QWORD logLevel(QWORD newLogLevel);
     const FunctionInfo &functionInfo() const;
     void functionInfo(const FunctionInfo &newFunctionInfo);
 };
@@ -52,42 +56,52 @@ LogItem::~LogItem()
 
 }
 
-SQWORD LogItemData::getCurrentUtcMsec() const
+QWORD LogItem::level() const
 {
-    return currentUtcMsec;
+    return data ? data->logLevel() : 0;
 }
 
-void LogItemData::currentUtcMsec(SQWORD newCurrentUtcMsec)
+QWORD LogItem::level(const QWORD lvl)
 {
-    currentUtcMsec = newCurrentUtcMsec;
+    return data ? data->logLevel(lvl) : 0;
 }
 
-QWORD LogItemData::getLogLevel() const
+SQWORD LogItemData::utcMsec() const
 {
-    return logLevel;
+    return dmUtcMsec;
 }
 
-void LogItemData::logLevel(QWORD newLogLevel)
+void LogItemData::utcMsec(SQWORD newUtcMsec)
 {
-    logLevel = newLogLevel;
+    dmUtcMsec = newUtcMsec;
 }
 
-const FunctionInfo &LogItemData::getFunctionInfo() const
+QWORD LogItemData::logLevel() const
 {
-    return functionInfo;
+    return dmLogLevel;
+}
+
+QWORD LogItemData::logLevel(QWORD newLogLevel)
+{
+    return dmLogLevel = newLogLevel;
+}
+
+const FunctionInfo &LogItemData::functionInfo() const
+{
+    return dmFunctionInfo;
 }
 
 void LogItemData::functionInfo(const FunctionInfo &newFunctionInfo)
 {
-    functionInfo = newFunctionInfo;
+    dmFunctionInfo = newFunctionInfo;
 }
 
-const Uid &LogItemData::getUid() const
+const Uid & LogItemData::uid() const
 {
-    return uid;
+    return dmLogItemUid;
 }
 
 void LogItemData::uid(const Uid &newUid)
 {
-    uid = newUid;
+    dmLogItemUid = newUid;
 }

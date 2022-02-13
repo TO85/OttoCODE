@@ -31,6 +31,12 @@ FunctionInfo::FunctionInfo(const QString &qs) : data(new FunctionInfoData) { set
 FunctionInfo::FunctionInfo(const FunctionInfo &rhs) : data{rhs.data} {;}
 FunctionInfo::~FunctionInfo() {;}
 
+void FunctionInfo::set(const QString &qs)
+{
+    if (data) data->dmQFuncInfo = qs;
+    // NEEDDO Much More
+}
+
 FunctionInfo &FunctionInfo::operator=(const FunctionInfo &rhs)
 {
     if (this != &rhs)

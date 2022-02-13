@@ -6,6 +6,7 @@ class LogItemData;
 #include <Uid>
 
 class LogLevel;
+class FunctionInfo;
 
 class LogItem
 {
@@ -17,6 +18,10 @@ public:
     ~LogItem();
 
 public:
+    QWORD level() const;
+    QWORD level(const QWORD lvl);
+    FunctionInfo qFuncInfo() const;
+    FunctionInfo qFuncInfo(const char * fni);
 
 private:
     QSharedDataPointer<LogItemData> data;
