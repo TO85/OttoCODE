@@ -3,8 +3,8 @@
 message(----------------In useGui.pri)
 
 windows:LIBS *= -locqGui1
-#linux:LIBS *= -locqGui
-linux:LIBS *= $$DESTDIR/libocqGui.so
+linux:LIBS *= -locqGui
+#linux:LIBS *= $$DESTDIR/libocqGui.so
 
 message(LIBS = $$LIBS)
 

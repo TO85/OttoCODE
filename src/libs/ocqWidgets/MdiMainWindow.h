@@ -9,7 +9,7 @@
 
 #include <QQMainWindow>
 #include <QQMdiArea>
-class MdiGridWindow;
+class MdiGridWidget;
 
 class OCQWIDGETS_EXPORT MdiMainWindow : public QQMainWindow
 {
@@ -19,14 +19,14 @@ public:
     QQMdiArea *mdiArea() const;
 
 public slots:
-    void addSubWindow(MdiGridWindow *pSubWindow);
+    void addSubWindow(MdiGridWidget *pSubWinWidget);
 
 public slots: // actions
-    void windowTabbed();
-    void windowSubView();
+    virtual void windowTabbed();
+    virtual void windowSubView();
 
 private:
     QQMdiArea *mpMdiArea                                                                                                  ;
-    KeyMap<MdiGridWindow *> mSubWindowKeyMap;
+    KeyMap<MdiGridWidget *> mSubWinWidgetKeyMap;
 };
 

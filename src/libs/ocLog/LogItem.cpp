@@ -19,7 +19,7 @@ public:
     SQWORD utcMsec() const;
     void utcMsec(SQWORD newCurrentUtcMsec);
     Uid & uid() const;
-    Uid & uid(const Uid ui) const;
+    Uid & uid(const Uid ui);
     QWORD logLevel() const;
     QWORD logLevel(QWORD newLogLevel);
     const FunctionInfo &functionInfo() const;
@@ -96,12 +96,3 @@ void LogItemData::functionInfo(const FunctionInfo &newFunctionInfo)
     dmFunctionInfo = newFunctionInfo;
 }
 
-const Uid & LogItemData::uid() const
-{
-    return dmLogItemUid;
-}
-
-void LogItemData::uid(const Uid &newUid)
-{
-    dmLogItemUid = newUid;
-}

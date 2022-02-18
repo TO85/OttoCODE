@@ -10,10 +10,10 @@ CONFIG += c++11
 
 message(======== in Excelsior.pro)
 include(../desktop.pri)
-include(../../../libs/useBase.pri)
-include(../../../libs/useCore.pri)
-include(../../../libs/useGui.pri)
-include(../../../libs/useWidgets.pri)
+include(../../libs/useBase.pri)
+include(../../libs/useCore.pri)
+include(../../libs/useGui.pri)
+include(../../libs/useWidgets.pri)
 
 message(INCLUDEPATH = $${INCLUDEPATH})
 message(LIBS = $${LIBS})

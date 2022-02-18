@@ -13,12 +13,20 @@ QQMainWindow::QQMainWindow(QApplication *pApp)
     setObjectName("QQMainWindow");
 }
 
-const QApplication *QQMainWindow::gui() const
+const QApplication * QQMainWindow::gui() const
 {
     Q_ASSERT(this);
     Q_ASSERT(mpApplication);
     qDebug() << Q_FUNC_INFO << objectName() << mpApplication->objectName();
     return mpApplication;
+}
+
+const QCoreApplication *QQMainWindow::core() const
+{
+    Q_ASSERT(this);
+    Q_ASSERT(mpApplication);
+    qDebug() << Q_FUNC_INFO << objectName() << mpApplication->objectName();
+    return (QCoreApplication *)(mpApplication);
 }
 
 ActionManager *QQMainWindow::actions() const

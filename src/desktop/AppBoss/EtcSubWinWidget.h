@@ -1,15 +1,15 @@
 #pragma once
 
-#include <MdiGridWindow>
+#include <MdiGridWidget>
 
 #include <QtCore/QDir>
 class QLabel;
 
-class EtcSubWindow : public MdiGridWindow
+class EtcSubWinWidget : public MdiGridWidget
 {
     Q_OBJECT
 public:
-    EtcSubWindow(const QDir &dir, QQMdiArea *parent, Qt::WindowFlags flags = Qt::WindowFlags());
+    EtcSubWinWidget(const QDir &dir, QQMdiArea *parent, Qt::WindowFlags flags = Qt::WindowFlags());
     const QDir dir();
 
 public slots:

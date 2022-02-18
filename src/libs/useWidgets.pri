@@ -3,8 +3,8 @@
 message(----------------In useWidgets.pri)
 
 windows:LIBS *= -locqWidgets1
-#linux:LIBS *= -locqWidgets
-linux:LIBS *= $$DESTDIR/libocqWidgets.so
+linux:LIBS *= -locqWidgets
+#linux:LIBS *= $$DESTDIR/libocqWidgets.so
 
 message(LIBS = $$LIBS)
 

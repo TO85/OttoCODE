@@ -1,6 +1,6 @@
 #include "MdiMainWindow.h"
 
-#include <MdiGridWindow>
+#include <MdiGridWidget>
 
 MdiMainWindow::MdiMainWindow(QApplication *pApp)
     : QQMainWindow(pApp)
@@ -18,24 +18,26 @@ QQMdiArea *MdiMainWindow::mdiArea() const
 }
 
 
-void MdiMainWindow::addSubWindow(MdiGridWindow *pSubWindow)
+void MdiMainWindow::addSubWindow(MdiGridWidget *pSubWinWidget)
 {
-    Q_ASSERT(pSubWindow);
-    qDebug() << Q_FUNC_INFO << pSubWindow->objectName();
-    mSubWindowKeyMap.insert(pSubWindow->key(), pSubWindow);
+    Q_ASSERT(pSubWinWidget);
+    qDebug() << Q_FUNC_INFO << objectName() << pSubWinWidget->objectName();
+    mSubWinWidgetKeyMap.insert(pSubWinWidget->key(), pSubWinWidget);
 }
 
 
 void MdiMainWindow::windowTabbed()
 {
     Q_ASSERT(this);
+    Q_ASSERT(mdiArea());
     qDebug() << Q_FUNC_INFO << objectName();
-    mpMdiArea->setViewMode(QMdiArea::TabbedView);
+    mdiArea()->setViewMode(QMdiArea::TabbedView);
 }
 
 void MdiMainWindow::windowSubView()
 {
     Q_ASSERT(this);
+    Q_ASSERT(mdiArea());
     qDebug() << Q_FUNC_INFO << objectName();
-    mpMdiArea->setViewMode(QMdiArea::SubWindowView);
+    mdiArea()->setViewMode(QMdiArea::SubWindowView);
 }

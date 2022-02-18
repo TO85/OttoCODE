@@ -1,7 +1,7 @@
 #pragma once
 #include "ocqWidgets.h"
 
-#include "QQMdiSubWindow.h"
+#include "MdiSubWinWidget.h"
 
 #include <QtCore/QString>
 #include <QtWidgets/QWidget>
@@ -11,11 +11,11 @@
 
 #include "QQMdiArea.h"
 
-class OCQWIDGETS_EXPORT MdiGridWindow : public QQMdiSubWindow
+class OCQWIDGETS_EXPORT MdiGridWidget : public MdiSubWinWidget
 {
     Q_OBJECT
 public:
-    MdiGridWindow(const Key &key, QQMdiArea *parent, Qt::WindowFlags flags = Qt::WindowFlags());
+    MdiGridWidget(const Key &key, QQMdiArea *parent, Qt::WindowFlags flags = Qt::WindowFlags());
     Key key() const { return mKey; }
     QGridLayout *layout() const;
 

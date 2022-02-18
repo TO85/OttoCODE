@@ -3,7 +3,7 @@
 #include <MdiMainWindow>
 
 
-class MdiGridWindow;
+class MdiGridWidget;
 
 class BossMainWindow : public MdiMainWindow
 {
@@ -12,8 +12,10 @@ public:
     BossMainWindow(QApplication *pApp);
     ~BossMainWindow();
 
-public slots:
+private slots:
     void viewEtc();
+    void aboutOttoCODE();
+    void aboutAppBoss();
 
 private:
     virtual void setupMenus() override;

@@ -1,19 +1,18 @@
-#include "MdiGridWindow.h"
+#include "MdiGridWidget.h"
 
 #include <QtDebug>
 
-MdiGridWindow::MdiGridWindow(const Key &key, QQMdiArea *parent, Qt::WindowFlags flags)
-    : QQMdiSubWindow(parent, flags)
+MdiGridWidget::MdiGridWidget(const Key &key, QQMdiArea *parent, Qt::WindowFlags flags)
+    : MdiSubWinWidget(key, parent, flags)
     , mpGridLayout(new QGridLayout())
     , mKey(key)
 {
     setObjectName("MdiGridWindow:"+key.last().toQString());
     qDebug() << Q_FUNC_INFO << key.toQString() << parent->objectName();
     layout()->setObjectName("MdiGridWindow:QGridLayout");
-    setWindowTitle(key.last().toQString());
 }
 
-QGridLayout *MdiGridWindow::layout() const
+QGridLayout *MdiGridWidget::layout() const
 {
     Q_ASSERT(this);
     Q_ASSERT(mpGridLayout);
@@ -21,10 +20,12 @@ QGridLayout *MdiGridWindow::layout() const
     return mpGridLayout;
 }
 
-void MdiGridWindow::setup()
+void MdiGridWidget::setup()
 {
     Q_ASSERT(this);
     qDebug() << Q_FUNC_INFO << objectName();
-    QQMdiSubWindow::setup();
+    setWindowTitle(key().last().toQString());
+    MdiSubWinWidget::setup();
+
 }
 

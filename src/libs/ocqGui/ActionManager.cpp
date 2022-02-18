@@ -23,17 +23,23 @@ QAction *ActionManager::action(const Key &key) const
     return mKeyActionMap.value(key);
 }
 
-bool ActionManager::connect(const Key &key, const QObject *actor, const QByteArray &signature)
+bool ActionManager::connectSlot(const Key &key, const QObject *actor,
+                                const QByteArray &signature,
+                                const bool scanParents)
 {
     qDebug() << Q_FUNC_INFO << key;
     Q_ASSERT(contains(key));
-    Q_ASSERT(actor);
     bool result = false;
     const QAction *pAction = action(key);
+    Q_ASSERT(pAction);
+    Q_ASSERT(actor);
     QMetaMethod actionMethod = method(pAction, "triggered()");
-    QMetaMethod actorMethod = method(actor, signature);
+    QMetaMethod actorMethod = method(actor, signature, scanParents);
+    Q_ASSERT(actionMethod.isValid());
+    Q_ASSERT(actorMethod.isValid());
     if (actionMethod.isValid() && actorMethod.isValid())
         result = QObject::connect(pAction, actionMethod, actor, actorMethod);
+    Q_ASSERT(result);
     return result;
 }
 
@@ -54,13 +60,15 @@ void ActionManager::add(const Key &key, QAction *action)
     emit actionAdded(key, action);
 }
 
-QMetaMethod ActionManager::method(const QObject *object, const QByteArray &signature)
+QMetaMethod ActionManager::method(const QObject *object,
+                                  const QByteArray &signature,
+                                  const bool scanParents)
 {
     Q_ASSERT(object);
     qDebug() << Q_FUNC_INFO << object->objectName() << signature;
     const QMetaObject *pMetaObject = object->metaObject();
     const int nMethods = pMetaObject->methodCount();
-    for (int ix = pMetaObject->methodOffset(); ix < nMethods; ++ix)
+    for (int ix = scanParents ? 0 : pMetaObject->methodOffset(); ix < nMethods; ++ix)
     {
         const QMetaMethod ixMethod = pMetaObject->method(ix);
         const QByteArray ixSignature = ixMethod.methodSignature();

@@ -3,8 +3,8 @@
 message(----------------In useCore.pri)
 
 windows:LIBS *= -locqCore1
-#linux:LIBS *= -locqCore
-linux:LIBS *= $$DESTDIR/libocqCore.so
+linux:LIBS *= -locqCore
+#linux:LIBS *= $$DESTDIR/libocqCore.so
 
 message(LIBS = $$LIBS)
 

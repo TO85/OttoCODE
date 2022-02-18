@@ -24,6 +24,7 @@ SOURCES += \
     KeySeg.cpp \
     KeyUidDMap.cpp \
     Millisecond.cpp \
+    MimeType.cpp \
     NetworkId.cpp \
     ProcessId.cpp \
     SortableMap.cpp \
@@ -73,6 +74,7 @@ HEADERS += \
     KeySeg.h \
     KeyUidDMap.h \
     Millisecond.h \
+    MimeType.h \
     NetworkId.h \
     ProcessId.h \
     SortableMap.h \

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 class QApplication;
+class QCoreApplication;
 
 class ActionManager;
 class MenuManager;
@@ -14,6 +15,7 @@ class OCQWIDGETS_EXPORT QQMainWindow : public QMainWindow
 public:
     explicit QQMainWindow(QApplication *pApp);
     const QApplication *gui() const;
+    const QCoreApplication *core() const;
     ActionManager *actions() const;
     MenuManager *menus() const;
 

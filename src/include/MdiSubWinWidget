@@ -1,0 +1,2 @@
+// file: {Lancelot}./src/include/MdiSubWinWidget
+#include "../libs/ocqWidgets/MdiSubWinWidget.h"
