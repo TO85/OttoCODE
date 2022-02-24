@@ -1,4 +1,4 @@
-#include "MainWindow.h"
+#include "XlsMainWindow.h"
 
 #include <QApplication>
 
@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     a.setApplicationDisplayName("Excelsior Video Manageer");
     a.setApplicationName(OC_VER_APPNAME);
     a.setApplicationVersion(OC_VER_APPVER);
-    MainWindow w(&a);
+    XlsMainWindow w(&a);
     w.show();
     return a.exec();
 }

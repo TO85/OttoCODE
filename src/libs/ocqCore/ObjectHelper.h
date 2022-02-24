@@ -10,9 +10,9 @@ template <class QOBJ> KeySeg enumName(const QOBJ value)
     return KeySeg(QMetaEnum::fromType<QOBJ>().valueToKey(value));
 }
 
-template <class QOBJ> int enumValue(const char * name)
+template <class QOBJ> QOBJ enumValue(const char * name)
 {
-    return QMetaEnum::fromType<QOBJ>().keyToValue(name);
+    return QOBJ(QMetaEnum::fromType<QOBJ>().keyToValue(name));
 }
 
 

@@ -6,8 +6,3 @@
 ocImage::ocImage()
 {
 }
-
-QString ocImage::supportedImageFormats()
-{
-    return QImageReader::supportedImageFormats().join(' ');
-}

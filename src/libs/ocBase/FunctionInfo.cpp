@@ -11,6 +11,9 @@ class FunctionInfoData : public QSharedData
 {
 public:
     QString dmQFuncInfo;
+    QString dmQFuncInfoAnteParen;
+    QString dmQFuncInfoTwixParen;
+    QString dmQFuncInfoPostParen;
     QString dmClassName;
     QString dmFunctionName;
     QStringList dmArgNames;
@@ -33,8 +36,49 @@ FunctionInfo::~FunctionInfo() {;}
 
 void FunctionInfo::set(const QString &qs)
 {
-    if (data) data->dmQFuncInfo = qs;
-    // NEEDDO Much More
+    qDebug() << Q_FUNC_INFO << qs;
+    Q_ASSERT(data);
+    data->dmQFuncInfo = qs;
+    process();
+}
+
+void FunctionInfo::process()
+{
+    Q_ASSERT(data);
+    const QString qfiString = data->QFuncInfo();
+    const int openParen  = qfiString.indexOf('(');
+    const int closeParen = qfiString.lastIndexOf(')');
+    if ((openParen < 1) || (closeParen < openParen)) return;
+    qDebug() << qfiString << qfiString.left(openParen)
+             << qfiString.mid(openParen, closeParen-openParen)
+             << qfiString.mid(closeParen);
+    data->dmQFuncInfoAnteParen = qfiString.left(openParen);
+    data->dmQFuncInfoTwixParen = qfiString.mid(openParen, closeParen-openParen);
+    data->dmQFuncInfoPostParen = qfiString.mid(closeParen);
+
+
+}
+
+void FunctionInfo::processAnteParen(const QString &qs)
+{
+    qDebug() << Q_FUNC_INFO << qs;
+    const int lastColonPair = qs.lastIndexOf("::");
+    const int lastSpaceAnteParen = qs.lastIndexOf(' ');
+    data->dmClassName = qs.mid(lastSpaceAnteParen+1, lastColonPair-lastSpaceAnteParen);
+    data->dmFunctionName = qs.mid(lastColonPair+2);
+    qDebug() << data->dmClassName << data->dmFunctionName;
+}
+
+void FunctionInfo::processTwixParen(const QString &qs)
+{
+    qDebug() << Q_FUNC_INFO << qs;
+
+}
+
+void FunctionInfo::processPostParen(const QString &qs)
+{
+    qDebug() << Q_FUNC_INFO << qs;
+
 }
 
 FunctionInfo &FunctionInfo::operator=(const FunctionInfo &rhs)

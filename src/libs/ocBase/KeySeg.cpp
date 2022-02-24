@@ -6,6 +6,11 @@
 KeySeg::KeySeg() {;}
 KeySeg::KeySeg(const QString &qs) : mString(qs) {;}
 
+bool KeySeg::equal(const KeySeg &other)
+{
+    return Sortable(it()).equal(Sortable(other));
+}
+
 bool KeySeg::startsWith(const KeySeg &stub) const
 {
     return mString.startsWith(stub.toQString());

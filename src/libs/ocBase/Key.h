@@ -28,9 +28,11 @@ public:
     Key first(const int k) const;
     KeySeg last() const;
     QList<KeySeg> list() const;
-    bool less(const Key &other);
+    bool equal(const Key &other) const;
+    bool less(const Key &other) const;
     QString toQString() const;
-    bool operator < (const Key &other) { return less(other); }
+    bool operator == (const String &other) const { return equal(other); }
+    bool operator < (const Key &other) const { return less(other); }
     operator QString () const { return toQString(); }
 
 public:

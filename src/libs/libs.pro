@@ -4,6 +4,7 @@ SUBDIRS += \
     ocBase \
     ocExe \
     ocIO \
+    ocImage \
     ocLog \
     ocMath \
     ocType \

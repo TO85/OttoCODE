@@ -8,6 +8,7 @@
 
 #include "Key.h"
 #include "KeySeg.h"
+#include "Uid.h"
 
 bool Sortable::equal(const Sortable &other) const
 {
@@ -52,6 +53,11 @@ void Sortable::set(const KeySeg &seg)
 void Sortable::set(const QQDir &dir)
 {
     set(dir.absolutePath());
+}
+
+void Sortable::set(const Uid &uid)
+{
+    set(uid.toString());
 }
 
 /* --------------------- static ----------------------- */

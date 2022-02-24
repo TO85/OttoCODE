@@ -1,2 +1,3 @@
 // file: {OttoCODE}./src/include/QQFileInfo
 #include "../libs/ocqCore/QQFileInfo.h"
+#include "../libs/ocqCore/QQFileInfoList.h"

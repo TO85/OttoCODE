@@ -9,6 +9,7 @@ class QByteArray;
 class QQDir;
 class Key;
 class KeySeg;
+class Uid;
 
 class OCBASE_EXPORT Sortable
 {
@@ -16,6 +17,7 @@ public:
     Sortable(const QString &string)         { set(string); }
     Sortable(const QVariant &variant)       { set(variant); }
     Sortable(const QByteArray &bytes)       { set(bytes); }
+    Sortable(const Uid &uid)                { set(uid); }
     Sortable(const Key &key)                { set(key); }
     Sortable(const KeySeg &seg)             { set(seg); }
     Sortable(const QQDir &dir)              { set(dir); }
@@ -40,6 +42,7 @@ public:
     void set(const Key &key);
     void set(const KeySeg &seg);
     void set(const QQDir &dir);
+    void set(const Uid &uid);
 
 public: // static
     static QByteArray random();

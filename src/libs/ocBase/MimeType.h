@@ -2,6 +2,8 @@
 
 #include <QObject>
 
+// Reference: https://www.iana.org/assignments/media-types/media-types.xhtml
+
 class MimeType : public QObject
 {
     Q_GADGET

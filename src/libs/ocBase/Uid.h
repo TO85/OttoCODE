@@ -42,6 +42,10 @@ public:
     AsciiString toHex() const;
     QString toString() const;
     QString tail() const;
+    bool equal(const Uid &other) const;
+    bool less(const Uid &other) const;
+    bool operator == (const Uid &other) const { return equal(other); }
+    bool operator <  (const Uid &other) const { return less(other); }
 
 public:
     Whole set(const bool create);

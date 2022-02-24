@@ -22,7 +22,7 @@ Uid::Uid(const bool create)
 
 Uid::Uid(const Type type, const Value value)
 {
-
+    Q_ASSERT(!"Done"); Q_UNUSED(type); Q_UNUSED(value);
 }
 
 bool Uid::isNull() const
@@ -83,6 +83,16 @@ QString Uid::toString() const
 QString Uid::tail() const
 {
     return toString().right(14);
+}
+
+bool Uid::equal(const Uid &other) const
+{
+    return whole() == other.whole();
+}
+
+bool Uid::less(const Uid &other) const
+{
+    return whole() < other.whole();
 }
 
 Uid::Whole Uid::set(const bool create)

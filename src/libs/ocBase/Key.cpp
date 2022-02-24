@@ -64,6 +64,16 @@ QList<KeySeg> Key::list() const
     return mSegments;
 }
 
+bool Key::equal(const Key &other) const
+{
+    return toQString() == other.toQString();
+}
+
+bool Key::less(const Key &other) const
+{
+    return toQString() < other.toQString();
+}
+
 void Key::clear()
 {
     mSegments.clear();

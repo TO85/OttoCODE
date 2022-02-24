@@ -2,7 +2,6 @@
 
 #include <MdiMainWindow>
 
-
 class MdiGridWidget;
 
 class BossMainWindow : public MdiMainWindow

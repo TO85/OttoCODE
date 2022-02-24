@@ -14,11 +14,13 @@ include(../useBase.pri)
 include(../useGui.pri)
 
 SOURCES += \
-    ImageFormatInfo.cpp \
+    ImageFileFormat.cpp \
+    VideoFileFormat.cpp \
     ocImage.cpp
 
 HEADERS += \
-    ImageFormatInfo.h \
+    ImageFileFormat.h \
+    VideoFileFormat.h \
     ocImage_global.h \
     ocImage.h
 

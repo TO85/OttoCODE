@@ -19,6 +19,7 @@ SOURCES += \
     LogItem.cpp \
     LogLevel.cpp \
     LogObject.cpp \
+    LogPump.cpp \
     ocLog.cpp
 
 HEADERS += \
@@ -29,6 +30,7 @@ HEADERS += \
     LogLevel.h \
     LogMacros.h \
     LogObject.h \
+    LogPump.h \
     ocLog_global.h \
     ocLog.h
 

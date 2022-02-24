@@ -5,9 +5,23 @@
 #include <QMetaObject>
 
 #include <KeySeg>
+#include <ObjectHelper>
 
 Log::Log() {;}
 
+#if 1
+
+KeySeg Log::severityKey(const Severity value)
+{
+    return enumName<Log::Severity>(value);
+}
+
+Log::Severity Log::severityValue(const char * key)
+{
+    return enumValue<Log::Severity>(key);
+}
+
+#else
 KeySeg Log::severityKey(const Severity value) const
 {
     const QMetaObject logMetaObject = staticMetaObject;
@@ -25,8 +39,9 @@ Log::Severity Log::severityValue(const KeySeg &key) const
     QMetaEnum severityMetaEnum = logMetaObject.enumerator(severityIndex);
     return Severity(severityMetaEnum.keyToValue(key.toQString().toLocal8Bit()));
 }
+#endif
 
-QtMsgType Log::severityMsgType(const Severity value) const
+QtMsgType Log::severityMsgType(const Severity value)
 {
     switch (value)
     {

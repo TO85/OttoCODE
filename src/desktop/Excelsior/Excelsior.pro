@@ -19,11 +19,11 @@ message(INCLUDEPATH = $${INCLUDEPATH})
 message(LIBS = $${LIBS})
 
 SOURCES += \
-    MainWindow.cpp \
+    XlsMainWindow.cpp \
     main.cpp
 
 HEADERS += \
-    MainWindow.h
+    XlsMainWindow.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

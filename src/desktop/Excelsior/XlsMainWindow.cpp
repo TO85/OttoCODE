@@ -1,8 +1,8 @@
-#include "MainWindow.h"
+#include "XlsMainWindow.h"
 
 #include <QtDebug>
 
-MainWindow::MainWindow(QApplication *pApp)
+XlsMainWindow::XlsMainWindow(QApplication *pApp)
     : MdiMainWindow(pApp)
 {
     setObjectName("Excelsior:MainWindow");

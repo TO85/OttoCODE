@@ -1,6 +1,7 @@
 #include "LogItem.h"
 
 #include <FunctionInfo>
+#include <Millisecond>
 
 #include "LogLevel.h"
 
@@ -12,7 +13,6 @@ public:
     SQWORD dmUtcMsec=0;
     QWORD dmLogLevel=0;
     FunctionInfo dmFunctionInfo;
-
 
     const Uid &logItemUid() const;
     void logItemUid(const Uid &newUid);
@@ -28,6 +28,7 @@ public:
 
 LogItem::LogItem(const QWORD aLevel, char *aQFuncInfo)
 {
+    ctor();
     level(aLevel);
     qFuncInfo(aQFuncInfo);
 }
@@ -35,7 +36,7 @@ LogItem::LogItem(const QWORD aLevel, char *aQFuncInfo)
 LogItem::LogItem()
     : data(new LogItemData)
 {
-
+    ctor();
 }
 
 LogItem::LogItem(const LogItem &rhs)
@@ -54,6 +55,13 @@ LogItem &LogItem::operator=(const LogItem &rhs)
 LogItem::~LogItem()
 {
 
+}
+
+void LogItem::ctor()
+{
+    Q_ASSERT(data);
+    data->dmUtcMsec = Millisecond::currentUtcMsec();
+    data->dmLogChannelUid = 0;
 }
 
 QWORD LogItem::level() const

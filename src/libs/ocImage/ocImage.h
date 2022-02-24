@@ -6,5 +6,4 @@ class OCIMAGE_EXPORT ocImage
 {
 public:
     ocImage();
-    static QString supportedImageFormats();
 };

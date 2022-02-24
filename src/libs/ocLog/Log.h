@@ -32,9 +32,9 @@ public:
     };
     Q_DECLARE_FLAGS(SeverityFlags, Severity);
     Q_ENUM(Severity);
-    KeySeg severityKey(const Severity value) const;
-    Severity severityValue(const KeySeg &key) const;
-    QtMsgType severityMsgType(const Severity value) const;
+    static KeySeg severityKey(const Severity value);
+    static Severity severityValue(const char * key);
+    static QtMsgType severityMsgType(const Severity value);
 
 public:
     explicit Log();

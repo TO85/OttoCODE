@@ -10,6 +10,7 @@ CONFIG += c++11
 
 include(../desktop.pri)
 include(../../useBase.pri)
+include(../../useLog.pri)
 include(../../useCore.pri)
 include(../../useGui.pri)
 include(../../useWidgets.pri)

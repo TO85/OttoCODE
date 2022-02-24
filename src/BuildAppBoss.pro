@@ -5,7 +5,7 @@ TEMPLATE = subdirs
 SUBDIRS += \
         ocBase \
         ocType \
-#        ocLog \
+        ocLog \
         ocqCore \
         ocqGui \
         ocqWidgets \
@@ -15,7 +15,7 @@ SUBDIRS += \
 
 ocBase.subdir           = libs/ocBase
 ocType.subdir           = libs/ocType
-#ocLog.subdir            = libs/ocLog
+ocLog.subdir            = libs/ocLog
 ocqCore.subdir          = libs/ocqCore
 ocqGui.subdir           = libs/ocqGui
 ocqWidgets.subdir       = libs/ocqWidgets
@@ -25,11 +25,11 @@ AppBoss.subdir          = desktop/AppBoss
 
 ocBase.depends          =
 ocType.depends          =                                       ocBase
-#ocLog.depends           =                                       ocBase
+ocLog.depends           =                                       ocBase
 ocqCore.depends         =                                       ocBase
 ocqGui.depends          =                                       ocBase
-ocqWidgets.depends      =                        ocqGui         ocBase
+ocqWidgets.depends      =               ocqGui                  ocBase
 ocIO.depends            =                                       ocBase
 ocExe.depends           =                                       ocBase
-AppBoss.depends         =           ocqWidgets   ocqGui ocqCore ocBase
+AppBoss.depends         =   ocqWidgets  ocqGui ocqCore ocLog    ocBase
 

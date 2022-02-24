@@ -17,6 +17,12 @@ public:
 public:
     void set(const char * psz) { set(QString(psz)); }
     void set(const QString & qs);
+    void process();
+
+protected:
+    void processAnteParen(const QString &qs);
+    void processTwixParen(const QString &qs);
+    void processPostParen(const QString &qs);
 
 private:
     QSharedDataPointer<FunctionInfoData> data;
