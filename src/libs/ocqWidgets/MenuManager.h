@@ -30,7 +30,7 @@ public:
     QAction *action(const Key &key) const;
 
 public:
-    QMenu *addPrimary(const Key &key, const String &text=String());
+    QMenu *primary(const Key &key, const String &text=String());
     QAction *add(const Key &key, const String &text=String());
     bool add(const Key &key, QAction *action);
 

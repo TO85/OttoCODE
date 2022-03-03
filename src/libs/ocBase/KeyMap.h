@@ -1,8 +1,6 @@
 #pragma once
 #include "ocBase.h"
 
-#include "KeyMap.h"
-
 #include "Key.h"
 #include "Sortable.h"
 
@@ -15,6 +13,7 @@ public:
     bool isEmpty() const { return mKeyTMap.isEmpty(); }
     bool notEmpty() const { return ! isEmpty(); }
     bool contains(const Key &key) const { return mKeyTMap.contains(key); }
+    bool notContains(const Key &key) const { return ! contains(key); }
     const T value(const Key &key) const { return mKeyTMap.value(key); }
     const QList<Key> keys() const { return mKeyTMap.keys(); }
 

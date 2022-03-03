@@ -19,14 +19,17 @@ SOURCES += \
     FourCC.cpp \
     FunctionInfo.cpp \
     HostId.cpp \
+    Ident.cpp \
     KeyItemList.cpp \
     KeyList.cpp \
     KeySeg.cpp \
     KeyUidDMap.cpp \
     Millisecond.cpp \
     MimeType.cpp \
+    MimeTypeManager.cpp \
     NetworkId.cpp \
     ProcessId.cpp \
+    Rect.cpp \
     SortableMap.cpp \
     String.cpp \
     StringList.cpp \
@@ -51,6 +54,8 @@ HEADERS += \
     ../../include/KeyMap \
     ../../include/KeyUidDMap \
     ../../include/Millisecond \
+    ../../include/MimeType \
+    ../../include/MimeTypeManager \
     ../../include/NetworkId \
     ../../include/ProcessId \
     ../../include/Sortable \
@@ -69,14 +74,18 @@ HEADERS += \
     FourCC.h \
     FunctionInfo.h \
     HostId.h \
+    Ident.h \
     KeyItemList.h \
     KeyList.h \
     KeySeg.h \
     KeyUidDMap.h \
+    Matrix2D.h \
     Millisecond.h \
     MimeType.h \
+    MimeTypeManager.h \
     NetworkId.h \
     ProcessId.h \
+    Rect.h \
     SortableMap.h \
     String.h \
     StringList.h \

@@ -5,9 +5,12 @@
 
 class QApplication;
 class QCoreApplication;
+class QMenu;
 
+#include <KeyMap>
 class ActionManager;
-class MenuManager;
+class Key;
+class String;
 
 class OCQWIDGETS_EXPORT QQMainWindow : public QMainWindow
 {
@@ -16,8 +19,13 @@ public:
     explicit QQMainWindow(QApplication *pApp);
     const QApplication *gui() const;
     const QCoreApplication *core() const;
+    const QObject *object();
     ActionManager *actions() const;
-    MenuManager *menus() const;
+    QAction *action(const Key key);
+    QMenu * menu(const Key key);
+
+public:
+    QMenu * addMenu(const Key key, const String &text=String());
 
 public slots:
     void setup();
@@ -27,15 +35,16 @@ signals:
 
 protected:
     virtual void setupStart();
-    virtual void setupMenus();
     virtual void setupActions();
     virtual void setupConnections();
+    virtual void setupMenus();
+    virtual void setupToolbars();
     virtual void setupWidgets();
     virtual void setupFinish();
 
 private:
     QApplication *mpApplication=nullptr;
     ActionManager *mpActionManager=nullptr;
-    MenuManager *mpMenuManager=nullptr;
+    KeyMap<QMenu *> mKeyMenuMap;
 };
 

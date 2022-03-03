@@ -1,4 +1,5 @@
 QT += gui
+QT *= widgets # for QMenu*
 
 TEMPLATE = lib
 DEFINES += OCQGUI_LIBRARY

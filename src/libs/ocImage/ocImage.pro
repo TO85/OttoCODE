@@ -1,4 +1,5 @@
-QT += gui
+QT += gui \
+    widgets
 
 TEMPLATE = lib
 DEFINES += OCIMAGE_LIBRARY
@@ -14,12 +15,26 @@ include(../useBase.pri)
 include(../useGui.pri)
 
 SOURCES += \
+    ImageData.cpp \
+    ImageFileDialog.cpp \
     ImageFileFormat.cpp \
+    ImageFileFormatManager.cpp \
+    ImageInfo.cpp \
+    ImageViewWidget.cpp \
     VideoFileFormat.cpp \
     ocImage.cpp
 
 HEADERS += \
+    ../../include/ImageData \
+    ../../include/ImageFileDialog \
+    ../../include/ImageFileFormat \
+    ../../include/ImageViewWidget \
+    ImageData.h \
+    ImageFileDialog.h \
     ImageFileFormat.h \
+    ImageFileFormatManager.h \
+    ImageInfo.h \
+    ImageViewWidget.h \
     VideoFileFormat.h \
     ocImage_global.h \
     ocImage.h

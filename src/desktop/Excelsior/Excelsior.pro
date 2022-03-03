@@ -19,11 +19,13 @@ message(INCLUDEPATH = $${INCLUDEPATH})
 message(LIBS = $${LIBS})
 
 SOURCES += \
-    XlsMainWindow.cpp \
+    ExcelsiorMain.cpp \
+    ImageMdiDocument.cpp \
     main.cpp
 
 HEADERS += \
-    XlsMainWindow.h
+    ExcelsiorMain.h \
+    ImageMdiDocument.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

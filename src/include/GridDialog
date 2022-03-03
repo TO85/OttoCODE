@@ -1,0 +1,2 @@
+// file: {Lancelot}./src/include/GridDialog
+#include "../libs/ocqWidgets/GridDialog.h"

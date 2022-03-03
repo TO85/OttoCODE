@@ -17,7 +17,8 @@ public:
 public:
     bool contains(const Key &key) const;
     QAction *action(const Key &key) const;
-    bool connectSlot(const Key &key, const QObject *actor, const QByteArray &signature, const bool scanParents=false);
+    bool connectSlot(const Key &key, const QObject *actor,
+                     const QByteArray &signature, const bool scanParents=false);
 
 public slots:
     QAction *add(const Key &key, const QString &text=QString());

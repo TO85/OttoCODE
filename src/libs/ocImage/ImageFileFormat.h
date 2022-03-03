@@ -4,6 +4,7 @@
 class ImageFileFormatData;
 
 #include <KeySeg>
+#include <MimeType>
 
 class ImageFileFormat
 {
@@ -15,6 +16,9 @@ public:
 
 public:
     KeySeg key() const;
+    KeySeg key(const KeySeg &newKey);
+    MimeType mimeType() const;
+    MimeType mimeType(const MimeType &newType);
 
 private:
     QSharedDataPointer<ImageFileFormatData> data;

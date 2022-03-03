@@ -13,25 +13,26 @@ include(../useBase.pri)
 include(../useGui.pri)
 
 SOURCES += \
+    GridDialog.cpp \
     MdiGridWidget.cpp \
     MdiMainWindow.cpp \
     MdiSubWinWidget.cpp \
-    MenuManager.cpp \
     QQMainWindow.cpp \
     QQMdiArea.cpp \
     ocqWidgets.cpp
 
 HEADERS += \
+    ../../include/GridDialog \
     ../../include/MdiGridWidget \
     ../../include/MdiMainWindow \
     ../../include/MdiSubWinWidget \
     ../../include/MenuManager \
     ../../include/QQMainWindow \
     ../../include/QQMdiArea \
+    GridDialog.h \
     MdiGridWidget.h \
     MdiMainWindow.h \
     MdiSubWinWidget.h \
-    MenuManager.h \
     QQMainWindow.h \
     QQMdiArea.h \
     ocqWidgets_global.h \

@@ -1,0 +1,2 @@
+// file: {Lancelot}./src/include/MdiGridWidget
+#include "../libs/ocBase/Ident.h"

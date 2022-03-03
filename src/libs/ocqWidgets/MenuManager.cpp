@@ -48,7 +48,7 @@ QAction *MenuManager::action(const Key &key) const
     return mpActionManager->action(key);
 }
 
-QMenu * MenuManager::addPrimary(const Key &key, const String &text)
+QMenu * MenuManager::primary(const Key &key, const String &text)
 {
     qDebug() << Q_FUNC_INFO << key.toQString() << text
              << mKeyMenuMap.contains(key) << key.last();
@@ -66,8 +66,16 @@ QAction * MenuManager::add(const Key &key, const String &text)
     const String tText = text.notEmpty() ? text : ("&"+key.last());
     qDebug() << Q_FUNC_INFO << key.toQString() << text << tMenuKey;
     qDebug() << dumpKeyMenuMap();
-    Q_ASSERT(mKeyMenuMap.contains(tMenuKey));
-    QMenu *pMenu = mKeyMenuMap.value(key.first(-1));
+    QMenu *pMenu = nullptr;
+    if (mKeyMenuMap.contains(tMenuKey))
+    {
+        pMenu = mKeyMenuMap.value(key.first(-1));
+    }
+    else
+    {
+        pMenu = primary(tMenuKey, tText);
+        mKeyMenuMap.insert(tMenuKey, pMenu);
+    }
     Q_ASSERT(pMenu);
     if (pMenu)
     {

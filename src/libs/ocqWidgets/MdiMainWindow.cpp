@@ -17,8 +17,18 @@ QQMdiArea *MdiMainWindow::mdiArea() const
     return mpMdiArea;
 }
 
+MdiSubWinWidget * MdiMainWindow::newSubWindow(const Key &key, const Qt::WindowFlags flags)
+{
+    Q_ASSERT(this);
+    qDebug() << Q_FUNC_INFO << key;
+    MdiSubWinWidget * result = new MdiSubWinWidget(key, mdiArea(), flags);
+    addSubWindow(result);
+    qDebug() << result->objectName();
+    return result;
+}
 
-void MdiMainWindow::addSubWindow(MdiGridWidget *pSubWinWidget)
+
+void MdiMainWindow::addSubWindow(MdiSubWinWidget *pSubWinWidget)
 {
     Q_ASSERT(pSubWinWidget);
     qDebug() << Q_FUNC_INFO << objectName() << pSubWinWidget->objectName();

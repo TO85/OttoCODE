@@ -27,12 +27,12 @@ bool ActionManager::connectSlot(const Key &key, const QObject *actor,
                                 const QByteArray &signature,
                                 const bool scanParents)
 {
-    qDebug() << Q_FUNC_INFO << key;
+    Q_ASSERT(actor);
+    qDebug() << Q_FUNC_INFO << key << actor->objectName() << signature << scanParents;
     Q_ASSERT(contains(key));
     bool result = false;
     const QAction *pAction = action(key);
     Q_ASSERT(pAction);
-    Q_ASSERT(actor);
     QMetaMethod actionMethod = method(pAction, "triggered()");
     QMetaMethod actorMethod = method(actor, signature, scanParents);
     Q_ASSERT(actionMethod.isValid());
@@ -46,7 +46,8 @@ bool ActionManager::connectSlot(const Key &key, const QObject *actor,
 QAction *ActionManager::add(const Key &key, const QString &text)
 {
     qDebug() << Q_FUNC_INFO << key << text;
-    QAction *pAction = new QAction(text.isEmpty() ? key.last().toQString() : text, this);
+    String tActionText = text.isEmpty() ? ("&"+key.last()) : text;
+    QAction *pAction = new QAction(tActionText);
     add(key, pAction);
     return pAction;
 }
@@ -66,15 +67,19 @@ QMetaMethod ActionManager::method(const QObject *object,
 {
     Q_ASSERT(object);
     qDebug() << Q_FUNC_INFO << object->objectName() << signature;
+    QMetaMethod result;
     const QMetaObject *pMetaObject = object->metaObject();
     const int nMethods = pMetaObject->methodCount();
-    for (int ix = scanParents ? 0 : pMetaObject->methodOffset(); ix < nMethods; ++ix)
+    for (int ix = scanParents ? 0 : pMetaObject->methodOffset();
+         (ix < nMethods) && ( ! result.isValid());
+         ++ix)
     {
         const QMetaMethod ixMethod = pMetaObject->method(ix);
         const QByteArray ixSignature = ixMethod.methodSignature();
         if (signature == ixSignature)
-            return ixMethod;                                            /* /====\ */
+            result = ixMethod;
     }
-    return QMetaMethod();
+    qDebug() << result.name() << result.parameterNames();
+    return result;
 }
 
