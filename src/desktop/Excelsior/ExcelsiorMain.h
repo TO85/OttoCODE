@@ -2,6 +2,8 @@
 
 #include <MdiMainWindow>
 
+#include <QQDir>
+
 class ImageWindowWidget;
 class ColorComponentWindowWidget;
 
@@ -24,7 +26,11 @@ private slots:
     void setupWindowMenu();
     void setupHelpMenu();
 
-private:
+    void openFileAction();
+    void openImageFile();
 
+private:
+    QQDir mCurrentImageDir=QQDir::current();
+    QQDir mDefaultImageDir=QQDir::nullDir();
 };
 

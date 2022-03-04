@@ -29,6 +29,7 @@ public:
 public: // access
     operator QString () const { return mString; }
     operator QString () { return mString; }
+
     bool equal(const Sortable & other) const;
     bool less(const Sortable & other) const;
     bool operator == (const Sortable & other) const { return equal(other); }

@@ -5,12 +5,12 @@
 
 KeySeg::KeySeg() {;}
 KeySeg::KeySeg(const QString &qs) : mString(qs) {;}
-
+#if 0
 bool KeySeg::equal(const KeySeg &other)
 {
     return Sortable(it()).equal(Sortable(other));
 }
-
+#endif
 bool KeySeg::startsWith(const KeySeg &stub) const
 {
     return mString.startsWith(stub.toQString());

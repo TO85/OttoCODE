@@ -6,6 +6,7 @@
 #include <QTimer>
 
 #include <ActionManager>
+#include <ImageFileDialog>
 
 ExcelsiorMain::ExcelsiorMain(QApplication *pApp)
     : MdiMainWindow(pApp)
@@ -24,6 +25,7 @@ void ExcelsiorMain::setupActions()
 void ExcelsiorMain::setupConnections()
 {
     actions()->connectSlot("Quit", qApp, "quit()", true);
+    actions()->connectSlot("File/OpenImage", this, "openFileAction()");
 }
 
 void ExcelsiorMain::setupMenus()
@@ -68,5 +70,27 @@ void ExcelsiorMain::setupWindowMenu()
 
 void ExcelsiorMain::setupHelpMenu()
 {
+
+}
+
+void ExcelsiorMain::openFileAction()
+{
+    Q_ASSERT(this);
+    qDebug() << Q_FUNC_INFO << objectName();
+    ImageFileDialog *pOpenDialog = new ImageFileDialog(ImageFileDialog::OpenFile, this);
+    Q_ASSERT(pOpenDialog);
+    pOpenDialog->directory(mCurrentImageDir);
+    pOpenDialog->defaultDirectory(mDefaultImageDir);
+    if (pOpenDialog->exec())
+    {
+        openImageFile();
+    }
+}
+
+void ExcelsiorMain::openImageFile()
+{
+    Q_ASSERT(this);
+    qDebug() << Q_FUNC_INFO << objectName();
+    Q_ASSERT(false); // MUSTDO it
 
 }

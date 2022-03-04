@@ -2,17 +2,15 @@
 
 #include <Sortable>
 
-bool QQDir::equal(const QQDir &other) const
+bool QQDir::isNull() const
 {
-    return Sortable(it()) == Sortable(other);
-}
-
-bool QQDir::less(const QQDir &other) const
-{
-    return Sortable(it()) < Sortable(other);
+    return it() == nullDir();
 }
 
 String QQDir::lastPath() const
 {
     return String(path()).lastSection();
 }
+
+QDir QQDir::smNullDir = QQDir("/nul");
+

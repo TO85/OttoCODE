@@ -23,7 +23,16 @@ GridDialog::GridDialog(QDialogButtonBox::StandardButtons buttons, QWidget *paren
 
 QDialogButtonBox * GridDialog::buttonBox()
 {
+    Q_ASSERT(this);
+    Q_ASSERT(mpButtonBox);
     return mpButtonBox;
+}
+
+QGridLayout *GridDialog::grid()
+{
+    Q_ASSERT(this);
+    Q_ASSERT(mpGridLayout);
+    return mpGridLayout;
 }
 
 void GridDialog::ctor()
@@ -35,4 +44,10 @@ void GridDialog::ctor()
     mpMainVBox->addWidget(mpButtonBox);
     mpMainVBox->addWidget(mpGridWidget);
     setLayout(mpMainVBox);
+    mpGridWidget->show();
+    Q_ASSERT(connect(mpButtonBox, &QDialogButtonBox::accepted,
+                     this, &QDialog::accept));
+    Q_ASSERT(connect(mpButtonBox, &QDialogButtonBox::rejected,
+                     this, &QDialog::reject));
 }
+

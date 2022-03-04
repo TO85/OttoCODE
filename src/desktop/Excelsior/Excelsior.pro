@@ -14,6 +14,7 @@ include(../../libs/useBase.pri)
 include(../../libs/useCore.pri)
 include(../../libs/useGui.pri)
 include(../../libs/useWidgets.pri)
+include(../../libs/useImage.pri)
 
 message(INCLUDEPATH = $${INCLUDEPATH})
 message(LIBS = $${LIBS})

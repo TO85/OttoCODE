@@ -13,10 +13,10 @@ public:
     KeySeg(const QString & qs);
 
 public:
-    bool equal(const KeySeg &other);
+//    bool equal(const KeySeg &other);
     bool startsWith(const KeySeg & stub) const;
     QString toQString() const;
-    bool operator == (const KeySeg &other) { return equal(other); }
+//    bool operator == (const KeySeg &other) { return equal(other); }
     operator QString () const { return toQString(); }
 
 public:
