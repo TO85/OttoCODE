@@ -18,6 +18,7 @@ public:
     const QList<Key> keys() const { return mKeyTMap.keys(); }
 
 public:
+    void clear() { mKeyTMap.clear(); }
     void insert(const Key &key, const T &t) { mKeyTMap.insert(key, t); }
 
 private:

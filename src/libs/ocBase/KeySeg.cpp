@@ -4,7 +4,7 @@
 #include "Sortable.h"
 
 KeySeg::KeySeg() {;}
-KeySeg::KeySeg(const QString &qs) : mString(qs) {;}
+KeySeg::KeySeg(const QString &qs) { set(qs); }
 #if 0
 bool KeySeg::equal(const KeySeg &other)
 {
@@ -26,7 +26,17 @@ void KeySeg::clear()
     mString.clear();
 }
 
+void KeySeg::set(const QString &string)
+{
+    mString.clear();
+    for (QChar c : string)
+        mString.append(smValidCharRx.match(c).hasMatch() ? c : smInvalidReplaceString);
+}
+
 /* ---------------------- static ---------------------- */
+
+QRegularExpression KeySeg::smValidCharRx = QRegularExpression("[a-zA-Z0-9_$#]");
+QString KeySeg::smInvalidReplaceString; // empty default
 
 QList<KeySeg> KeySeg::split(const String segNames)
 {

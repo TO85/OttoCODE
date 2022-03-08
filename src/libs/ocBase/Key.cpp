@@ -31,9 +31,20 @@ void Key::set(const char *pch)
     set(QString(pch));
 }
 
+Key Key::append(const KeySeg &seg)
+{
+    mSegments.append(seg);
+    return it();
+}
+
 int Key::count() const
 {
     return mSegments.count();
+}
+
+bool Key::isEmpty() const
+{
+    return mSegments.isEmpty();
 }
 
 KeySeg Key::first() const
@@ -64,6 +75,12 @@ QList<KeySeg> Key::list() const
     return mSegments;
 }
 
+Key Key::appended(const KeySeg &seg) const
+{
+    Key result = it();
+    return result.append(seg);
+}
+
 bool Key::equal(const Key &other) const
 {
     return toQString() == other.toQString();
@@ -82,9 +99,13 @@ void Key::clear()
 QString Key::toQString() const
 {
     QString result;
-    result = mSegments.first().toQString();
-    for (KeySeg ki : mSegments.mid(1))
-        result.append(separator() + ki.toQString());
+    if (notEmpty())
+    {
+        result = mSegments.first().toQString();
+        if (count() > 1)
+            for (KeySeg seg : mSegments.mid(1))
+                result.append(separator() + seg.toQString());
+    }
     return result;
 }
 

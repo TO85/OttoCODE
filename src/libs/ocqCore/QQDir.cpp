@@ -7,9 +7,10 @@ bool QQDir::isNull() const
     return it() == nullDir();
 }
 
-String QQDir::lastPath() const
+QString QQDir::lastPath() const
 {
-    return String(path()).lastSection();
+    const QString tPath = path();
+    return tPath.isEmpty() ? QString() : tPath.split('/').last();
 }
 
 QDir QQDir::smNullDir = QQDir("/nul");

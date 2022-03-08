@@ -1,6 +1,7 @@
 #include "ExcelsiorMain.h"
 
 #include <QApplication>
+#include <QFileInfo>
 
 #include <../../../common/version.h>
 #include "version.h"

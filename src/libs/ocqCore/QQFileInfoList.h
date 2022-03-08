@@ -2,7 +2,7 @@
 #include "ocqCore.h"
 
 #include <QList>
-#include "QQFileInfo"
+#include "QQFileInfo.h"
 
 #include <QMetaType>
 

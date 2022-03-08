@@ -8,5 +8,6 @@ class OCBASE_EXPORT KeyList : public QList<Key>
 {
 public:
     KeyList();
+    KeyList(QList<Key> other) : QList<Key>(other) {;}
 };
 

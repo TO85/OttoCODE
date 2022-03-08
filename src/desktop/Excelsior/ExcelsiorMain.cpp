@@ -7,12 +7,21 @@
 
 #include <ActionManager>
 #include <ImageFileDialog>
+#include <JsonMap>
+
 
 ExcelsiorMain::ExcelsiorMain(QApplication *pApp)
     : MdiMainWindow(pApp)
 {
     setObjectName("Excelsior:MainWindow");
-    qDebug() << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO << objectName();
+
+
+    QFileInfo fi("/data/git/OttoCODE/data/ocBase/Contact1.json");
+    JsonMap jm(fi);
+    jm.dump();
+
+
     QTimer::singleShot(500, this, &ExcelsiorMain::setup);
 }
 

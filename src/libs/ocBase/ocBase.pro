@@ -20,9 +20,11 @@ SOURCES += \
     FunctionInfo.cpp \
     HostId.cpp \
     Ident.cpp \
-    KeyItemList.cpp \
+    JsonMap.cpp \
+    JsonVariable.cpp \
     KeyList.cpp \
     KeySeg.cpp \
+    KeySegList.cpp \
     KeyUidDMap.cpp \
     Millisecond.cpp \
     MimeType.cpp \
@@ -49,7 +51,10 @@ HEADERS += \
     ../../include/Enumeration \
     ../../include/FunctionInfo \
     ../../include/HostId \
+    ../../include/JsonMap \
+    ../../include/JsonVariable \
     ../../include/Key \
+    ../../include/KeyList \
     ../../include/KeySeg \
     ../../include/KeyMap \
     ../../include/KeyUidDMap \
@@ -75,9 +80,11 @@ HEADERS += \
     FunctionInfo.h \
     HostId.h \
     Ident.h \
-    KeyItemList.h \
+    JsonMap.h \
+    JsonVariable.h \
     KeyList.h \
     KeySeg.h \
+    KeySegList.h \
     KeyUidDMap.h \
     Matrix2D.h \
     Millisecond.h \
@@ -107,3 +114,6 @@ unix {
     target.path = /usr/lib
 }
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    ../../../data/ocBase/Contact1.json

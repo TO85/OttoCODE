@@ -5,13 +5,11 @@
 
 #include <QMetaType>
 
-#include <String>
-
 class OCQCORE_EXPORT QQDir : public QDir
 {
 public:
     QQDir(const QDir &other) : QDir(other) {;}
-    QQDir(const String &pathName) : QDir(pathName) {;}
+    QQDir(const QString &pathName) : QDir(pathName) {;}
     QQDir() = default;
     ~QQDir() = default;
     QQDir(const QQDir &other) = default;
@@ -20,7 +18,7 @@ public:
 public:
     bool isNull() const;
     bool notNull() const { return ! isNull(); }
-    String lastPath() const;
+    QString lastPath() const;
 
 public: // static
     static QDir nullDir() { return smNullDir; }

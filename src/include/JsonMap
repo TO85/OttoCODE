@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/JsonMap
+#include "../libs/ocBase/JsonMap.h"

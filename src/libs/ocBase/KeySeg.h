@@ -1,7 +1,9 @@
 #pragma once
 #include "ocBase.h"
 
+#include <QChar>
 #include <QList>
+#include <QRegularExpression>
 #include <QString>
 
 #include "String.h"
@@ -32,6 +34,10 @@ private:
 
 private:
     QString mString;
+
+private:
+    static QRegularExpression smValidCharRx;
+    static QString smInvalidReplaceString;
 };
 
 

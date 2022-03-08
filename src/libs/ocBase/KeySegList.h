@@ -4,9 +4,9 @@
 #include <QList>
 #include "KeySeg.h"
 
-class OCBASE_EXPORT KeyItemList : public QList<KeySeg>
+class OCBASE_EXPORT KeySegList : public QList<KeySeg>
 {
 public:
-    KeyItemList();
+    KeySegList();
 };
 

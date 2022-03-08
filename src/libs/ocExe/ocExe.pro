@@ -10,9 +10,12 @@ CONFIG += c++11
 include(../libs.pri)
 
 SOURCES += \
+    CommandLine.cpp \
     ocExe.cpp
 
 HEADERS += \
+    ../../include/CommandLine \
+    CommandLine.h \
     ocExe_global.h \
     ocExe.h
 
