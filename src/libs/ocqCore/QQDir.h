@@ -27,6 +27,9 @@ private:
     QQDir it() const { return *this; }
     QQDir & it() { return *this; }
 
+private: // debug
+    QString attributes() const;
+
 private: // static
     static QDir smNullDir;
 };

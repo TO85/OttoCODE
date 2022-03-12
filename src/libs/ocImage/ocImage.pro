@@ -15,26 +15,32 @@ include(../useBase.pri)
 include(../useGui.pri)
 
 SOURCES += \
-    ImageData.cpp \
+    FloatImage.cpp \
+    FloatImagePlane.cpp \
     ImageFileDialog.cpp \
     ImageFileFormat.cpp \
     ImageFileFormatManager.cpp \
     ImageInfo.cpp \
-    ImageViewWidget.cpp \
+    ImageMdiDocument.cpp \
+    ImagePak.cpp \
     VideoFileFormat.cpp \
     ocImage.cpp
 
 HEADERS += \
-    ../../include/ImageData \
     ../../include/ImageFileDialog \
     ../../include/ImageFileFormat \
-    ../../include/ImageViewWidget \
-    ImageData.h \
+    ../../include/ImageInfo \
+    ../../include/ImageMdiDocument \
+    ../../include/ImagePak \
+    ../../include/VideoFileFormat \
+    FloatImage.h \
+    FloatImagePlane.h \
     ImageFileDialog.h \
     ImageFileFormat.h \
     ImageFileFormatManager.h \
     ImageInfo.h \
-    ImageViewWidget.h \
+    ImageMdiDocument.h \
+    ImagePak.h \
     VideoFileFormat.h \
     ocImage_global.h \
     ocImage.h

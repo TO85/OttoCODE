@@ -21,12 +21,10 @@ message(LIBS = $${LIBS})
 
 SOURCES += \
     ExcelsiorMain.cpp \
-    ImageMdiDocument.cpp \
     main.cpp
 
 HEADERS += \
-    ExcelsiorMain.h \
-    ImageMdiDocument.h
+    ExcelsiorMain.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

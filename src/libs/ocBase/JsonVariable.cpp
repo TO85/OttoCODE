@@ -82,6 +82,8 @@ QString JsonVariable::typeName(const QJsonValue::Type type)
     return result;
 }
 
+/* ----------------------- debug ------------------------ */
+
 QString JsonVariable::toDebugString() const
 {
     return QString("%1 = {%2} %3(%4)").arg(key()).arg(formatted())

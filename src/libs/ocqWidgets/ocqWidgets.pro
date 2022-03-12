@@ -14,6 +14,7 @@ include(../useGui.pri)
 
 SOURCES += \
     GridDialog.cpp \
+    MdiDocument.cpp \
     MdiGridWidget.cpp \
     MdiMainWindow.cpp \
     MdiSubWinWidget.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     ../../include/QQMainWindow \
     ../../include/QQMdiArea \
     GridDialog.h \
+    MdiDocument.h \
     MdiGridWidget.h \
     MdiMainWindow.h \
     MdiSubWinWidget.h \

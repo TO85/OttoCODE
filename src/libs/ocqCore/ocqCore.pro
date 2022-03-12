@@ -14,16 +14,19 @@ SOURCES += \
     QQDir.cpp \
     QQFileInfo.cpp \
     QQFileInfoList.cpp \
+    QQSize.cpp \
     ocqCore.cpp
 
 HEADERS += \
     ../../include/QQDir \
     ../../include/QQFileInfo \
     ../../include/QQFileInfoList \
+    ../../include/QQSize \
     ObjectHelper.h \
     QQDir.h \
     QQFileInfo.h \
     QQFileInfoList.h \
+    QQSize.h \
     ocqCore_global.h \
     ocqCore.h
 

@@ -4,9 +4,6 @@
 
 #include <QQDir>
 
-class ImageWindowWidget;
-class ColorComponentWindowWidget;
-
 class ExcelsiorMain : public MdiMainWindow
 {
     Q_OBJECT

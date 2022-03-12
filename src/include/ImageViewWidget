@@ -1,2 +1,0 @@
-// file: {Lancelot}./src/include/ImageViewWidget
-#include "../libs/ocImage/ImageViewWidget.h"

@@ -1,5 +1,7 @@
 #include "Ident.h"
 
+#include <QVariant>
+
 #include "Key.h"
 #include "String.h"
 #include "StringList.h"
@@ -16,6 +18,7 @@ private:
     Key dmKey;
     String dmName;
     StringList dmDesc;
+    QVariant dmData;
 };
 
 Ident::Ident() : data(new IdentData)

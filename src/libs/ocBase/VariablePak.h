@@ -1,24 +1,21 @@
 #pragma once
+#include "ocBase.h"
 
 #include <QSharedDataPointer>
-class VariablePackData;
+class VariablePakData;
 
 class QByteArray;
 class QVariant;
 
-class Uid;
-class Key;
+#include <Key>
+#include <Uid>
 class Variable;
 class VariableList;
 class VariableMap;
 
-class VariablePack
+class OCBASE_EXPORT VariablePak
 {
 public:
-    VariablePack();
-    VariablePack(const VariablePack &other);
-    VariablePack &operator=(const VariablePack & rhs);
-    ~VariablePack();
 
 public:
     const Uid uid() const;
@@ -39,11 +36,20 @@ public:
     QVariantList &variants();
     VariableList &variables();
     VariableMap &variableMap();
+    void set(const QByteArray &bytes);
+    void set(const QVariant &bytes);
+    void set(const int index, const QVariant &vari, const Key &key=Key());
+    void set(const Key &key, const QVariant &vari);
+    void set(const int index, const Variable &var);
+    void set(const Key &key, const Variable &var);
     Variable & operator [] (const int index);
     Variable & operator [] (const Key & key);
 
 private:
-    QSharedDataPointer<VariablePackData> data;
+    Uid mUid;
+    QSharedDataPointer<VariablePakData> data;
+
 };
+
 
 

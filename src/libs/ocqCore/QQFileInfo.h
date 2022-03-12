@@ -14,5 +14,8 @@ public:
     QQFileInfo &operator = (const QQFileInfo &other) = default;
 };
 
+extern OCQCORE_EXPORT bool operator == (const QQFileInfo &lfi, const QQFileInfo &rfi);
+extern OCQCORE_EXPORT bool operator <  (const QQFileInfo &lfi, const QQFileInfo &rfi);
+
 Q_DECLARE_METATYPE(QQFileInfo);
 

@@ -1,4 +1,4 @@
-#include "VariablePack.h"
+#include "VariablePak.h"
 
 #include <QByteArray>
 #include <QVariant>
@@ -10,10 +10,9 @@
 #include <VariableList.h>
 #include <VariableMap.h>
 
-class VariablePackData : public QSharedData
+class VariablePakData : public QSharedData
 {
 public:
-    Uid dmUid;
     Key dmKey;
     QByteArray dmBytes;
     QVariant dmData;
@@ -22,25 +21,25 @@ public:
     VariableMap dmVariableMap;
 };
 
-VariablePack::VariablePack() : data(new VariablePackData)
+VariablePak::VariablePak() : data(new VariablePakData)
 {
 
 }
 
-VariablePack::VariablePack(const VariablePack &other)
+VariablePak::VariablePak(const VariablePak &other)
     : data{other.data}
 {
 
 }
 
-VariablePack &VariablePack::operator=(const VariablePack &rhs)
+VariablePak &VariablePak::operator=(const VariablePak &rhs)
 {
     if (this != &rhs)
         data.operator=(rhs.data);
     return *this;
 }
 
-VariablePack::~VariablePack()
+VariablePak::~VariablePak()
 {
 
 }

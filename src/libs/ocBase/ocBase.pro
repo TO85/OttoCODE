@@ -42,7 +42,7 @@ SOURCES += \
     Variable.cpp \
     VariableList.cpp \
     VariableMap.cpp \
-    VariablePack.cpp \
+    VariablePak.cpp \
     ocBase.cpp
 
 HEADERS += \
@@ -58,6 +58,7 @@ HEADERS += \
     ../../include/KeySeg \
     ../../include/KeyMap \
     ../../include/KeyUidDMap \
+    ../../include/Matrix2D \
     ../../include/Millisecond \
     ../../include/MimeType \
     ../../include/MimeTypeManager \
@@ -72,7 +73,7 @@ HEADERS += \
     ../../include/Variable \
     ../../include/VariableList \
     ../../include/VariableMap \
-    ../../include/VariablePack \
+    ../../include/VariablePak \
     AsciiChar.h \
     AsciiString.h \
     Error.h \
@@ -105,7 +106,7 @@ HEADERS += \
     Variable.h \
     VariableList.h \
     VariableMap.h \
-    VariablePack.h \
+    VariablePak.h \
     ocBase.h \
     ocBase_global.h
 

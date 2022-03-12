@@ -1,0 +1,2 @@
+// file: {Lancelot}./src/include/ImageInfo
+#include "../libs/ocImage/ImageInfo.h"

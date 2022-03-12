@@ -1,0 +1,2 @@
+// file: {Lancelot}./src/include/ImagePak
+#include "../libs/ocImage/ImagePak.h"
