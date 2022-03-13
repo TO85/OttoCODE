@@ -1,5 +1,5 @@
 #pragma once
-#include "ocBase.h"
+#include "ocType.h"
 
 #include <QSharedDataPointer>
 class VariablePakData;
@@ -13,9 +13,13 @@ class Variable;
 class VariableList;
 class VariableMap;
 
-class OCBASE_EXPORT VariablePak
+class OCTYPE_EXPORT VariablePak
 {
 public:
+    VariablePak();
+    VariablePak(const VariablePak &);
+    VariablePak &operator=(const VariablePak &);
+    ~VariablePak();
 
 public:
     const Uid uid() const;

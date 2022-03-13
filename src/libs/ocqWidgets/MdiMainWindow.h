@@ -25,6 +25,11 @@ public:
 public slots:
     void addSubWindow(MdiSubWinWidget *pSubWinWidget);
 
+protected slots:
+    virtual void setupActions();
+    virtual void setupConnections();
+
+
 public slots: // actions
     virtual void windowTabbed();
     virtual void windowSubView();

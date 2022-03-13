@@ -1,12 +1,12 @@
 #pragma once
 
 #include <QMap>
-#include "Sortable.h"
 #include "Variable.h"
 
 #include <QMetaType>
 
-#include "Key.h"
+#include <Key>
+#include <Sortable>
 
 class VariableMap : public QMap<Key, Variable>
 {

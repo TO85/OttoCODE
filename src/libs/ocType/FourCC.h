@@ -1,11 +1,13 @@
 #pragma once
-#include "ocBase.h"
+#include "ocType.h"
 
 #include <QMetaType>
 
+#include <TypeDefs>
+
 class AsciiString;
 
-class OCBASE_EXPORT FourCC
+class OCTYPE_EXPORT FourCC
 {
 public:
     FourCC(const char * pch);

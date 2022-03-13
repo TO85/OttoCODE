@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/KeySeg
+#include "../libs/ocBase/KeySegList.h"

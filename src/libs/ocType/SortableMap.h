@@ -2,7 +2,8 @@
 
 #include <QList>
 #include <QMap>
-#include "Sortable.h"
+
+#include <Sortable>
 
 template <typename T>
 class SortableMap : public QMap<Sortable, T>

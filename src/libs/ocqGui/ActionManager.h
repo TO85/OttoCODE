@@ -6,6 +6,7 @@
 class QAction;
 
 #include <KeyMap>
+#include <QQString>
 class Key;
 
 class OCQGUI_EXPORT ActionManager : public QObject
@@ -21,7 +22,7 @@ public:
                      const QByteArray &signature, const bool scanParents=false);
 
 public slots:
-    QAction *add(const Key &key, const QString &text=QString());
+    QAction *add(const Key &key, const QQString &text=QQString());
     void add(const Key &key, QAction *action);
 
 public: // static

@@ -5,7 +5,7 @@
 
 FileSystemObject::FileSystemObject(QObject *parent) : QObject{parent} {;}
 
-FileSystemObject::FileSystemObject(const String &rootPath, QObject *parent)
+FileSystemObject::FileSystemObject(const QString &rootPath, QObject *parent)
     : QObject{parent}
 {
     RootDir(rootPath);

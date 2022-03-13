@@ -1,12 +1,12 @@
 #pragma once
-#include "ocBase.h"
+#include "ocType.h"
 
 #include <QMetaType>
 #include <QVariant>
 
-#include "Key.h"
+#include <Key>
 
-class OCBASE_EXPORT Variable
+class OCTYPE_EXPORT Variable
 {
 public:
     Variable(const Key &key, const QVariant &variant);

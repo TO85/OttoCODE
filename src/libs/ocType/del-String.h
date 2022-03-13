@@ -1,41 +1,36 @@
 #pragma once
 
 #include <QString>
+#include <QStringList>
 
 #include <QMetaType>
 
-class StringList;
-
-class String : public QString
+class QQString : public QString
 {
 public:
-    String(const QString &other) : QString(other) {;}
-    String(const char *psz) : QString(psz) {;}
-    String() = default;
-    String(const String &other) = default;
-    ~String() = default;
-    String &operator = (const String &other) = default;
+    QQString(const QString &other) : QString(other) {;}
+    QQString(const char *psz) : QString(psz) {;}
 
 public:
     bool notNull() const { return ! QString::isNull(); }
     bool notEmpty() const { return ! QString::isEmpty(); }
-    StringList split(const QChar &separator=sectionDelimiter()) const;
+    QStringList split(const QChar &separator=sectionDelimiter()) const;
     int sectionCount() const;
-    String firstSection() const;
-    String firstSections(const int n) const;
-    String lastSection() const;
-    String lastSections(const int n) const;
-    StringList sectionList() const;
-    bool equal(const String &other) const;
-    bool less(const String &other) const;
-    bool operator == (const String &other) const { return equal(other); }
-    bool operator <  (const String &other) const { return less(other); }
-    String replaced(QChar before, QChar after) const;
+    QQString firstSection() const;
+    QQString firstSections(const int n) const;
+    QQString lastSection() const;
+    QQString lastSections(const int n) const;
+    QStringList sectionList() const;
+    bool equal(const QQString &other) const;
+    bool less(const QQString &other) const;
+    bool operator == (const QQString &other) const { return equal(other); }
+    bool operator <  (const QQString &other) const { return less(other); }
+    QQString replaced(QChar before, QChar after) const;
 
 public:
 
 protected:
-    String(const QChar & sectionDelimiter, const SectionFlags sectionFlags, const QString & other);
+    QQString(const QChar & sectionDelimiter, const SectionFlags sectionFlags, const QString & other);
 
 private:
     QString qstring() const { return *this; }
@@ -50,9 +45,15 @@ protected: // static
 private: // static
     static QChar smSectionDelimiter;
     static SectionFlags smSectionFlags;
+
+public:
+    QQString() = default;
+    QQString(const QQString &other) = default;
+    ~QQString() = default;
+    QQString &operator = (const QQString &other) = default;
 };
 
-Q_DECLARE_METATYPE(String);
+Q_DECLARE_METATYPE(QQString);
 
 #if 0
 #include <QtCore/QByteArray>

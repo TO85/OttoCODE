@@ -5,6 +5,8 @@
 #include <QTimeZone>
 #include <QString>
 
+#include "TypeDefs.h"
+
 class OCBASE_EXPORT Millisecond
 {
 public:

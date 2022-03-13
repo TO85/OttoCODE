@@ -2,14 +2,14 @@
 
 #include <QMap>
 #include <QMetaType>
+#include <QStringList>
 
-#include "String.h"
-#include "StringList.h"
+#include <QQString>
 
 class StringTree
 {
 public:
-    StringTree(const StringList &strings) { set(strings); }
+    StringTree(const QStringList &strings) { set(strings); }
     StringTree() = default;
     ~StringTree() = default;
     StringTree(const StringTree &other) = default;
@@ -17,10 +17,10 @@ public:
 
 public:
 
-    void set(const StringList &strings);
+    void set(const QStringList &strings);
 
 private:
-    QMap<String, String> mSectionsNodeMap;
+    QMap<QQString, QQString> mSectionsNodeMap;
 };
 
 

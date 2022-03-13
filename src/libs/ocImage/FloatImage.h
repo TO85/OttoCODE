@@ -1,19 +1,24 @@
 #pragma once
 #include "ocImage.h"
 
-#include <QMetaType>
+#include <Key>
 
+class FloatImageData;
 
 class OCIMAGE_EXPORT FloatImage
 {
 public:
-
+    FloatImage();
+    ~FloatImage();
+    FloatImage(const FloatImage &);
+    FloatImage &operator=(const FloatImage &);
 
 public:
-    FloatImage() = default;
-    ~FloatImage() = default;
-    FloatImage(const FloatImage &other) = default;
-    FloatImage &operator=(const FloatImage & rhs) = default;
+    Key key() const;
+
+private:
+    QSharedDataPointer<FloatImageData> data;
+
 };
 
 

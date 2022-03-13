@@ -1,4 +1,5 @@
 QT -= gui
+QT *= network ## QHostInfo
 
 TEMPLATE = lib
 DEFINES += OCTYPE_LIBRARY
@@ -10,12 +11,71 @@ CONFIG += c++11
 include(../libs.pri)
 
 SOURCES += \
+    AsciiChar.cpp \
+    AsciiString.cpp \
+    BaseString.cpp \
     CommaString.cpp \
+    Error.cpp \
+    FourCC.cpp \
+    FunctionInfo.cpp \
+    HostId.cpp \
+    JsonMap.cpp \
+    JsonVariable.cpp \
+    MimeType.cpp \
+    MimeTypeManager.cpp \
+    NetworkId.cpp \
+    ProcessId.cpp \
+    Rect.cpp \
+    SortableMap.cpp \
+    StringTree.cpp \
+    Variable.cpp \
+    VariableList.cpp \
+    VariableMap.cpp \
+    VariablePak.cpp \
     ocType.cpp
 
 HEADERS += \
+    ../../include/AsciiChar \
+    ../../include/AsciiString \
+    ../../include/CommaString \
+    ../../include/DualMap \
+    ../../include/HostId \
+    ../../include/JsonMap \
+    ../../include/JsonVariable \
+    ../../include/Matrix2D \
+    ../../include/MimeType \
+    ../../include/MimeTypeManager \
+    ../../include/NetworkId \
+    ../../include/ProcessId \
+    ../../include/SortableMap \
+    ../../include/String \
+    ../../include/Variable \
+    ../../include/VariableList \
+    ../../include/VariableMap \
+    ../../include/VariablePak \
+    AsciiChar.h \
+    AsciiString.h \
+    BaseString.h \
     CommaString.h \
     DualMap.h \
+    Error.h \
+    FourCC.h \
+    FunctionInfo.h \
+    HostId.h \
+    JsonMap.h \
+    JsonVariable.h \
+    Matrix2D.h \
+    MimeType.h \
+    MimeTypeManager.h \
+    NetworkId.h \
+    ProcessId.h \
+    Rect.h \
+    SortableMap.h \
+    StringTree.h \
+    Variable.h \
+    VariableList.h \
+    VariableMap.h \
+    VariablePak.h \
     ocType_global.h \
     ocType.h
 

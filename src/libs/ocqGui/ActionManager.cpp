@@ -4,6 +4,7 @@
 #include <QAction>
 #include <QMetaMethod>
 
+
 ActionManager::ActionManager(QObject *parent)
     : QObject{parent}
 {
@@ -43,10 +44,10 @@ bool ActionManager::connectSlot(const Key &key, const QObject *actor,
     return result;
 }
 
-QAction *ActionManager::add(const Key &key, const QString &text)
+QAction *ActionManager::add(const Key &key, const QQString &text)
 {
     qDebug() << Q_FUNC_INFO << key << text;
-    String tActionText = text.isEmpty() ? ("&"+key.last()) : text;
+    QQString tActionText = text.isEmpty() ? ("&"+key.last()) : text;
     QAction *pAction = new QAction(tActionText);
     add(key, pAction);
     return pAction;

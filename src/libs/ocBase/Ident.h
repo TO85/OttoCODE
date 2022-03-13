@@ -5,7 +5,7 @@ class IdentData;
 
 class Uid;
 class Key;
-class String;
+class QQString;
 class StringList;
 
 class Ident
@@ -21,8 +21,8 @@ public:
     Uid uid(const Uid uid);
     Key key() const;
     Key key(const Key key);
-    String name() const;
-    String name(const String name) ;
+    QQString name() const;
+    QQString name(const QQString name) ;
     StringList description() const;
     StringList description(const StringList desc);
 

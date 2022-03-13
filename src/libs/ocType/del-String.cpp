@@ -1,43 +1,44 @@
 #include "String.h"
 
-#include "Sortable.h"
-#include "StringList.h"
+#include <QStringList>
 
-StringList String::split(const QChar &separator) const
+#include <Sortable>
+
+QStringList QQString::split(const QChar &separator) const
 {
     return QString::split(separator,
                           Qt::SplitBehavior((sectionFlags() & QString::SectionSkipEmpty) ? Qt::SkipEmptyParts : 0),
                           Qt::CaseSensitivity((sectionFlags() & SectionCaseInsensitiveSeps) ? Qt::CaseInsensitive : 0));
 }
 
-int String::sectionCount() const
+int QQString::sectionCount() const
 {
     return sectionList().count();
 }
 
-String String::firstSection() const
+QQString QQString::firstSection() const
 {
     return section(sectionDelimiter(), 0, 0, sectionFlags());
 }
 
-String String::firstSections(const int n) const
+QQString QQString::firstSections(const int n) const
 {
     const int k = (n < 0) ? (sectionCount() + n) : n;
     return section(sectionDelimiter(), 0, k, sectionFlags());
 }
 
-String String::lastSection() const
+QQString QQString::lastSection() const
 {
-    String result;
+    QQString result;
     const int ixLast = sectionCount() - 1;
     if (ixLast >= 0)
         result = section(sectionDelimiter(), ixLast, ixLast, sectionFlags());
     return result;
 }
 
-String String::lastSections(const int n) const
+QQString QQString::lastSections(const int n) const
 {
-    String result;
+    QQString result;
     const int ixLast = sectionCount() - 1;
     const int ixBegin = ixLast - n;
     if (ixLast > ixBegin)
@@ -45,42 +46,42 @@ String String::lastSections(const int n) const
     return result;
 }
 
-StringList String::sectionList() const
+QStringList QQString::sectionList() const
 {
     return split(sectionDelimiter());
 }
 
-String String::replaced(QChar before, QChar after) const
+QQString QQString::replaced(QChar before, QChar after) const
 {
-    String result = qstring();
+    QQString result = qstring();
     result.replace(before, after, Qt::CaseInsensitive);
     return result;
 }
 
 /* ------------------------ static ------------------------- */
 
-QChar String::smSectionDelimiter('/');
-String::SectionFlags String::smSectionFlags
+QChar QQString::smSectionDelimiter('/');
+QQString::SectionFlags QQString::smSectionFlags
         = QString::SectionSkipEmpty
             | QString::SectionIncludeTrailingSep
             | QString::SectionCaseInsensitiveSeps;
 
-QChar String::sectionDelimiter()
+QChar QQString::sectionDelimiter()
 {
     return smSectionDelimiter;
 }
 
-QChar String::sectionDelimiter(const QChar &delimiter)
+QChar QQString::sectionDelimiter(const QChar &delimiter)
 {
     return smSectionDelimiter = delimiter;
 }
 
-String::SectionFlags String::sectionFlags()
+QQString::SectionFlags QQString::sectionFlags()
 {
     return smSectionFlags;
 }
 
-QString::SectionFlags String::sectionFlags(const SectionFlags &flags)
+QString::SectionFlags QQString::sectionFlags(const SectionFlags &flags)
 {
     return smSectionFlags = flags;
 }

@@ -12,7 +12,6 @@
 
 #include <ActionManager>
 #include <MdiGridWidget>
-#include <MenuManager>
 
 #include "EtcSubWinWidget.h"
 
@@ -53,49 +52,50 @@ void BossMainWindow::aboutAppBoss()
                        " All rights reserved worldwide.");
 }
 
+void BossMainWindow::setupActions()
+{
+    Q_ASSERT(this);
+    qDebug() << Q_FUNC_INFO << objectName();
+    MdiMainWindow::setupActions();
+    actions()->add("View/Etc");
+    actions()->add("View/Exit");
+    actions()->add("Help/AboutQt", "About &Qt6");
+    actions()->add("Help/AboutOttoCode", "About &OttoCODE");
+    actions()->add("Help/AppBoss", "&About AppBoss");
+}
+
 void BossMainWindow::setupMenus()
 {
     Q_ASSERT(this);
     qDebug() << Q_FUNC_INFO << objectName();
 
-    QMenu * pView = menus()->addPrimary("View");
-    QAction *pViewEtc = menus()->add("View/Etc");
-    Q_UNUSED(pViewEtc); // TODO add tool tips, etc.
-    pView->addSeparator();
-    QAction * pExit = menus()->add("View/Exit", "E&xit");
-    actions()->add("View/Etc", pViewEtc);
-    actions()->add("View/Exit", pExit);
+    addMenu("MainMenu50/View");
+    QMenu * pViewMenu = menu("MainMenu50/View");
+    pViewMenu->addAction(action("View/Etc"));
+    pViewMenu->addSeparator();
+    pViewMenu->addAction(action("View/Exit"));
 
-    QMenu * pWindow = menus()->addPrimary("Window");
-    // NEEDDO Placeholder for open windows
-    pWindow->addSeparator();
-    QAction *pSubWindow = menus()->add("Window/SubWindow", "Sub &Window");
-    QAction *pTabbed = menus()->add("Window/Tabbed");
-    // TODO add tool tips, etc.
-    actions()->add("Window/SubWindow", pSubWindow);
-    actions()->add("Window/Tabbed", pTabbed);
+    addMenu("MainMenu70/Window");
+    QMenu * pWindowMenu = menu("MainMenu70/Window");
+    pWindowMenu->addAction(action("Window/SubWindow"));
+    pWindowMenu->addAction(action("Window/Tabbed"));
 
-    QMenu * pHelp = menus()->addPrimary("Help");
-    pHelp->addSeparator();
-    QAction *pAboutQt = menus()->add("Help/AboutQt", "About &Qt");
-    QAction *pAboutOttoCode = menus()->add("Help/AboutOttoCode", "About &OttoCODE");
-    QAction *pAboutAppBoss = menus()->add("Help/AppBoss", "About App&Boss");
-    actions()->add("Help/AboutQt", pAboutQt);
-    actions()->add("Help/AboutOttoCode", pAboutOttoCode);
-    actions()->add("Help/AppBoss", pAboutAppBoss);
+    addMenu("MainMenu90/Help");
+    QMenu * pHelpMenu = menu("MainMenu90/Help");
+    pHelpMenu->addAction(action("Help/AboutQt"));
+    pHelpMenu->addAction(action("Help/AboutOttoCode"));
+    pHelpMenu->addAction(action("Help/AppBoss"));
 }
 
 void BossMainWindow::setupConnections()
 {
     Q_ASSERT(this);
     qDebug() << Q_FUNC_INFO << objectName();
+    MdiMainWindow::setupConnections();
 
     actions()->connectSlot("View/Etc", this, "viewEtc()");
+    actions()->connectSlot("View/Exit", this, "exit()", true);
     actions()->connectSlot("Help/AboutQt", qApp, "aboutQt()");
     actions()->connectSlot("Help/AboutOttoCode", this, "aboutOttoCODE()");
     actions()->connectSlot("Help/AppBoss", this, "aboutAppBoss()");
-    actions()->connectSlot("Window/SubWindow", this, "windowSubView()", true);
-    actions()->connectSlot("Window/Tabbed", this, "windowTabbed()", true);
-//    actions()->connectSlot("View/Exit", core(), "quit()");
-    Q_ASSERT(connect(actions()->action("View/Exit"), SIGNAL(triggered()), qApp, SLOT(quit())));
 }

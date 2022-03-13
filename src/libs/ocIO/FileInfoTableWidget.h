@@ -8,7 +8,7 @@
 #include <QMap>
 
 #include <KeySeg>
-#include <String>
+#include <QQString>
 
 #include "../ocqCore/ObjectHelper.h"
 
@@ -56,7 +56,7 @@ private:
     QFont mFont;
     Columns mColumns;
     QList<Columns> mColumnPositionList;
-    QMap<Column, String> mColumnStringMap;
+    QMap<Column, QQString> mColumnStringMap;
     QMap<Column, int> mColumnCharacterWidthMap;
 };
 

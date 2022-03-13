@@ -34,5 +34,8 @@ private: // static
     static QDir smNullDir;
 };
 
+extern OCQCORE_EXPORT bool operator <  (const QQDir &lhs, const QQDir &rhs);
+extern OCQCORE_EXPORT bool operator == (const QQDir &lhs, const QQDir &rhs);
+
 Q_DECLARE_METATYPE(QQDir);
 

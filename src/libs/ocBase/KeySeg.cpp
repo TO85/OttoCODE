@@ -1,16 +1,10 @@
 #include "KeySeg.h"
 
 #include "Key.h"
-#include "Sortable.h"
 
 KeySeg::KeySeg() {;}
 KeySeg::KeySeg(const QString &qs) { set(qs); }
-#if 0
-bool KeySeg::equal(const KeySeg &other)
-{
-    return Sortable(it()).equal(Sortable(other));
-}
-#endif
+
 bool KeySeg::startsWith(const KeySeg &stub) const
 {
     return mString.startsWith(stub.toQString());
@@ -38,12 +32,24 @@ void KeySeg::set(const QString &string)
 QRegularExpression KeySeg::smValidCharRx = QRegularExpression("[a-zA-Z0-9_$#]");
 QString KeySeg::smInvalidReplaceString; // empty default
 
-QList<KeySeg> KeySeg::split(const String segNames)
+QList<KeySeg> KeySeg::split(const QString segNames)
 {
-    const String tSimplified = segNames.simplified();
-    const Key tKey = tSimplified.replaced(' ', '/');
+    QString tSimplified = segNames.simplified();
+    tSimplified.replace(' ', '/');
+    const Key tKey = tSimplified;
     return tKey.list();
 }
 
 /* ---------------------- extern ---------------------- */
+
+bool operator == (const KeySeg &lhs, const KeySeg &rhs)
+{
+    return lhs.toQString().toCaseFolded() == rhs.toQString().toCaseFolded();
+}
+
+bool operator <  (const KeySeg &lhs, const KeySeg &rhs)
+{
+    return lhs.toQString().toCaseFolded() <  rhs.toQString().toCaseFolded();
+}
+
 

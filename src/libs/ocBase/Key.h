@@ -33,7 +33,7 @@ public: // const
     bool equal(const Key &other) const;
     bool less(const Key &other) const;
     QString toQString() const;
-    bool operator == (const String &other) const { return equal(other); }
+    bool operator == (const Key &other) const { return equal(other); }
     bool operator < (const Key &other) const { return less(other); }
     operator QString () const { return toQString(); }
 

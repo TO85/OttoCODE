@@ -6,9 +6,9 @@
 
 #include <QQDir>
 
-#include "Key.h"
-#include "KeySeg.h"
-#include "Uid.h"
+#include <Key>
+#include <KeySeg>
+#include <Uid>
 
 bool Sortable::equal(const Sortable &other) const
 {

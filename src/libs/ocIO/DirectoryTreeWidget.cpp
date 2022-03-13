@@ -1,10 +1,9 @@
 #include "DirectoryTreeWidget.h"
 
 #include <QGuiApplication>
+#include <QStringList>
 
 #include <CommaString>
-#include <String>
-#include <StringList>
 
 
 DirectoryTreeWidget::DirectoryTreeWidget(QWidget *parent)
@@ -23,7 +22,7 @@ void DirectoryTreeWidget::configure(const VariableMap &config)
     mColumnCharacterWidthMap.insert($nullColumn, 60);
 
     mFont = tFont;
-    const StringList tColumnList = tColumns.split();
+    const QStringList tColumnList = tColumns.split();
     for (auto columnName : tColumnList)
     {
         const Column tColumn = columnValue(columnName);
@@ -35,6 +34,7 @@ void DirectoryTreeWidget::configure(const VariableMap &config)
 
 void DirectoryTreeWidget::set(const FileSystemTree &tree)
 {
+    Q_UNUSED(tree); // NEEDDO use tree
 
 }
 

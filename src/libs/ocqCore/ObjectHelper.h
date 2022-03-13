@@ -19,6 +19,6 @@ template <class QOBJ> QOBJ enumValue(const char * name)
 class ObjectHelper
 {
 public:
-    ObjectHelper();
+    ObjectHelper() {;}
 };
 

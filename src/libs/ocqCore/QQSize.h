@@ -10,6 +10,7 @@
 class OCQCORE_EXPORT QQSize : public QSize
 {
 public:
+    QQSize(const QSize other) : QSize(other) {;}
     QQSize(const int width, const int height) : QSize(width, height) {;}
 
 public:

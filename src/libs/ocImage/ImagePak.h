@@ -5,7 +5,6 @@
 
 #include <QFileInfo>
 #include <QImage>
-#include <QMetaType>
 
 #include "FloatImage.h"
 #include "FloatImagePlane.h"
@@ -57,12 +56,6 @@ public:
     void load(const FloatImage &fi);
     void load(const FloatImagePlane &fip);
 
-public:
-    ImagePak() = default;
-    ~ImagePak() = default;
-    ImagePak(const ImagePak &other) = default;
-    ImagePak &operator=(const ImagePak & rhs) = default;
 };
 
-Q_DECLARE_METATYPE(ImagePak);
 

@@ -10,6 +10,8 @@ CONFIG += c++11
 
 include(../libs.pri)
 include(../../useBase.pri)
+include(../../useCore.pri)
+include(../../useType.pri)
 
 SOURCES += \
     ActionManager.cpp \

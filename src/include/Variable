@@ -1,2 +1,2 @@
 // file: {OttoCODE}./src/include/Variable
-#include "../libs/ocBase/Variable.h"
+#include "../libs/ocType/Variable.h"

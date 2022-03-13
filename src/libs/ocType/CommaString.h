@@ -1,12 +1,12 @@
 #pragma once
 
-#include <String>
+#include <QQString>
 
-class CommaString : public String
+class CommaString : public QQString
 {
 public:
-    CommaString() : String(',', String::sectionFlags(), QString()) {;}
-    CommaString(const QString & other) : String(',', String::sectionFlags(), other) {;}
-    CommaString(const char *psz) : String(',', String::sectionFlags(), QString(psz)) {;}
+    CommaString() : QQString(',', QQString::sectionFlags(), QString()) {;}
+    CommaString(const QString & other) : QQString(',', QQString::sectionFlags(), other) {;}
+    CommaString(const char *psz) : QQString(',', QQString::sectionFlags(), QString(psz)) {;}
 };
 

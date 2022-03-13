@@ -2,14 +2,12 @@
 
 #include <QMap>
 
-#include <String>
-
 class FileSystemTreeData : public QSharedData
 {
 public:
     QQDir dmRootDir;
-    QMap<String, QQFileInfo> dmFileNameInfoMap;
-    QMap<String, QQDir> dmPathNameDirMap;
+    QMap<QQString, QQFileInfo> dmFileNameInfoMap;
+    QMap<QQString, QQDir> dmPathNameDirMap;
     QMap<QQDir, QQFileInfoList> dmDirFileInfoListMap;
 };
 
@@ -43,7 +41,7 @@ QQDir FileSystemTree::rootDir() const
     return data ? data->dmRootDir : QQDir();
 }
 
-QQDir FileSystemTree::rootDir(const String &pathName)
+QQDir FileSystemTree::rootDir(const QQString &pathName)
 {
     return rootDir(QQDir(pathName));
 }

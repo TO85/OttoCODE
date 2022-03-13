@@ -1,13 +1,13 @@
 #pragma once
-#include "ocBase.h"
+#include "ocType.h"
 
 #include <QMap>
 #include <QJsonValue>
 #include <QMetaType>
 
-#include "Key.h"
+#include <Key>
 
-class OCBASE_EXPORT JsonVariable
+class OCTYPE_EXPORT JsonVariable
 {
 public:
     JsonVariable(const Key &key, const QJsonValue &value);

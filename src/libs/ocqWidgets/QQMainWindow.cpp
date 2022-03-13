@@ -3,15 +3,14 @@
 #include <QApplication>
 #include <QMenu>
 #include <QMenuBar>
+#include <QTimer>
 
 #include <ActionManager>
-#include <MenuManager>
-#include <String>
+#include <QQString>
 
 QQMainWindow::QQMainWindow(QApplication *pApp)
     : mpApplication(pApp)
     , mpActionManager(new ActionManager(this))
-//    , mpMenuManager(new MenuManager(this, mpActionManager, this))
 {
     setObjectName("QQMainWindow");
 }
@@ -63,7 +62,7 @@ QMenu *QQMainWindow::menu(const Key key)
     return mKeyMenuMap.value(key);
 }
 
-QMenu * QQMainWindow::addMenu(const Key key, const String &text)
+QMenu * QQMainWindow::addMenu(const Key key, const QQString &text)
 {
     Q_ASSERT(this);
     Q_ASSERT(mpActionManager);
@@ -90,6 +89,11 @@ void QQMainWindow::setup()
     setupWidgets();
     setupFinish();
     emit setupComplete();
+}
+
+void QQMainWindow::exit()
+{
+    QTimer::singleShot(10, qApp, &QCoreApplication::quit);
 }
 
 void QQMainWindow::setupStart()

@@ -8,9 +8,9 @@ class QCoreApplication;
 class QMenu;
 
 #include <KeyMap>
+#include <QQString>
 class ActionManager;
 class Key;
-class String;
 
 class OCQWIDGETS_EXPORT QQMainWindow : public QMainWindow
 {
@@ -25,10 +25,11 @@ public:
     QMenu * menu(const Key key);
 
 public:
-    QMenu * addMenu(const Key key, const String &text=String());
+    QMenu * addMenu(const Key key, const QQString &text=QQString());
 
 public slots:
     void setup();
+    void exit();
 
 signals:
     void setupComplete();

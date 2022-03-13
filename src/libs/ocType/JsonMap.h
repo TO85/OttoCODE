@@ -1,5 +1,5 @@
 #pragma once
-#include "ocBase.h"
+#include "ocType.h"
 
 #include <QByteArray>
 #include <QFileInfo>
@@ -9,14 +9,15 @@
 #include <QJsonValue>
 #include <QMetaType>
 
-#include "Key.h"
-#include "KeyList.h"
-#include "KeyMap.h"
-#include "KeySeg.h"
-#include "KeySegList.h"
+#include <Key>
+#include <KeyList>
+#include <KeyMap>
+#include <KeySeg>
+#include <KeySegList>
+
 #include "JsonVariable.h"
 
-class OCBASE_EXPORT JsonMap
+class OCTYPE_EXPORT JsonMap
 {
 public:
     JsonMap(const QByteArray &utf8text);

@@ -1,7 +1,5 @@
 #include "Key.h"
 
-#include "Sortable.h"
-
 Key::Key(const KeySeg &ki) { set(ki); }
 Key::Key(const QList<KeySeg> &kql) : mSegments(kql) {;}
 Key::Key(const QString &qs) { set(qs); }

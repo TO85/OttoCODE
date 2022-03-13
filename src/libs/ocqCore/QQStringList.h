@@ -1,9 +1,9 @@
 #pragma once
 
-#include <List>
+#include <QList>
 #include "QQString.h"
 
-class QQStringList : public List<QQString>
+class QQStringList : public QList<QQString>
 {
 public:
     QQStringList();

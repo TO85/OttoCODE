@@ -1,11 +1,12 @@
 #pragma once
-#include "ocBase.h"
+#include "ocType.h"
 
 #include <QChar>
-
 #include <QMetaType>
 
-class OCBASE_EXPORT AsciiChar
+#include <TypeDefs>
+
+class OCTYPE_EXPORT AsciiChar
 {
 public:
     AsciiChar(const QChar &aChar) : mChar(aChar.cell()) {;}

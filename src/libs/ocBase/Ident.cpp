@@ -1,10 +1,10 @@
 #include "Ident.h"
 
+#include <QString>
+#include <QStringList>
 #include <QVariant>
 
 #include "Key.h"
-#include "String.h"
-#include "StringList.h"
 #include "Uid.h"
 
 class IdentData : public QSharedData
@@ -16,8 +16,8 @@ private:
     friend class Ident;
     Uid dmUid;
     Key dmKey;
-    String dmName;
-    StringList dmDesc;
+    QString dmName;
+    QStringList dmDesc;
     QVariant dmData;
 };
 

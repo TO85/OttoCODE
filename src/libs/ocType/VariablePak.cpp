@@ -4,11 +4,12 @@
 #include <QVariant>
 #include <QVariantList>
 
-#include <Key.h>
-#include <Uid.h>
-#include <Variable.h>
-#include <VariableList.h>
-#include <VariableMap.h>
+#include <Key>
+#include <Uid>
+
+#include "Variable.h"
+#include "VariableList.h"
+#include "VariableMap.h"
 
 class VariablePakData : public QSharedData
 {

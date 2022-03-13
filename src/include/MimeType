@@ -1,2 +1,2 @@
 // file: {OttoCODE}./src/include/MimeType
-#include "../libs/ocBase/MimeType.h"
+#include "../libs/ocType/MimeType.h"

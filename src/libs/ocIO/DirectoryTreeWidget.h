@@ -6,6 +6,7 @@
 class QFont;
 
 #include <QQDir>
+#include <QQString>
 #include <VariableMap>
 class FileSystemTree;
 
@@ -59,8 +60,8 @@ private:
     QFont mFont;
     Columns mColumns;
     QList<Columns> mColumnPositionList;
-    QList<String> mColumnNamePositionList;
-    QMap<Column, String> mColumnStringMap;
+    QList<QQString> mColumnNamePositionList;
+    QMap<Column, QQString> mColumnStringMap;
     QMap<Column, int> mColumnCharacterWidthMap;
 };
 

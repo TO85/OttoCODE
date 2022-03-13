@@ -1,5 +1,6 @@
 #include "MdiMainWindow.h"
 
+#include <ActionManager>
 #include <MdiGridWidget>
 
 MdiMainWindow::MdiMainWindow(QApplication *pApp)
@@ -33,6 +34,22 @@ void MdiMainWindow::addSubWindow(MdiSubWinWidget *pSubWinWidget)
     Q_ASSERT(pSubWinWidget);
     qDebug() << Q_FUNC_INFO << objectName() << pSubWinWidget->objectName();
     mSubWinWidgetKeyMap.insert(pSubWinWidget->key(), pSubWinWidget);
+}
+
+void MdiMainWindow::setupActions()
+{
+    Q_ASSERT(this);
+    qDebug() << Q_FUNC_INFO << objectName();
+    actions()->add("Window/SubWindow", "Sub &Window");
+    actions()->add("Window/Tabbed", "&Tabbed");
+}
+
+void MdiMainWindow::setupConnections()
+{
+    Q_ASSERT(this);
+    qDebug() << Q_FUNC_INFO << objectName();
+    actions()->connectSlot("Window/SubWindow", this, "windowSubView()", true);
+    actions()->connectSlot("Window/Tabbed", this, "windowTabbed()", true);
 }
 
 

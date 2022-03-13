@@ -1,7 +1,5 @@
 #include "QQDir.h"
 
-#include <Sortable>
-
 bool QQDir::isNull() const
 {
     return it() == nullDir();
@@ -25,3 +23,12 @@ QString QQDir::attributes() const
 
 QDir QQDir::smNullDir = QQDir("/nul");
 
+bool operator <  (const QQDir &lhs, const QQDir &rhs)
+{
+    return lhs.absolutePath() < rhs.absolutePath();
+}
+
+bool operator == (const QQDir &lhs, const QQDir &rhs)
+{
+    return lhs.absolutePath() < rhs.absolutePath();
+}

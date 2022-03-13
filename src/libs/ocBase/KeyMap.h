@@ -2,7 +2,6 @@
 #include "ocBase.h"
 
 #include "Key.h"
-#include "Sortable.h"
 
 template <typename T> class OCBASE_EXPORT KeyMap
 {

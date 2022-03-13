@@ -1,8 +1,8 @@
 #pragma once
 
 #include <QSharedDataPointer>
-
 class MimeTypeData;
+
 
 class MimeType
 {

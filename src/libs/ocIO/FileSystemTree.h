@@ -10,6 +10,7 @@ class FileSystemTreeData;
 #include <QQDir>
 #include <QQFileInfo>
 #include <QQFileInfoList>
+#include <QQString>
 
 class OCIO_EXPORT FileSystemTree
 {
@@ -21,7 +22,7 @@ public:
 
 public: // access
     QQDir rootDir() const;
-    QQDir rootDir(const String &pathName);
+    QQDir rootDir(const QQString &pathName);
     QQDir rootDir(const QDir &qdir);
     int fileCount() const;
     int dirCount() const;

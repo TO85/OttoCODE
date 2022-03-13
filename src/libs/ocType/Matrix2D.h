@@ -1,12 +1,12 @@
 #pragma once
-#include "ocBase.h"
+#include "ocType.h"
 
 #include <QList>
 #include <QPoint>
 
 #include <QQSize>
 
-template <typename T> class OCBASE_EXPORT Matrix2D
+template <typename T> class OCTYPE_EXPORT Matrix2D
 {
 public:
     Matrix2D() { mSize.nullify(); }

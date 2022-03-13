@@ -1,11 +1,11 @@
 #pragma once
-#include "ocBase.h"
+#include "ocType.h"
 
 #include <QByteArray>
 #include <QMetaType>
 #include <QString>
 
-class OCBASE_EXPORT AsciiString : public QByteArray
+class OCTYPE_EXPORT AsciiString : public QByteArray
 {
 public:
     AsciiString(const QByteArray & other) : QByteArray(other) {;}

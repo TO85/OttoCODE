@@ -1,2 +1,2 @@
 // file: {OttoCODE}./src/include/String
-#include "../libs/ocBase/String.h"
+#include "../libs/ocType/String.h"

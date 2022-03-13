@@ -11,104 +11,44 @@ CONFIG += c++11
 include(../libs.pri)
 
 SOURCES += \
-#    AbstractString.cpp \
- #   BaseString.cpp \
-    AsciiChar.cpp \
-    AsciiString.cpp \
-    Error.cpp \
-    FourCC.cpp \
-    FunctionInfo.cpp \
-    HostId.cpp \
     Ident.cpp \
-    JsonMap.cpp \
-    JsonVariable.cpp \
+    Key.cpp \
     KeyList.cpp \
+    KeyMap.h \
     KeySeg.cpp \
     KeySegList.cpp \
     KeyUidDMap.cpp \
     Millisecond.cpp \
-    MimeType.cpp \
-    MimeTypeManager.cpp \
-    NetworkId.cpp \
-    ProcessId.cpp \
-    Rect.cpp \
-    SortableMap.cpp \
-    String.cpp \
-    StringList.cpp \
-    StringTree.cpp \
-    Uid.cpp \
-    Key.cpp \
     Sortable.cpp \
-    Variable.cpp \
-    VariableList.cpp \
-    VariableMap.cpp \
-    VariablePak.cpp \
-    ocBase.cpp
+    Uid.cpp \
+    ocBase.cpp \
 
 HEADERS += \
-    ../../include/AsciiChar \
-    ../../include/AsciiString \
-    ../../include/Enumeration \
-    ../../include/FunctionInfo \
-    ../../include/HostId \
-    ../../include/JsonMap \
-    ../../include/JsonVariable \
+    ../../include/Ident \
     ../../include/Key \
     ../../include/KeyList \
-    ../../include/KeySeg \
     ../../include/KeyMap \
+    ../../include/KeySeg \
+    ../../include/KeySegList \
+    ../../include/KeySegList \
     ../../include/KeyUidDMap \
-    ../../include/Matrix2D \
     ../../include/Millisecond \
-    ../../include/MimeType \
-    ../../include/MimeTypeManager \
-    ../../include/NetworkId \
-    ../../include/ProcessId \
     ../../include/Sortable \
-    ../../include/SortableMap \
-    ../../include/String \
-    ../../include/StringList \
-    ../../include/TypeDefs \
+    ../../include/Sortable \
     ../../include/Uid \
-    ../../include/Variable \
-    ../../include/VariableList \
-    ../../include/VariableMap \
-    ../../include/VariablePak \
-    AsciiChar.h \
-    AsciiString.h \
-    Error.h \
-    FourCC.h \
-    FunctionInfo.h \
-    HostId.h \
     Ident.h \
-    JsonMap.h \
-    JsonVariable.h \
+    Key.h \
     KeyList.h \
+    KeyMap.h \
     KeySeg.h \
     KeySegList.h \
     KeyUidDMap.h \
-    Matrix2D.h \
     Millisecond.h \
-    MimeType.h \
-    MimeTypeManager.h \
-    NetworkId.h \
-    ProcessId.h \
-    Rect.h \
-    SortableMap.h \
-    String.h \
-    StringList.h \
-    StringTree.h \
+    Sortable.h \
     TypeDefs.h \
     Uid.h \
-    Key.h \
-    KeyMap.h \
-    Sortable.h \
-    Variable.h \
-    VariableList.h \
-    VariableMap.h \
-    VariablePak.h \
     ocBase.h \
-    ocBase_global.h
+    ocBase_global.h \
 
 # Default rules for deployment.
 unix {

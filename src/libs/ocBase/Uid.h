@@ -5,9 +5,9 @@
 #pragma once
 
 #include <QtCore/QUuid>
+#include <QtCore/QString>
 #include <QtCore/QRandomGenerator>
 
-#include "AsciiString.h"
 #include "TypeDefs.h"
 
 class Uid
@@ -39,7 +39,7 @@ public:
     Id id() const;
     Type type() const;
     Value value() const;
-    AsciiString toHex() const;
+    QString toHex() const;
     QString toString() const;
     QString tail() const;
     bool equal(const Uid &other) const;

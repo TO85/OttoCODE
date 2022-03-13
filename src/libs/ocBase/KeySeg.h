@@ -6,8 +6,6 @@
 #include <QRegularExpression>
 #include <QString>
 
-#include "String.h"
-
 class OCBASE_EXPORT KeySeg
 {
 public:
@@ -15,10 +13,8 @@ public:
     KeySeg(const QString & qs);
 
 public:
-//    bool equal(const KeySeg &other);
     bool startsWith(const KeySeg & stub) const;
     QString toQString() const;
-//    bool operator == (const KeySeg &other) { return equal(other); }
     operator QString () const { return toQString(); }
 
 public:
@@ -26,7 +22,7 @@ public:
     void set(const QString & string);
 
 public: // static
-    QList<KeySeg> split(const String segNames);
+    QList<KeySeg> split(const QString segNames);
 
 private:
     KeySeg it() const { return *this; }
@@ -40,4 +36,6 @@ private:
     static QString smInvalidReplaceString;
 };
 
+extern OCBASE_EXPORT bool operator == (const KeySeg &lhs, const KeySeg &rhs);
+extern OCBASE_EXPORT bool operator <  (const KeySeg &lhs, const KeySeg &rhs);
 
