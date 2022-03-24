@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/Size
+#include "../libs/ocType/Size.h"

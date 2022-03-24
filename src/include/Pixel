@@ -1,0 +1,2 @@
+// file: {Lancelot}./src/include/Pixel
+#include "../libs/ocPixel/Pixel.h"

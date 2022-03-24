@@ -15,9 +15,12 @@ include(../useGui.pri)
 include(../useColor.pri)
 
 SOURCES += \
+    Pixel.cpp \
     ocPixel.cpp
 
 HEADERS += \
+    ../../include/Pixel \
+    Pixel.h \
     ocPixel_global.h \
     ocPixel.h
 

@@ -1,20 +1,24 @@
 #include "ImageMdiDocument.h"
 
-ImageMdiDocument::ImageMdiDocument(const QQFileInfo &fileInfo, QObject *parent)
+ImageMdiDocument::ImageMdiDocument(const QQFileInfo &fileInfo, MdiMainWindow *parent)
     : MdiDocument{fileInfo, parent}
 {
     setObjectName("ImageMdiDocument:"+fileInfo.baseName());
 }
 
-bool ImageMdiDocument::load(const QQFileInfo &fi)
+void ImageMdiDocument::load()
 {
-    mFileInfo = fi;
-    return load();
-}
+    MdiDocument::load(); // read file contents
+    if (mBytes.isEmpty())
+    {
+        mPak.load(fileInfo());
+    }
+    else
+    {
+        mPak.set(fileInfo());
+        mPak.load(bytes());
+    }
 
-bool ImageMdiDocument::load()
-{
-    Q_ASSERT(false); // MUSTDO it
 }
 
 /* ------- generated -------- */

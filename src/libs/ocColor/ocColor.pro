@@ -15,10 +15,16 @@ include(../useGui.pri)
 
 SOURCES += \
     Color.cpp \
+    CompoundColor.cpp \
+    RgbColorTable.cpp \
     ocColor.cpp
 
 HEADERS += \
+    ../../include/Color \
+    ../../include/CompoundColor \
     Color.h \
+    CompoundColor.h \
+    RgbColorTable.h \
     ocColor_global.h \
     ocColor.h
 

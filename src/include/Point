@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/Point
+#include "../libs/ocType/Point.h"

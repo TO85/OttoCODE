@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/Success
+#include "../libs/ocType/Success.h"

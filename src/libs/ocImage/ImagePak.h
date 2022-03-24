@@ -3,59 +3,53 @@
 
 #include <VariablePak>
 
-#include <QFileInfo>
 #include <QImage>
+class QPixmap;
 
+#include <QQFileInfo>
+
+#include "Image.h"
 #include "FloatImage.h"
 #include "FloatImagePlane.h"
 
 class OCIMAGE_EXPORT ImagePak : public VariablePak
 {
 public:
-    enum Index
-    {
-        $nullIndex   = 0,
-        OriginalQImage,         // User-specified
-        ColorQImage,            // Format_ARGB32_Premultiplied
-        FloatQImage,            // Format_RGBA32FPx4_Premultiplied
-        GreyQImage,             // Format_Grayscale8 (no Alpha)
-        FloatORgbImage,
-        FloatOCmykImage,
-        FloatOHslImage,
-        FLoatOYccImage,
-        FloatOpacityPlane,
-        FloatRedPlane,
-        FloatGrnPlane,
-        FloatBluPlane,
-        FloatCynPlane,
-        FloatMagPlane,
-        FloatYelPlane,
-        FloatBlkPlane,
-        FloatHuePlane,
-        FloatSatPlane,
-        FloatCrPlane,
-        FloatCbPlane,
-
-        $maxIndex
-    };
+    ImagePak() {;}
 
 public:
-    QFileInfo fileInfo() const;
-    bool contains(const Index ix) const;
-    QImage qimage(const Index ix);
-    FloatImage floatImage(const Index ix);
-    FloatImagePlane floatImagePlane(const Index ix);
-    void set(const QFileInfo &fi);
-    void set(const Index ix, const QImage &qi);
-    void set(const Index ix, const FloatImage &fi);
-    void set(const Index ix, const FloatImagePlane &fip);
-    void load();
-    void load(const QFileInfo &fi);
+    QQFileInfo fileInfo() const;
+    QByteArray imageBytes() const;
+    bool contains(const Image::Type ix) const;
+    bool notContains(const Image::Type ix) const { return ! contains(ix); }
+    QPixmap pixmap(const Image::Type ix) const;
+    QImage qimage(const Image::Type ix) const;
+    FloatImage floatImage(const Image::Type ix);
+    FloatImagePlane floatImagePlane(const Image::Type ix);
+    void set(const QQFileInfo &fi);
+    void set(const QByteArray &imageBytes);
+    void set(const Image::Type ix, const QImage &qi);
+    void set(const Image::Type ix, const FloatImage &fi);
+    void set(const Image::Type ix, const FloatImagePlane &fip);
+    void load(const QQFileInfo &fi);
     void load(const QByteArray &imageData);
     void load(const QImage &qi);
-    void load(const FloatImage &fi);
-    void load(const FloatImagePlane &fip);
+    void load(const FloatImage &flim);
+    void load(const FloatImagePlane &flane);
+    void load();
 
+public: // static
+    static QImage::Format colorQFormat();
+    static QImage::Format floatQFormat();
+    static QImage::Format greyQFormat();
+
+protected:
+    bool generate(const Image::Type ix);
+    bool generateQImage(const Image::Type ix);
+    bool generateFloatImage(const Image::Type ix);
+    bool generateFloatPlane(const Image::Type ix);
+    bool readImageFile();
+    bool loadOriginalImage();
 };
 
 

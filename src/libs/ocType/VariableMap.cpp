@@ -9,7 +9,12 @@ bool VariableMap::contains(const Key &key) const
 
 const QVariant VariableMap::value(const Key &key, const QVariant &dVariant)
 {
-    return contains(key) ? at(key).value() : dVariant;
+    return contains(key) ? at(key).vari() : dVariant;
+}
+
+const Variable VariableMap::at(const Key &key) const
+{
+    return contains(key) ? at(key) : Variable();
 }
 
 Variable &VariableMap::at(const Key &key)

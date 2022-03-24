@@ -97,7 +97,7 @@ void ImageFileDialog::doDirectoryChanged(const QQDir &newDirectory)
     qDebug() << Q_FUNC_INFO << newDirectory;
     mDirectory = newDirectory;
     mpDirectoryText->setText(mDirectory.path());
-    doDefaultDirectoryChanged(QQDir::nullDir());
+    doDefaultDirectoryChanged(QQDir());
 }
 
 void ImageFileDialog::doDefaultDirectoryChanged(const QQDir &newDefaultDirectory)

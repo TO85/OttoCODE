@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/Boolean
+#include "../libs/ocType/Boolean.h"

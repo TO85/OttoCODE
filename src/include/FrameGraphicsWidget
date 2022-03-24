@@ -1,0 +1,2 @@
+// file: {Lancelot}./src/include/FrameGraphicsWidget
+#include "../libs/ocImage/FrameGraphicsWidget.h"

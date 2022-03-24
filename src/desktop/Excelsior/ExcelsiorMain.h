@@ -3,6 +3,7 @@
 #include <MdiMainWindow>
 
 #include <QQDir>
+class QQFileInfo;
 
 class ExcelsiorMain : public MdiMainWindow
 {
@@ -24,10 +25,9 @@ private slots:
     void setupHelpMenu();
 
     void openFileAction();
-    void openImageFile();
 
 private:
-    QQDir mCurrentImageDir=QQDir::current();
-    QQDir mDefaultImageDir=QQDir::nullDir();
+    QQDir mCurrentImageDir;
+    QQDir mDefaultImageDir;
 };
 

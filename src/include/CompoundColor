@@ -1,0 +1,2 @@
+// file: {Lancelot}./src/include/CompoundColor
+#include "../libs/ocColor/CompoundColor.h"

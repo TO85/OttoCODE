@@ -1,10 +1,11 @@
 #pragma once
+#include "ocType.h"
 
 #include <QSharedDataPointer>
 class MimeTypeData;
 
 
-class MimeType
+class OCTYPE_EXPORT MimeType
 {
 public:
     MimeType();

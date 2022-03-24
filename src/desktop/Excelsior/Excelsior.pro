@@ -11,20 +11,29 @@ CONFIG += c++11
 message(======== in Excelsior.pro)
 include(../desktop.pri)
 include(../../libs/useBase.pri)
+include(../../libs/useType.pri)
 include(../../libs/useCore.pri)
 include(../../libs/useGui.pri)
 include(../../libs/useWidgets.pri)
+include(../../libs/useOpenCV.pri)
+include(../../libs/useColor.pri)
+include(../../libs/usePixel.pri)
 include(../../libs/useImage.pri)
+include(../../libs/useExe.pri)
 
 message(INCLUDEPATH = $${INCLUDEPATH})
 message(LIBS = $${LIBS})
 
 SOURCES += \
     ExcelsiorMain.cpp \
+    FrameImageDocument.cpp \
+    FrameViewWidget.cpp \
     main.cpp
 
 HEADERS += \
-    ExcelsiorMain.h
+    ExcelsiorMain.h \
+    FrameImageDocument.h \
+    FrameViewWidget.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

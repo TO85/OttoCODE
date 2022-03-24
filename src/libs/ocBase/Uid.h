@@ -3,6 +3,7 @@
  *  @sa QtCore/QUuid
  */
 #pragma once
+#include "ocBase.h"
 
 #include <QtCore/QUuid>
 #include <QtCore/QString>
@@ -10,7 +11,7 @@
 
 #include "TypeDefs.h"
 
-class Uid
+class OCBASE_EXPORT Uid
 {
 public:
     typedef DWORD Seed;

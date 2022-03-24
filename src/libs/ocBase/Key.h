@@ -15,10 +15,6 @@ public:
     Key(const QString &qs);
     Key(const QStringList &qsl);
     Key(const char *pch);
-    Key() = default;
-    ~Key() = default;
-    Key(const Key &other) = default;
-    Key &operator = (const Key &other) = default;
 
 public: // const
     int count() const;
@@ -59,6 +55,13 @@ protected:
 
 private:
     QList<KeySeg> mSegments;
+
+public:
+    Key() = default;
+    ~Key() = default;
+    Key(const Key &other) = default;
+    Key &operator = (const Key &other) = default;
+
 };
 
 Q_DECLARE_METATYPE(Key);

@@ -2,11 +2,13 @@
 
 #include <QtDebug>
 #include <QApplication>
+#include <QFileDialog>
 #include <QMenu>
 #include <QTimer>
 
 #include <ActionManager>
 #include <ImageFileDialog>
+#include <ImageMdiDocument>
 #include <JsonMap>
 
 
@@ -15,13 +17,6 @@ ExcelsiorMain::ExcelsiorMain(QApplication *pApp)
 {
     setObjectName("Excelsior:MainWindow");
     qDebug() << Q_FUNC_INFO << objectName();
-
-
-    QFileInfo fi("/data/git/OttoCODE/data/ocBase/Contact1.json");
-    JsonMap jm(fi);
-    jm.dump();
-
-
     QTimer::singleShot(500, this, &ExcelsiorMain::setup);
 }
 
@@ -85,21 +80,19 @@ void ExcelsiorMain::setupHelpMenu()
 void ExcelsiorMain::openFileAction()
 {
     Q_ASSERT(this);
-    qDebug() << Q_FUNC_INFO << objectName();
-    ImageFileDialog *pOpenDialog = new ImageFileDialog(ImageFileDialog::OpenFile, this);
-    Q_ASSERT(pOpenDialog);
-    pOpenDialog->directory(mCurrentImageDir);
-    pOpenDialog->defaultDirectory(mDefaultImageDir);
-    if (pOpenDialog->exec())
-    {
-        openImageFile();
-    }
-}
+    qDebug() << Q_FUNC_INFO << objectName() << mCurrentImageDir << mDefaultImageDir;
 
-void ExcelsiorMain::openImageFile()
-{
-    Q_ASSERT(this);
-    qDebug() << Q_FUNC_INFO << objectName();
-    Q_ASSERT(false); // MUSTDO it
+    QQDir tImageDir = mCurrentImageDir;
+    if (tImageDir.isNull()) tImageDir = mDefaultImageDir;
+    const QQString tPathFileName
+            = QFileDialog::getOpenFileName(this, "Open Image File", tImageDir.path());
+    const QQFileInfo tImageFI(tPathFileName);
+    qDebug() << tImageFI;
+    ImageMdiDocument *pImageDoc = new ImageMdiDocument(tImageFI, this);
+    Q_ASSERT(pImageDoc);
+    add(tImageFI, pImageDoc);
+
+    pImageDoc->load();
+
 
 }

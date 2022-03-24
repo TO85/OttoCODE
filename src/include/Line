@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/Line
+#include "../libs/ocType/Line.h"

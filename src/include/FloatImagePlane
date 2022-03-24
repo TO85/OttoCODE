@@ -1,0 +1,2 @@
+// file: {Lancelot}./src/include/FloatImagePlane
+#include "../libs/ocImage/FloatImagePlane.h"

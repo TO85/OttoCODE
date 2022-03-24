@@ -2,7 +2,7 @@
 
 bool QQDir::isNull() const
 {
-    return it() == nullDir();
+    return it() == QDir::current();
 }
 
 QString QQDir::lastPath() const
@@ -21,7 +21,6 @@ QString QQDir::attributes() const
     return result;
 }
 
-QDir QQDir::smNullDir = QQDir("/nul");
 
 bool operator <  (const QQDir &lhs, const QQDir &rhs)
 {

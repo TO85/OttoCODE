@@ -19,8 +19,6 @@ public:
     const Variable operator () (const int index) const { return at(index); }
 
 public:
-    Variable & at(const int index);
-    Variable & operator [] (const int index) { return at(index); }
     void add(const Variable & variable);
     void add(const Key & key, const QVariant & variant);
     VariableList operator << (const Variable & variable);

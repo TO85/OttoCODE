@@ -2,22 +2,23 @@
 
 #include <MdiDocument>
 
+#include <MdiMainWindow>
 #include <QQFileInfo>
+
+#include "ImagePak.h"
 
 class ImageMdiDocument : public MdiDocument
 {
     Q_OBJECT
 public:
-    explicit ImageMdiDocument(const QQFileInfo &fileInfo, QObject *parent = nullptr);
+    explicit ImageMdiDocument(const QQFileInfo &fileInfo, MdiMainWindow *parent=nullptr);
+    ImagePak pak() const { return mPak; }
+    ImagePak & pak() { return mPak; }
 
 public:
-    bool load(const QQFileInfo &fi);
-    bool load();
-
-signals:
-    void fileInfoChanged(const QQFileInfo &FileInfo);
+    virtual void load() override;
 
 private:
-
+    ImagePak mPak;
 };
 

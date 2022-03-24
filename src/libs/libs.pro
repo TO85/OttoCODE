@@ -8,6 +8,7 @@ SUBDIRS += \
     ocImage \
 ##    ocLog \
     ocMath \
+    ocOpenCV \
     ocPixel \
     ocType \
     ocqCore \

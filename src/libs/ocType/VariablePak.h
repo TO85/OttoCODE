@@ -9,7 +9,8 @@ class QVariant;
 
 #include <Key>
 #include <Uid>
-class Variable;
+
+#include "Variable.h"
 class VariableList;
 class VariableMap;
 
@@ -29,8 +30,11 @@ public:
     const QVariantList variants() const;
     const VariableList variables() const;
     const VariableMap variableMap() const;
-    const Variable operator ()  (const int index) const;
-    const Variable operator ()  (const Key & key) const;
+    bool isValidIndex(const int index) const;
+    const Variable get(const int index) const;
+    const Variable get(const Key & key) const;
+    const Variable operator ()  (const int index) const { return get(index); }
+    const Variable operator ()  (const Key & key) const { return get(key); }
 
 public:
     Uid &uid();
@@ -45,14 +49,13 @@ public:
     void set(const int index, const QVariant &vari, const Key &key=Key());
     void set(const Key &key, const QVariant &vari);
     void set(const int index, const Variable &var);
-    void set(const Key &key, const Variable &var);
+    void set(const Variable &var);
     Variable & operator [] (const int index);
     Variable & operator [] (const Key & key);
 
 private:
     Uid mUid;
     QSharedDataPointer<VariablePakData> data;
-
 };
 
 

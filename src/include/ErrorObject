@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/ErrorObject
+#include "../libs/ocqCore/ErrorObject.h"

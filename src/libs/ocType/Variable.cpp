@@ -2,23 +2,27 @@
 
 Variable::Variable(const Key &key, const QVariant &variant) : mKey(key), mVariant(variant) {;}
 
+bool Variable::isNull() const
+{
+    return mKey.isEmpty() || mVariant.isNull();
+}
+
 Key Variable::key() const
 {
     return mKey;
 }
 
-Key &Variable::key(const Key newKey)
+Key &Variable::key()
 {
-    return mKey = newKey;
+    return mKey;
 }
 
-QVariant Variable::value() const
+QVariant Variable::vari() const
 {
     return mVariant;
-
 }
 
-QVariant &Variable::value(const QVariant newValue)
+QVariant &Variable::vari()
 {
-    return mVariant = newValue;
+    return mVariant;
 }

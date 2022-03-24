@@ -69,6 +69,16 @@ QQString QQString::replaced(QChar before, QChar after) const
     return result;
 }
 
+QQString QQString::formatMessage(const QVariantList &vv) const
+{
+    return formatMessageVars(it(), vv);
+}
+
+QQString QQString::formatMessage(const QVariant &v1, const QVariant &v2, const QVariant &v3, const QVariant &v4) const
+{
+    return formatMessage4Var(it(), v1, v2, v3, v4);
+}
+
 /* ------------------------ static ------------------------- */
 
 QChar QQString::smSectionDelimiter('/');
@@ -76,6 +86,24 @@ QQString::SectionFlags QQString::smSectionFlags
         = QString::SectionSkipEmpty
             | QString::SectionIncludeTrailingSep
             | QString::SectionCaseInsensitiveSeps;
+
+QQString QQString::formatMessageVars(const QQString &aFormat, const QVariantList &vv)
+{
+    QQString result = aFormat;
+    for (int i = 1; i <= 9 && result.contains("%"+QString::number(i)); ++i)
+    {
+        QString replaceString("%"+QString::number(i));
+        if (result.contains(replaceString))
+            result.replace(replaceString, vv.at(i).toString());
+    }
+    return result;
+}
+
+QQString QQString::formatMessage4Var(const QQString &aFormat, const QVariant &v1, const QVariant &v2, const QVariant &v3, const QVariant &v4)
+{
+    QVariantList qvl = QVariantList() << QVariant(aFormat) << v1 << v2 << v3 << v4;
+    return formatMessageVars(aFormat, qvl);
+}
 
 QChar QQString::sectionDelimiter()
 {
@@ -298,25 +326,6 @@ bool QQString::lessthan(const QQString &other) const
     return QString::compare(other) < 0;
 }
 
-
-QQString QQString::formatMessageVars(const QQString &aFormat, const QVariantList &vv)
-{
-    QQString result = aFormat;
-    for (int i = 1; i <= 9 && result.contains("%"+QString::number(i)); ++i)
-    {
-        QString replaceString("%"+QString::number(i));
-        if (result.contains(replaceString))
-            result.replace(replaceString, vv.at(i).toString());
-    }
-    return result;
-}
-
-QQString QQString::formatMessage4Var(const QQString &aFormat, const QVariant &v1, const QVariant &v2,
-                                 const QVariant &v3, const QVariant &v4)
-{
-    QVariantList qvl = QVariantList() << QVariant(aFormat) << v1 << v2 << v3 << v4;
-    return formatMessageVars(aFormat, qvl);
-}
 
 /* ------------------------ private ------------------------- */
 

@@ -2,12 +2,12 @@
 
 #include <QObject>
 
-class Error : public QObject
+class ErrorObject : public QObject
 {
     Q_OBJECT
 public:
-    explicit Error(QObject *parent = nullptr) : QObject(parent) {;}
-    explicit Error(const char * pchFuncInfo, QObject *parent = nullptr) : QObject(parent) {;}
+    explicit ErrorObject(QObject *parent = nullptr) : QObject(parent) {;}
+    explicit ErrorObject(const char * pchFuncInfo, QObject *parent = nullptr) : QObject(parent) {;}
 
 signals:
 

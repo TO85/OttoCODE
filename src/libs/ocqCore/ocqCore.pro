@@ -19,6 +19,8 @@ SOURCES += \
     ocqCore.cpp
 
 HEADERS += \
+    ../../include/ErrorObject \
+    ../../include/ObjectHelper \
     ../../include/QQDir \
     ../../include/QQFileInfo \
     ../../include/QQFileInfoList \

@@ -4,6 +4,7 @@
 
 #include <QMetaType>
 #include <QStringList>
+#include <QVariant>
 
 class QQString : public QString
 {
@@ -30,6 +31,11 @@ public:
     bool operator == (const QQString &other) const { return equal(other); }
     bool operator <  (const QQString &other) const { return less(other); }
     QQString replaced(QChar before, QChar after) const;
+    QQString formatMessage(const QVariantList &vv) const;
+    QQString formatMessage(const QVariant &v1,
+                           const QVariant &v2=QVariant(),
+                           const QVariant &v3=QVariant(),
+                           const QVariant &v4=QVariant()) const;
 
 public:
 
@@ -39,6 +45,17 @@ protected:
 private:
     QString qstring() const { return *this; }
     QString & qstring() { return *this; }
+    QQString it() const { return *this; }
+    QQString & it() { return *this; }
+
+public: // static
+    static QQString formatMessageVars(const QQString &aFormat,
+                           const QVariantList &vv);
+    static QQString formatMessage4Var(const QQString &aFormat,
+                           const QVariant &v1,
+                           const QVariant &v2=QVariant(),
+                           const QVariant &v3=QVariant(),
+                           const QVariant &v4=QVariant());
 
 protected: // static
     static QChar sectionDelimiter();
@@ -109,11 +126,6 @@ public:
     bool lessthan(const QQString &other) const;
     QQString squeezed() const;
     QQString appended(const QQString s, const bool delimited=true) const;
-    QQString formatMessage(const QVariantList &vv) const;
-    QQString formatMessage(const QVariant &v1,
-                           const QVariant &v2=QVariant(),
-                           const QVariant &v3=QVariant(),
-                           const QVariant &v4=QVariant()) const;
     QString toQString() const { return QString(it()); }
     QString operator () () const { return toQString(); }
     bool operator == (const QQString &other) const { return equals(other); }
@@ -133,14 +145,6 @@ public:
     void append(const QChar qch);
     QQString operator << (const QChar qch);
 
-public: // static
-    static QQString formatMessageVars(const QQString &aFormat,
-                           const QVariantList &vv);
-    static QQString formatMessage4Var(const QQString &aFormat,
-                           const QVariant &v1,
-                           const QVariant &v2=QVariant(),
-                           const QVariant &v3=QVariant(),
-                           const QVariant &v4=QVariant());
 
 private:
     void ctor(void);

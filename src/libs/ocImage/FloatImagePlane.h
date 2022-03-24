@@ -4,16 +4,17 @@
 #include <QMetaType>
 
 #include <Matrix2D>
+#include <Pixel>
 
 class OCIMAGE_EXPORT FloatImagePlane : public Matrix2D<ImageFloatType>
 {
 public:
-    FloatImagePlane(const QImage &qimage, const int rgbaMask);
+    FloatImagePlane(const QImage &qimage, const Pixel::Mask mask);
 
 public:
 
 public:
-    void set(const QImage &qimage, const int rgbaMask);
+    void set(const QImage &qimage, const Pixel::Mask mask);
 
 private:
 

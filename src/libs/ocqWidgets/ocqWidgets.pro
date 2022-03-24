@@ -13,6 +13,7 @@ include(../useBase.pri)
 include(../useGui.pri)
 
 SOURCES += \
+    GraphicsLayer.cpp \
     GridDialog.cpp \
     MdiDocument.cpp \
     MdiGridWidget.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     ../../include/MenuManager \
     ../../include/QQMainWindow \
     ../../include/QQMdiArea \
+    GraphicsLayer.h \
     GridDialog.h \
     MdiDocument.h \
     MdiGridWidget.h \

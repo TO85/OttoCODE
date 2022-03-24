@@ -2,10 +2,10 @@
 
 class ImageFileFormatData : public QSharedData
 {
-public:
+private:
+    friend class ImageFileFormat;
     KeySeg dmKey;
     MimeType dmMimeType;
-
 };
 
 ImageFileFormat::ImageFileFormat() : data(new ImageFileFormatData)

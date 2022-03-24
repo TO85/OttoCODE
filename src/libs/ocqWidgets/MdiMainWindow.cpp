@@ -1,7 +1,9 @@
 #include "MdiMainWindow.h"
 
 #include <ActionManager>
-#include <MdiGridWidget>
+
+#include "MdiDocument.h"
+#include "MdiGridWidget.h"
 
 MdiMainWindow::MdiMainWindow(QApplication *pApp)
     : QQMainWindow(pApp)
@@ -10,6 +12,11 @@ MdiMainWindow::MdiMainWindow(QApplication *pApp)
     setObjectName("MdiMainWindow");
     setCentralWidget(mpMdiArea);
     mpMdiArea->setViewMode(QMdiArea::TabbedView);
+}
+
+QObject * MdiMainWindow::object()
+{
+    return qobject_cast<QObject *>(this);
 }
 
 QQMdiArea *MdiMainWindow::mdiArea() const
@@ -23,13 +30,20 @@ MdiSubWinWidget * MdiMainWindow::newSubWindow(const Key &key, const Qt::WindowFl
     Q_ASSERT(this);
     qDebug() << Q_FUNC_INFO << key;
     MdiSubWinWidget * result = new MdiSubWinWidget(key, mdiArea(), flags);
-    addSubWindow(result);
+    add(result);
     qDebug() << result->objectName();
     return result;
 }
 
+void MdiMainWindow::add(const QQFileInfo &fi, MdiDocument *pDoc)
+{
+    Q_ASSERT(pDoc);
+    qDebug() << Q_FUNC_INFO << objectName() << fi << pDoc->filePathName();
+    Q_ASSERT(false); // MUSTDO it
+}
 
-void MdiMainWindow::addSubWindow(MdiSubWinWidget *pSubWinWidget)
+
+void MdiMainWindow::add(MdiSubWinWidget *pSubWinWidget)
 {
     Q_ASSERT(pSubWinWidget);
     qDebug() << Q_FUNC_INFO << objectName() << pSubWinWidget->objectName();

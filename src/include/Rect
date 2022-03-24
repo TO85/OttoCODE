@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/Rect
+#include "../libs/ocType/Rect.h"
