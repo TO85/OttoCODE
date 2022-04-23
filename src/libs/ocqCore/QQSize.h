@@ -1,7 +1,6 @@
 #pragma once
 #include "ocqCore.h"
 
-
 #include <QSize>
 
 #include <QMetaType>
@@ -35,7 +34,6 @@ public:
     QQSize(const QQSize &other) = default;
     QQSize &operator = (const QQSize &other) = default;
 };
-
 
 Q_DECLARE_METATYPE(QQSize);
 

@@ -9,6 +9,9 @@
 class OCBASE_EXPORT KeySeg
 {
 public:
+    typedef QList<KeySeg> List;
+
+public:
     KeySeg();
     KeySeg(const QString & qs);
 
@@ -22,7 +25,7 @@ public:
     void set(const QString & string);
 
 public: // static
-    QList<KeySeg> split(const QString segNames);
+    List split(const QString segNames);
 
 private:
     KeySeg it() const { return *this; }

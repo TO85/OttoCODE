@@ -57,4 +57,5 @@ unix {
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    ../../../../../../home/toor/.config/Qt/mytypes.py \
     ../../../data/ocBase/Contact1.json

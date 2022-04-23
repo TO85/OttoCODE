@@ -11,8 +11,11 @@ template <typename T> class PointT
 public:
     PointT() : mX(0), mY(0) {;}
     PointT(const T tX, const T tY) : mX(tX), mY(tY) {;}
+    PointT(const QPoint qpoint) : mX(qpoint.x()), mY(qpoint.y()) {;}
 
 public:
+    T x() const { return mX; }
+    T y() const { return mY; }
     QPoint toQPoint() const { return QPoint(mX, mY); }
     QPointF toQPointF() const { return QPointF(mX, mY); }
 

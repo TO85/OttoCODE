@@ -27,10 +27,12 @@ public:
     const Key key() const;
     const QByteArray bytes() const;
     const QVariant variant() const;
+    const QVariant variant(const int index) const;
     const QVariantList variants() const;
     const VariableList variables() const;
     const VariableMap variableMap() const;
     bool isValidIndex(const int index) const;
+    bool notValidIndex(const int index) const { return ! isValidIndex(index); }
     const Variable get(const int index) const;
     const Variable get(const Key & key) const;
     const Variable operator ()  (const int index) const { return get(index); }

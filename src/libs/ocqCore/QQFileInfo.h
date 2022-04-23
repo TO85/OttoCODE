@@ -2,13 +2,15 @@
 #include "ocqCore.h"
 
 #include <QFileInfo>
+#include <Null>
 
 #include <QMetaType>
 
 #include "QQDir.h"
 #include "QQString.h"
+#include "QQStringList.h"
 
-class OCQCORE_EXPORT QQFileInfo : public QFileInfo
+class OCQCORE_EXPORT QQFileInfo : public QFileInfo, public Null
 {
 public:
     QQFileInfo(const QQString &fileName);
@@ -16,6 +18,11 @@ public:
 
 public:
     bool notExists() const { return ! exists(); }
+    bool notReadable() const { return ! isReadable(); }
+
+public: // debug
+    QQString attributes() const;
+    QQStringList toDebugStrings() const;
 
 public: // QMetaType
     QQFileInfo() = default;
@@ -26,8 +33,10 @@ public: // QMetaType
 
 extern OCQCORE_EXPORT bool operator == (const QQFileInfo &lfi, const QQFileInfo &rfi);
 extern OCQCORE_EXPORT bool operator <  (const QQFileInfo &lfi, const QQFileInfo &rfi);
+extern OCQCORE_EXPORT QDebug operator << (QDebug dbg, const QQFileInfo &fi);
 
 Q_DECLARE_METATYPE(QQFileInfo);
+
 
 #if 0
 class EIRTYPE_EXPORT QQFileInfo : public QFileInfo
@@ -82,6 +91,5 @@ public: // debug
 
 Q_DECLARE_METATYPE(QQFileInfo);
 
-extern EIRTYPE_EXPORT QDebug operator << (QDebug dbg, const QQFileInfo &fi);
 
 #endif

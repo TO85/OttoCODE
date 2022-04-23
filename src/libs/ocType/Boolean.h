@@ -40,7 +40,7 @@ private:
     bool mValid=false;
     bool mTrue=false;
 
-public:
+public: // QMetaType
     Boolean() = default;
     Boolean(const Boolean &other) = default;
     ~Boolean() = default;
@@ -49,4 +49,4 @@ public:
 
 Q_DECLARE_METATYPE(Boolean);
 
-OCTYPE_EXPORT QDebug operator<<(QDebug dbg, const Boolean &boolean);
+extern OCTYPE_EXPORT QDebug operator<<(QDebug dbg, const Boolean &boolean);

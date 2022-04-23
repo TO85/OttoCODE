@@ -1,7 +1,6 @@
 #pragma once
 #include "ocBase.h"
 
-#include <QMetaType>
 #include <QString>
 #include <QStringList>
 
@@ -10,6 +9,7 @@
 class OCBASE_EXPORT Key
 {
 public:
+    Key() {;}
     Key(const KeySeg &seg);
     Key(const QList<KeySeg> &segs);
     Key(const QString &qs);
@@ -23,15 +23,15 @@ public: // const
     KeySeg first() const;
     Key first(const int k) const;
     KeySeg last() const;
-    QList<KeySeg> list() const;
+    KeySeg::List list() const;
     Key appended(const KeySeg &seg) const;
     Key appended(const Key &key) const;
     bool equal(const Key &other) const;
     bool less(const Key &other) const;
     QString toQString() const;
+    operator QString() const { return toQString(); }
     bool operator == (const Key &other) const { return equal(other); }
     bool operator < (const Key &other) const { return less(other); }
-    operator QString () const { return toQString(); }
 
 public: // non-const
     void clear();
@@ -50,19 +50,15 @@ private:
     Key it() const { return *this; }
     Key & it() { return *this; }
 
+#ifdef QT_DEBUG
+private:
+    QString mdString;
+#endif
 protected:
     static QChar smSeparator;
 
 private:
-    QList<KeySeg> mSegments;
-
-public:
-    Key() = default;
-    ~Key() = default;
-    Key(const Key &other) = default;
-    Key &operator = (const Key &other) = default;
-
+    KeySeg::List mSegments;
 };
 
-Q_DECLARE_METATYPE(Key);
 

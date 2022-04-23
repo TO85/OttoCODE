@@ -26,6 +26,7 @@ SOURCES += \
     MimeType.cpp \
     MimeTypeManager.cpp \
     NetworkId.cpp \
+    Null.cpp \
     Point.cpp \
     ProcessId.cpp \
     Rational.cpp \
@@ -55,6 +56,7 @@ HEADERS += \
     ../../include/MimeType \
     ../../include/MimeTypeManager \
     ../../include/NetworkId \
+    ../../include/Null \
     ../../include/Point \
     ../../include/ProcessId \
     ../../include/Rational \
@@ -82,6 +84,7 @@ HEADERS += \
     MimeType.h \
     MimeTypeManager.h \
     NetworkId.h \
+    Null.h \
     Point.h \
     ProcessId.h \
     Rational.h \

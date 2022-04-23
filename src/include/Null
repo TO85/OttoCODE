@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/Null
+#include "../libs/ocType/Null.h"

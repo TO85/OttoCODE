@@ -23,12 +23,19 @@ public:
     qreal denominatorF() const { return qreal(mDenominator); }
     Term &denominator() { return mDenominator; }
     bool isNaN() const { return 0 == denominator(); }
-    qreal toReal(const qreal ifNaN=qQNaN()) const { return isNaN() ? ifNaN : qreal(mNumerator) / qreal(mDenominator); }
-    float toFloat(const qreal ifNaN=qQNaN()) const { return isNaN() ? ifNaN : float(mNumerator) / float(mDenominator); }
-    double toDouble(const qreal ifNaN=qQNaN()) const { return isNaN() ? ifNaN : double(mNumerator) / double(mDenominator); }
+    bool isOne() const { return numerator() == denominator(); }
+    bool notOne() const { return ! isOne(); }
+    qreal toReal(const qreal ifNaN=qQNaN()) const;
+    float toFloat(const qreal ifNaN=qQNaN()) const;
+    double toDouble(const qreal ifNaN=qQNaN()) const;
     operator qreal () const { return toReal(0.0); }
     Term invalidTerm() const { return LLONG_MIN; }
     Rational invalid() const { return Rational(invalidTerm(), 0); }
+
+public:
+    void setNumerator(const Term n) { mNumerator = n; }
+    void setDenominator(const Term d) { mDenominator = d; }
+    void set(const Term n, const Term d) { setNumerator(n), setDenominator(d); }
 
 private:
     Rational &it() { return *this; }
@@ -78,10 +85,7 @@ public:
     bool operator > (const Rational &other) { return isGreater(other); }
 
     void set(const Rational other) { set(other.numerator(), other.denominator()); }
-    void set(const Term n, const Term d) { setNumerator(n), setDenominator(d); }
     void setF(const qreal f, const Term d=1000000000) { set(qRound(f * qreal(d)), d); }
-    void setNumerator(const Term n) { mNumerator = n; }
-    void setDenominator(const Term d) { mDenominator = d; }
     Rational adjustedDenominator(const Term d) const;
     void adjustDenominator(const Term newDenominator);
     void multiply(const Rational other);

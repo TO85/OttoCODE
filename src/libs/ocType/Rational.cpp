@@ -1,6 +1,22 @@
 #include "Rational.h"
 
 
+qreal Rational::toReal(const qreal ifNaN) const
+{
+    return isNaN() ? ifNaN : qreal(mNumerator) / qreal(mDenominator);
+}
+
+float Rational::toFloat(const qreal ifNaN) const
+{
+    return isNaN() ? ifNaN : float(mNumerator) / float(mDenominator);
+}
+
+double Rational::toDouble(const qreal ifNaN) const
+{
+    return isNaN() ? ifNaN : double(mNumerator) / double(mDenominator);
+}
+
+
 #if 0
 #include "Denominators.h"
 #include "Success.h"

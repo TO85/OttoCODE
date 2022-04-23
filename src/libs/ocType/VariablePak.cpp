@@ -51,6 +51,16 @@ const QByteArray VariablePak::bytes() const
     return data->dmBytes;
 }
 
+const QVariant VariablePak::variant(const int index) const
+{
+    QVariant result;
+    Q_ASSERT(data);
+    const Variable tVar = isValidIndex(index) ? data->dmVariableList.at(index) : Variable();
+    if (tVar.notNull())
+        result = tVar.vari();
+    return result;
+}
+
 bool VariablePak::isValidIndex(const int index) const
 {
     Q_ASSERT(data);

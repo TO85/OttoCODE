@@ -116,7 +116,7 @@ bool JsonMap::parse(const QJsonDocument &doc)
 
 void JsonMap::parse(const Key &key, const QJsonObject &object)
 {
-    qDebug() << Q_FUNC_INFO << key << object;
+    qDebug() << Q_FUNC_INFO << key.toQString() << object;
     const QStringList tObjectKeys = object.keys();
     for (auto okey : tObjectKeys)
     {
@@ -134,7 +134,7 @@ void JsonMap::parse(const Key &key, const QJsonObject &object)
 
 void JsonMap::parse(const Key &key, const QJsonArray &array)
 {
-    qDebug() << Q_FUNC_INFO << key << array;
+    qDebug() << Q_FUNC_INFO << key.toQString() << array;
     const qsizetype n = array.count();
     const Key tKey = key.appended(KeySeg("#Count"));
     mKeyVariableMap.insert(tKey, JsonVariable(tKey, n));
@@ -153,7 +153,7 @@ void JsonMap::parse(const Key &key, const QJsonArray &array)
 
 void JsonMap::parse(const Key &key, const QJsonValue &value)
 {
-    qDebug() << Q_FUNC_INFO << key << value << value.type()
+    qDebug() << Q_FUNC_INFO << key.toQString() << value << value.type()
              << JsonVariable::typeName(value.type());
     mKeyVariableMap.insert(key, JsonVariable(key, value));
 }

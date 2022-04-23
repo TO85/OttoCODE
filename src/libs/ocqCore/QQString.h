@@ -1,4 +1,5 @@
 #pragma once
+#include "ocqCore.h"
 
 #include <QString>
 
@@ -6,15 +7,11 @@
 #include <QStringList>
 #include <QVariant>
 
-class QQString : public QString
+class OCQCORE_EXPORT QQString : public QString
 {
 public:
     QQString(const QString &other) : QString(other) {;}
     QQString(const char *psz) : QString(psz) {;}
-    QQString() = default;
-    QQString(const QQString &other) = default;
-    ~QQString() = default;
-    QQString &operator = (const QQString &other) = default;
 
 public:
     bool notNull() const { return ! QString::isNull(); }
@@ -66,6 +63,12 @@ protected: // static
 private: // static
     static QChar smSectionDelimiter;
     static SectionFlags smSectionFlags;
+
+public: // QMetaType
+    QQString() = default;
+    QQString(const QQString &other) = default;
+    ~QQString() = default;
+    QQString &operator = (const QQString &other) = default;
 };
 
 Q_DECLARE_METATYPE(QQString);

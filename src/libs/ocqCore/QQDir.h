@@ -2,25 +2,28 @@
 #include "ocqCore.h"
 
 #include <QDir>
+#include <Null>
 
 #include <QMetaType>
 
-class OCQCORE_EXPORT QQDir : public QDir
+#include "QQString.h"
+
+class OCQCORE_EXPORT QQDir : public QDir, public Null
 {
 public:
-    QQDir(const QString &pathName) : QDir(pathName) {;}
+    QQDir(const QDir &other) : QDir(other), Null(false) {;}
+    QQDir(const QString &pathName) : QDir(pathName), Null(false) {;}
 
 public:
-    bool isNull() const;
-    bool notNull() const { return ! isNull(); }
-    QString lastPath() const;
+    QQString lastPath() const;
 
 private:
     QQDir it() const { return *this; }
     QQDir & it() { return *this; }
 
-private: // debug
-    QString attributes() const;
+public: // debug
+    QQString attributes() const;
+    QQString toDebugString() const;
 
 public: // QMetaType
     QQDir() = default;
@@ -33,4 +36,7 @@ extern OCQCORE_EXPORT bool operator <  (const QQDir &lhs, const QQDir &rhs);
 extern OCQCORE_EXPORT bool operator == (const QQDir &lhs, const QQDir &rhs);
 
 Q_DECLARE_METATYPE(QQDir);
+
+extern OCTYPE_EXPORT QDebug operator<<(QDebug dbg, const QQDir &dir);
+
 

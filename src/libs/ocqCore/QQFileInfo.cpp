@@ -3,15 +3,46 @@
 
 QQFileInfo::QQFileInfo(const QQString &fileName)
     : QFileInfo(fileName)
+    , Null(false)
 {
-
 }
 
 QQFileInfo::QQFileInfo(const QQDir &dir, const QQString &fileName)
     : QFileInfo(dir, fileName)
+    , Null(false)
 {
-
 }
+
+/* ------------------------- debug ------------------------ */
+
+QQString QQFileInfo::attributes() const
+{
+    if (isNull()) return "isNull ";
+    QQStringList result;
+    if (exists())           result << "Exists";
+    if (isRoot())           result << "Root";
+    if (isRelative())       result << "Relative";
+    if (isAbsolute())       result << "Absolute";
+    if (isDir())            result << "Dir";
+    if (isFile())          result << "File";
+    if (isReadable())       result << "Readable";
+    if (isWritable())       result << "Writable";
+    if (isExecutable())     result << "Executable";
+    return result.join(",");}
+
+QQStringList QQFileInfo::toDebugStrings() const
+{
+    QQStringList result("{QQFileInfo: null}");
+    if (isNull()) return result;                                        /* /====\ */
+    result << QQString("{QQFileInfo:> Dir=>%1< FileName=>%2<")
+            .arg(dir().path(), fileName());
+    result << QQString("   %1 @%2}")
+            .arg(attributes(), fileTime(QFile::FileModificationTime).toString());
+    result << QString("   Abs: [%1]").arg(absoluteFilePath());
+    result << "   <QQFileInfo}";
+    return result;
+}
+/* ------------------------- extern ------------------------ */
 
 bool operator == (const QQFileInfo &lfi, const QQFileInfo &rfi)
 {
@@ -22,6 +53,14 @@ bool operator <  (const QQFileInfo &lfi, const QQFileInfo &rfi)
 {
     return lfi.absoluteFilePath() <  rfi.absoluteFilePath();
 }
+
+QDebug operator << (QDebug dbg, const QQFileInfo &fi)
+{
+    for (QString s : fi.toDebugStrings())
+        dbg << s << Qt::endl;
+    return dbg;
+}
+
 
 #if 0
 #include "QQFileInfo.h"
@@ -160,31 +199,5 @@ bool QQFileInfo::tryIsDir(const QQString &pathName)
     bool canCdDir = tryDir.cd(pathName);
     return canCdDir && ! tryIsFile(pathName);
 }
-
-/* ------------------------- debug ------------------------ */
-
-QStringList QQFileInfo::toDebugStrings() const
-{
-    if (isNull())
-        return QStringList() << "{QQFileInfo: null}";                   /* /====\ */
-    QStringList result;
-    result << QQString("{QQFileInfo:> Dir=[%1] FileName=[%2]")
-            .arg(dir().path(), fileName());
-    result << QQString("   %1 @%2}")
-            .arg(allAttributes(), fileTime(QFile::FileModificationTime).toString());
-    result << QString("   Abs: [%1]").arg(absoluteFilePath());
-    result << "   <QQFileInfo}";
-    return result;
-}
-
-/* ------------------------- non-member ------------------------ */
-
-QDebug operator << (QDebug dbg, const QQFileInfo &fi)
-{
-    for (QString s : fi.toDebugStrings())
-        dbg << s << Qt::endl;
-    return dbg;
-}
-
 
 #endif

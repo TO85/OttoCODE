@@ -1,15 +1,18 @@
 #include "Key.h"
 
-Key::Key(const KeySeg &ki) { set(ki); }
-Key::Key(const QList<KeySeg> &kql) : mSegments(kql) {;}
+Key::Key(const KeySeg &first) { set(first); }
+Key::Key(const QList<KeySeg> &segments) : mSegments(segments) {;}
 Key::Key(const QString &qs) { set(qs); }
 Key::Key(const QStringList &qsl) { set(qsl); }
 Key::Key(const char *pch) { set(pch); }
 
-void Key::set(const KeySeg &ki)
+void Key::set(const KeySeg &first)
 {
     clear();
-    mSegments.append(ki);
+    mSegments.append(first);
+#ifdef QT_DEBUG
+    mdString = toQString();
+#endif
 }
 
 void Key::set(const QString &qs)
@@ -22,6 +25,9 @@ void Key::set(const QStringList &qsl)
     clear();
     for (QString qs : qsl)
         mSegments.append(qs);
+#ifdef QT_DEBUG
+    mdString = toQString();
+#endif
 }
 
 void Key::set(const char *pch)
@@ -32,6 +38,9 @@ void Key::set(const char *pch)
 Key Key::append(const KeySeg &seg)
 {
     mSegments.append(seg);
+#ifdef QT_DEBUG
+    mdString = toQString();
+#endif
     return it();
 }
 
@@ -68,7 +77,7 @@ KeySeg Key::last() const
     return mSegments.isEmpty() ? KeySeg() : mSegments.last();
 }
 
-QList<KeySeg> Key::list() const
+KeySeg::List Key::list() const
 {
     return mSegments;
 }
@@ -92,6 +101,9 @@ bool Key::less(const Key &other) const
 void Key::clear()
 {
     mSegments.clear();
+#ifdef QT_DEBUG
+    mdString.clear();
+#endif
 }
 
 QString Key::toQString() const
