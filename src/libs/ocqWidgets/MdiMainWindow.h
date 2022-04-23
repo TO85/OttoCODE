@@ -1,35 +1,36 @@
 #pragma once
 #include "ocqWidgets.h"
 
+#include "QQMainWindow.h"
+
 #include <QtCore/QMap>
+#include <QMainWindow>
+#include <QMdiArea>
+#include <QMdiSubWindow>
 
 #include <Key>
 #include <KeyMap>
 #include <QQFileInfo>
 
-#include <QQMainWindow>
-#include <QQMdiArea>
 class MdiDocument;
 class MdiGridWidget;
 class MdiSubWinWidget;
-
-//#include "MdiDocument.h"
-class MdiDocument;
+class QQMdiArea;
 
 class OCQWIDGETS_EXPORT MdiMainWindow : public QQMainWindow
 {
     Q_OBJECT
 public:
-    MdiMainWindow(QApplication *pApp);
-    QObject *object();
-    QQMdiArea *mdiArea() const;
+    MdiMainWindow(QWidget *parent = nullptr, Qt::WindowFlags flags = Qt::WindowFlags());
+    QObject * object();
+    QQMdiArea * mdiArea() const;
 
 public:
-    MdiSubWinWidget * newSubWindow(const Key &key, const Qt::WindowFlags flags = Qt::WindowFlags());
+    MdiSubWinWidget * newSubWindow(const Key &key, const Qt::WindowFlags flags);
+    void add(const QQFileInfo &fi, MdiDocument *pDoc);
+    void add(MdiSubWinWidget *pSubWinWidget);
 
 public slots:
-    void add(const QQFileInfo &fi, MdiDocument * pDoc);
-    void add(MdiSubWinWidget *pSubWinWidget);
 
 protected slots:
     virtual void setupActions();
@@ -42,6 +43,7 @@ public slots: // actions
 
 private:
     QQMdiArea *mpMdiArea;
+    QMap<QQFileInfo, QMdiSubWindow *> mFileSubWindowMap;
     QMap<QQFileInfo, MdiDocument *> mFileInfoDocumentMap;
     KeyMap<MdiSubWinWidget *> mSubWinWidgetKeyMap;
 };

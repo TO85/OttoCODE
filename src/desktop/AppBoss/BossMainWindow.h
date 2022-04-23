@@ -8,7 +8,7 @@ class BossMainWindow : public MdiMainWindow
 {
     Q_OBJECT
 public:
-    BossMainWindow(QApplication *pApp);
+    BossMainWindow(QWidget *parent = nullptr, Qt::WindowFlags flags = Qt::WindowFlags());
     ~BossMainWindow();
 
 private slots:

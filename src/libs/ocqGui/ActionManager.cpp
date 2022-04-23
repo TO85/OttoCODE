@@ -4,6 +4,8 @@
 #include <QAction>
 #include <QMetaMethod>
 
+#include <Key>
+
 
 ActionManager::ActionManager(QObject *parent)
     : QObject{parent}
@@ -19,7 +21,7 @@ bool ActionManager::contains(const Key &key) const
 
 QAction *ActionManager::action(const Key &key) const
 {
-    qDebug() << Q_FUNC_INFO << key;
+    qDebug() << Q_FUNC_INFO << key.toQString();
     Q_ASSERT(contains(key));
     return mKeyActionMap.value(key);
 }
@@ -29,7 +31,7 @@ bool ActionManager::connectSlot(const Key &key, const QObject *actor,
                                 const bool scanParents)
 {
     Q_ASSERT(actor);
-    qDebug() << Q_FUNC_INFO << key << actor->objectName() << signature << scanParents;
+    qDebug() << Q_FUNC_INFO << key.toQString() << actor->objectName() << signature << scanParents;
     Q_ASSERT(contains(key));
     bool result = false;
     const QAction *pAction = action(key);
@@ -46,7 +48,7 @@ bool ActionManager::connectSlot(const Key &key, const QObject *actor,
 
 QAction *ActionManager::add(const Key &key, const QQString &text)
 {
-    qDebug() << Q_FUNC_INFO << key << text;
+    qDebug() << Q_FUNC_INFO << key.toQString() << text;
     QQString tActionText = text.isEmpty() ? ("&"+key.last()) : text;
     QAction *pAction = new QAction(tActionText);
     add(key, pAction);
@@ -57,7 +59,7 @@ void ActionManager::add(const Key &key, QAction *action)
 {
     Q_ASSERT(action);
     action->setObjectName("ActionManager:"+key.toQString());
-    qDebug() << Q_FUNC_INFO << key << action->objectName();
+    qDebug() << Q_FUNC_INFO << key.toQString() << action->objectName();
     mKeyActionMap.insert(key, action);
     emit actionAdded(key, action);
 }

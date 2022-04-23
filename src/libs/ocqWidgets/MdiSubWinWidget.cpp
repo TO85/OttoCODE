@@ -9,7 +9,7 @@ MdiSubWinWidget::MdiSubWinWidget(const Key &aKey, QQMdiArea *parent, Qt::WindowF
     , mpMdiArea(parent)
     , mKey(aKey)
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     Q_ASSERT(mpMdiArea);
     setObjectName("QQMdiSubWindow:" + key());
     qDebug() << Q_FUNC_INFO << objectName() << mpMdiArea->objectName();
@@ -18,7 +18,7 @@ MdiSubWinWidget::MdiSubWinWidget(const Key &aKey, QQMdiArea *parent, Qt::WindowF
 
 QQMdiArea *MdiSubWinWidget::mdiArea()
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     Q_ASSERT(mpMdiArea);
     qDebug() << Q_FUNC_INFO << objectName() << mpMdiArea->objectName();
     return mpMdiArea;
@@ -26,6 +26,6 @@ QQMdiArea *MdiSubWinWidget::mdiArea()
 
 void MdiSubWinWidget::setup()
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << objectName();
 }

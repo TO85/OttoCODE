@@ -17,7 +17,7 @@ QQMainWindow::QQMainWindow(QApplication *pApp)
 
 const QApplication * QQMainWindow::gui() const
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     Q_ASSERT(mpApplication);
     qDebug() << Q_FUNC_INFO << objectName() << mpApplication->objectName();
     return mpApplication;
@@ -25,7 +25,7 @@ const QApplication * QQMainWindow::gui() const
 
 const QCoreApplication *QQMainWindow::core() const
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     Q_ASSERT(mpApplication);
     qDebug() << Q_FUNC_INFO << objectName() << mpApplication->objectName();
     return (QCoreApplication *)(mpApplication);
@@ -33,7 +33,7 @@ const QCoreApplication *QQMainWindow::core() const
 
 const QObject *QQMainWindow::object()
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     const QObject * result=nullptr;
     result = qobject_cast<QObject *>(this);
     Q_ASSERT(result);
@@ -42,7 +42,7 @@ const QObject *QQMainWindow::object()
 
 ActionManager *QQMainWindow::actions() const
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     Q_ASSERT(mpActionManager);
     qDebug() << Q_FUNC_INFO << objectName() << mpActionManager->objectName();
     return mpActionManager;
@@ -50,21 +50,21 @@ ActionManager *QQMainWindow::actions() const
 
 QAction *QQMainWindow::action(const Key key)
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     Q_ASSERT(actions()->contains(key));
     return actions()->action(key);
 }
 
 QMenu *QQMainWindow::menu(const Key key)
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     Q_ASSERT(mKeyMenuMap.contains(key));
     return mKeyMenuMap.value(key);
 }
 
 QMenu * QQMainWindow::addMenu(const Key key, const QQString &text)
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     Q_ASSERT(mpActionManager);
     qDebug() << Q_FUNC_INFO << objectName() << mpActionManager->objectName();
     if (mKeyMenuMap.contains(key)) return menu(key);                    /* /====\ */
@@ -79,7 +79,7 @@ QMenu * QQMainWindow::addMenu(const Key key, const QQString &text)
 
 void QQMainWindow::setup()
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << objectName();
     setupStart();
     setupActions();

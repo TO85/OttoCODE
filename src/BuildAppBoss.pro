@@ -24,12 +24,12 @@ ocExe.subdir            = libs/ocExe
 AppBoss.subdir          = desktop/AppBoss
 
 ocBase.depends          =
-ocType.depends          =                                       ocBase
-ocLog.depends           =                                       ocBase
-ocqCore.depends         =                                       ocBase
-ocqGui.depends          =                                       ocBase
-ocqWidgets.depends      =               ocqGui ocqCore ocType   ocBase
-ocIO.depends            =                                       ocBase
-ocExe.depends           =                                       ocBase
-AppBoss.depends         =   ocqWidgets  ocqGui ocqCore ocLog    ocBase
+ocType.depends          =                                                       ocBase
+ocLog.depends           =                                                       ocBase
+ocqCore.depends         =                               ocType                  ocBase
+ocqGui.depends          =                                                       ocBase
+ocqWidgets.depends      =               ocqGui ocqCore  ocType                  ocBase
+ocIO.depends            =                                                       ocBase
+ocExe.depends           =                                                       ocBase
+AppBoss.depends         =   ocqWidgets  ocqGui ocqCore  ocType          ocLog   ocBase
 

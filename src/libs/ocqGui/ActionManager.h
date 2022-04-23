@@ -3,10 +3,11 @@
 
 #include <QObject>
 
+#include <QMap>
 class QAction;
 
-#include <KeyMap>
 #include <QQString>
+#include <Sortable>
 class Key;
 
 class OCQGUI_EXPORT ActionManager : public QObject
@@ -26,12 +27,15 @@ public slots:
     void add(const Key &key, QAction *action);
 
 public: // static
-    static QMetaMethod method(const QObject *object, const QByteArray &signature, const bool scanParents=false);
+    static QMetaMethod method(const QObject *object, const QByteArray &signature,
+                              const bool scanParents=false);
 
 signals:
     void actionAdded(const Key &key, QAction *action);
 
 private:
-    KeyMap<QAction *> mKeyActionMap;
+    QMap<QString, QAction *> mKeyActionMap;
 };
+
+Q_GLOBAL_STATIC(ActionManager, ACTMGR);
 

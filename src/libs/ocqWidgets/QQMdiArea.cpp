@@ -7,7 +7,7 @@
 
 QQMdiArea::QQMdiArea(QMainWindow *pMain)
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     Q_ASSERT(pMain);
     setObjectName("QQMdiArea");
     qDebug() << Q_FUNC_INFO << pMain->objectName();
@@ -16,7 +16,7 @@ QQMdiArea::QQMdiArea(QMainWindow *pMain)
 
 void QQMdiArea::addSubWinWidget(const MdiSubWinWidget *pSubWinWidget)
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     Q_ASSERT(pSubWinWidget);
     qDebug() << Q_FUNC_INFO << pSubWinWidget->objectName();
     QMdiArea::addSubWindow((QWidget *)(pSubWinWidget));

@@ -89,5 +89,5 @@ void FileSystemObject::RootDir(const QQDir &newRootDir)
 
 void FileSystemObject::resetRootDir()
 {
-    RootDir(QQDir::nullDir());
+    mRootDir = QQDir();
 }

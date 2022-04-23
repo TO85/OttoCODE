@@ -25,11 +25,16 @@ MdiDocument::~MdiDocument()
     smFileInfoDocumentMap.remove(mFileInfo);
 }
 
+QQMdiArea * MdiDocument::mdiArea() const
+{
+    return mainWin()->mdiArea();
+}
+
 void MdiDocument::load()
 {
-    Q_ASSERT(this);
-    qDebug() << Q_FUNC_INFO << mFileInfo;
-    if (mFileInfo.notExists()) return;                                  /* /====\ */
+    Q_CHECK_PTR(this);
+    qDebug() << Q_FUNC_INFO << mFileInfo << mFileInfo.exists() << mFileInfo.isReadable();
+    if (mFileInfo.notExists() || mFileInfo.notReadable()) return;                                  /* /====\ */
     QFile * pFile = new QFile(mFileInfo.filePath(), this);
     if (pFile->open(QIODevice::ReadOnly))
         mBytes = pFile->readAll();

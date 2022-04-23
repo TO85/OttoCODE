@@ -5,11 +5,13 @@
 
 #include <QMap>
 
+#include <KeyMap>
 #include <QQFileInfo>
 #include <QQString>
 
-//#include "MdiMainWindow.h"
 class MdiMainWindow;
+class MdiGridWidget;
+class QQMdiArea;
 
 class OCQWIDGETS_EXPORT MdiDocument : public QObject
 {
@@ -21,6 +23,7 @@ public:
 
 public:
     MdiMainWindow * mainWin() const { return mpMainWindow; }
+    QQMdiArea *mdiArea() const;
     QQFileInfo fileInfo() const { return mFileInfo; }
     QByteArray bytes() const { return mBytes; }
     QQString filePathName() const { return mFileInfo.filePath(); }
@@ -32,18 +35,19 @@ public:
     QQFileInfo fileInfo(const QQFileInfo fi);
     QByteArray & bytes() { return mBytes; }
 
-public: // static
-    static MdiDocument * document(const QQFileInfo &fi);
-
 signals:
     void fileInfoChanged(const QQFileInfo &fi);
-    void fileLoad(const QQFileInfo &fi, const bool success);
+    void fileLoad(const QQFileInfo & fileInfo, const bool success);
+
+public: // static
+    static MdiDocument * document(const QQFileInfo &fi);
 
 protected:
     MdiMainWindow * mpMainWindow=nullptr;
     QQFileInfo mFileInfo;
     QFile * mpFile=nullptr;
     QByteArray mBytes;
+    KeyMap<MdiGridWidget *> mKeyWidgetMap;
     static QMap<QQFileInfo, MdiDocument *> smFileInfoDocumentMap;
 };
 

@@ -23,14 +23,14 @@ GridDialog::GridDialog(QDialogButtonBox::StandardButtons buttons, QWidget *paren
 
 QDialogButtonBox * GridDialog::buttonBox()
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     Q_ASSERT(mpButtonBox);
     return mpButtonBox;
 }
 
 QGridLayout *GridDialog::grid()
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     Q_ASSERT(mpGridLayout);
     return mpGridLayout;
 }
