@@ -12,14 +12,8 @@ public:
     FrameGraphicsWidget(QWidget *parent = nullptr);
 
 public slots:
-    void load(const ColorQImage cqi);
-    void load(const ColorFloatQImage cfqi);
-
 
 signals:
-    void loaded(const ColorQImage cqi);
-    void loaded(const ColorFloatQImage cfqi);
-
 
 };
 

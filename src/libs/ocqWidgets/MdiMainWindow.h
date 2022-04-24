@@ -14,7 +14,7 @@
 
 class MdiDocument;
 class MdiGridWidget;
-class MdiSubWinWidget;
+class MdiGridSubWin;
 class QQMdiArea;
 
 class OCQWIDGETS_EXPORT MdiMainWindow : public QQMainWindow
@@ -26,9 +26,8 @@ public:
     QQMdiArea * mdiArea() const;
 
 public:
-    MdiSubWinWidget * newSubWindow(const Key &key, const Qt::WindowFlags flags);
-    void add(const QQFileInfo &fi, MdiDocument *pDoc);
-    void add(MdiSubWinWidget *pSubWinWidget);
+    void add(const QQFileInfo &fileInfo);
+    void add(MdiGridSubWin *pSubWinWidget);
 
 public slots:
 
@@ -44,7 +43,6 @@ public slots: // actions
 private:
     QQMdiArea *mpMdiArea;
     QMap<QQFileInfo, QMdiSubWindow *> mFileSubWindowMap;
-    QMap<QQFileInfo, MdiDocument *> mFileInfoDocumentMap;
-    KeyMap<MdiSubWinWidget *> mSubWinWidgetKeyMap;
+    KeyMap<MdiGridSubWin *> mSubWinWidgetKeyMap;
 };
 

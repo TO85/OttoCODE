@@ -4,11 +4,11 @@
 
 #include <ActionManager>
 
-#include "MdiDocument.h"
-#include "MdiGridWidget.h"
+#include "MdiGridSubWin.h"
+#include "QQMdiArea.h"
 
 MdiMainWindow::MdiMainWindow(QWidget *parent, Qt::WindowFlags flags)
-    : QQMainWindow(qApp)
+    : QQMainWindow(parent, flags)
     , mpMdiArea(new QQMdiArea(this))
 {
     setParent(parent);
@@ -25,30 +25,20 @@ QObject * MdiMainWindow::object()
 
 QQMdiArea * MdiMainWindow::mdiArea() const
 {
-    Q_ASSERT(mpMdiArea);
+    Q_CHECK_PTR(mpMdiArea);
     return mpMdiArea;
 }
 
-MdiSubWinWidget * MdiMainWindow::newSubWindow(const Key &key, const Qt::WindowFlags flags)
+void MdiMainWindow::add(const QQFileInfo &fileInfo)
 {
     Q_CHECK_PTR(this);
-    qDebug() << Q_FUNC_INFO << key;
-    MdiSubWinWidget * result = new MdiSubWinWidget(key, mdiArea(), flags);
-    add(result);
-    qDebug() << key << result->objectName();
-    return result;
+    qDebug() << Q_FUNC_INFO << objectName() << fileInfo;
 }
 
-void MdiMainWindow::add(const QQFileInfo &fi, MdiDocument *pDoc)
+void MdiMainWindow::add(MdiGridSubWin *pSubWinWidget)
 {
-    Q_ASSERT(pDoc);
-    qDebug() << Q_FUNC_INFO << objectName() << fi << pDoc->filePathName();
-    mFileInfoDocumentMap.insert(fi, pDoc);
-}
-
-void MdiMainWindow::add(MdiSubWinWidget *pSubWinWidget)
-{
-    Q_ASSERT(pSubWinWidget);
+    Q_CHECK_PTR(this);
+    Q_CHECK_PTR(pSubWinWidget);
     qDebug() << Q_FUNC_INFO << objectName() << pSubWinWidget->objectName();
     mSubWinWidgetKeyMap.insert(pSubWinWidget->key(), pSubWinWidget);
 }

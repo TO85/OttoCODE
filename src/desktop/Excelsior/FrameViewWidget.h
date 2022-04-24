@@ -6,6 +6,6 @@
 class FrameViewWidget : public MdiGridWidget
 {
 public:
-    FrameViewWidget();
+    FrameViewWidget(const Key &key, QQMdiArea *parent, Qt::WindowFlags flags = Qt::WindowFlags());
 };
 

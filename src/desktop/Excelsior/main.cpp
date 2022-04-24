@@ -2,6 +2,7 @@
 
 #include <QApplication>
 #include <QFileInfo>
+#include <QTimer>
 
 #include <../../../common/version.h>
 #include "version.h"
@@ -12,7 +13,7 @@ int main(int argc, char *argv[])
     a.setApplicationDisplayName("Excelsior Video Manageer");
     a.setApplicationName(OC_VER_APPNAME);
     a.setApplicationVersion(OC_VER_APPVER);
-    ExcelsiorMain w(&a);
-    w.show();
+    ExcelsiorMain w;
+    QTimer::singleShot(500, &w, &ExcelsiorMain::start);
     return a.exec();
 }

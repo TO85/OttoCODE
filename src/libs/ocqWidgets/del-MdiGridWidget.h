@@ -1,7 +1,7 @@
 #pragma once
 #include "ocqWidgets.h"
 
-#include "MdiSubWinWidget.h"
+#include "MdiGridSubWin.h"
 
 #include <QtCore/QString>
 #include <QtWidgets/QWidget>
@@ -11,7 +11,7 @@
 
 #include "QQMdiArea.h"
 
-class OCQWIDGETS_EXPORT MdiGridWidget : public MdiSubWinWidget
+class OCQWIDGETS_EXPORT MdiGridWidget : public MdiGridSubWin
 {
     Q_OBJECT
 public:

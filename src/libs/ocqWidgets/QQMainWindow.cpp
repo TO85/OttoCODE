@@ -8,27 +8,18 @@
 #include <ActionManager>
 #include <QQString>
 
-QQMainWindow::QQMainWindow(QApplication *pApp)
-    : mpApplication(pApp)
+QQMainWindow::QQMainWindow(QWidget *parent, Qt::WindowFlags flags)
+    : QMainWindow(parent, flags)
     , mpActionManager(new ActionManager(this))
 {
+    Q_CHECK_PTR(this);
     setObjectName("QQMainWindow");
 }
 
 const QApplication * QQMainWindow::gui() const
 {
-    Q_CHECK_PTR(this);
-    Q_ASSERT(mpApplication);
-    qDebug() << Q_FUNC_INFO << objectName() << mpApplication->objectName();
-    return mpApplication;
-}
-
-const QCoreApplication *QQMainWindow::core() const
-{
-    Q_CHECK_PTR(this);
-    Q_ASSERT(mpApplication);
-    qDebug() << Q_FUNC_INFO << objectName() << mpApplication->objectName();
-    return (QCoreApplication *)(mpApplication);
+    Q_CHECK_PTR(qApp);
+    return (QApplication *)(qApp);
 }
 
 const QObject *QQMainWindow::object()
@@ -65,12 +56,11 @@ QMenu *QQMainWindow::menu(const Key key)
 QMenu * QQMainWindow::addMenu(const Key key, const QQString &text)
 {
     Q_CHECK_PTR(this);
-    Q_ASSERT(mpActionManager);
-    qDebug() << Q_FUNC_INFO << objectName() << mpActionManager->objectName();
+    qDebug() << Q_FUNC_INFO << objectName() << actions()->objectName();
     if (mKeyMenuMap.contains(key)) return menu(key);                    /* /====\ */
     const QString tMenuText = text.isEmpty() ? ("&"+key.last()) : text;
     QMenu * result = new QMenu(tMenuText, this);
-    QAction * pMenuAction = mpActionManager->add(key, tMenuText);
+    QAction * pMenuAction = actions()->add(key, tMenuText);
     pMenuAction->setMenu(result);
     menuBar()->addMenu(result);
     mKeyMenuMap.insert(key, result);
@@ -136,5 +126,4 @@ void QQMainWindow::setupFinish()
 {
     qDebug() << Q_FUNC_INFO << objectName();
     menuBar()->show();
-
 }

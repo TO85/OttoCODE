@@ -1,9 +1,12 @@
 #include "ImagePak.h"
 
+#include <QPixmap>
 #include <QVariant>
 
 #include <QQDir>
 #include <QQString>
+
+#include "ColorQImage.h"
 
 QQFileInfo ImagePak::fileInfo() const
 {
@@ -22,9 +25,45 @@ bool ImagePak::contains(const Image::Type ix) const
     return VariablePak::get(ix).notNull();
 }
 
-QImage ImagePak::qimage(const Image::Type ix) const
+QQSize ImagePak::size() const
 {
-    return VariablePak::get(ix).vari().value<QImage>();
+    return original().size();
+}
+
+QPixmap ImagePak::pixmap(const Image::Type ix, const Rational scale)
+{
+    QPixmap result;
+    ColorQImage tCQImage = colorQImage(ix);
+    result = QPixmap::fromImage(tCQImage);
+    if (scale.notOne())
+        result = result.scaled(tCQImage.size() * scale);
+    return result;
+}
+
+QImage ImagePak::original() const
+{
+    return getImage(Image::OriginalQImage);
+}
+
+QImage ImagePak::colorQImage(const Image::Type ix)
+{
+    QImage result;
+    if (notValidIndex(ix)) return result;                           /* /====\ */
+    if (Image::isQImageType(ix)) return result;                     /* /====\ */
+    if (notContains(ix))
+        generate(ix);
+    result = variant(ix).value<QImage>();
+    return result;
+}
+
+QImage ImagePak::getImage(const Image::Type ix) const
+{
+    QImage result;
+    if (notValidIndex(ix)) return result;                           /* /====\ */
+    if (Image::isQImageType(ix)) return result;                     /* /====\ */
+    if (notContains(ix)) return result;                             /* /====\ */
+    result = variant(ix).value<QImage>();
+    return result;
 }
 
 void ImagePak::set(const QQFileInfo &fi)
@@ -38,33 +77,15 @@ void ImagePak::set(const QByteArray &imageBytes)
     VariablePak::set(imageBytes);
 }
 
+void ImagePak::set(const QImage &originalImage)
+{
+    set(Image::OriginalQImage, originalImage);
+}
+
 void ImagePak::set(const Image::Type ix, const QImage &qi)
 {
     QVariant tVari = qi;
     VariablePak::set(ix, tVari);
-}
-
-void ImagePak::load(const QQFileInfo &fi)
-{
-    set(fi);
-    if (readImageFile())
-        load(imageBytes());
-}
-
-void ImagePak::load(const QByteArray &imageData)
-{
-    set(imageData);
-    if (loadOriginalImage())
-        load();
-}
-
-void ImagePak::load()
-{
-    QImage tOriginal = qimage(Image::OriginalQImage);
-    if (tOriginal.isNull()) return;                                     /* /====\ */
-    set(Image::ColorQImage, tOriginal.convertToFormat(colorQFormat()));
-    set(Image::FloatColorQImage, tOriginal.convertToFormat(floatQFormat()));
-    set(Image::GreyQImage, tOriginal.convertToFormat(greyQFormat()));
 }
 
 /* ------------------ static ---------------------- */
@@ -86,47 +107,52 @@ QImage::Format ImagePak::greyQFormat()
 
 /* ------------------ protected ---------------------- */
 
-bool ImagePak::generate(const Image::Type ix)
+void ImagePak::generate(const Image::Type ix)
 {
-    if (Image::isQImageType(ix)) return generateQImage(ix);
-    if (Image::isFloatImageType(ix)) return generateFloatImage(ix);
-    if (Image::isFloatPlaneType(ix)) return generateFloatPlane(ix);
-    return false;
+    if (Image::isQImageType(ix))        generateQImage(ix);
+    if (Image::isFloatQImageType(ix))   generateQFloatImage(ix);
+    if (Image::isFloatPlaneType(ix))    generateFloatPlane(ix);
 }
 
-bool ImagePak::generateQImage(const Image::Type ix)
+void ImagePak::generateQImage(const Image::Type ix)
 {
-    Q_UNUSED(ix); Q_ASSERT(false); // MUSTDO it
-}
-
-bool ImagePak::generateFloatImage(const Image::Type ix)
-{
-    Q_UNUSED(ix); Q_ASSERT(false); // MUSTDO it
-}
-
-bool ImagePak::generateFloatPlane(const Image::Type ix)
-{
-    Q_UNUSED(ix); Q_ASSERT(false); // MUSTDO it
-}
-
-bool ImagePak::readImageFile()
-{
-    QByteArray tBytes;
-    if (fileInfo().exists() && fileInfo().isReadable())
+    switch (ix)
     {
-        QFile tFile(fileInfo().filePath());
-        if (tFile.open(QIODevice::ReadOnly))
-            tBytes = tFile.readAll();
+    case Image::OriginalQImage:     generateOriginal();     break;
+    case Image::ColorQImage:        generateColorQI();      break;
+
+    default:
+        Q_ASSERT(false); // MUSTDO it
     }
-    set(tBytes);
-    return ! imageBytes().isEmpty();
 }
 
-bool ImagePak::loadOriginalImage()
+void ImagePak::generateQFloatImage(const Image::Type ix)
 {
-    QImage tImage;
-    tImage.loadFromData(bytes());
-    set(Image::OriginalQImage, tImage);
-    return ! qimage(Image::OriginalQImage).isNull();
+    Q_UNUSED(ix); Q_ASSERT(false); // MUSTDO it
 }
 
+void ImagePak::generateFloatPlane(const Image::Type ix)
+{
+    Q_UNUSED(ix); Q_ASSERT(false); // MUSTDO it
+}
+
+void ImagePak::generateOriginal()
+{
+    const QQFileInfo tFI = fileInfo();
+    if (tFI.exists() && tFI.isReadable())
+    {
+        const QQString tFileName = tFI.filePath();
+        QImage tImage(tFileName);
+        if (tImage.format() != ImagePak::colorQFormat())
+            (void)tImage.convertToFormat(ImagePak::colorQFormat());
+        set(Image::OriginalQImage, tImage);
+    }
+}
+
+void ImagePak::generateColorQI()
+{
+    if (notContains(Image::OriginalQImage))
+        generateOriginal();
+    ColorQImage tCQI = original();
+    set(Image::ColorQImage, tCQI);
+}

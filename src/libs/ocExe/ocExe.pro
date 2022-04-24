@@ -11,11 +11,19 @@ include(../libs.pri)
 
 SOURCES += \
     CommandLine.cpp \
+    SysEnvTableModel.cpp \
+    SysPathListModel.cpp \
+    SysProcessEnv.cpp \
     ocExe.cpp
 
 HEADERS += \
     ../../include/CommandLine \
+    ../../include/SysEnvTableModel \
+    ../../include/SysPathListModel \
     CommandLine.h \
+    SysEnvTableModel.h \
+    SysPathListModel.h \
+    SysProcessEnv.h \
     ocExe_global.h \
     ocExe.h
 

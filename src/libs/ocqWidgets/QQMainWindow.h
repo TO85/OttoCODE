@@ -16,7 +16,7 @@ class OCQWIDGETS_EXPORT QQMainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit QQMainWindow(QApplication *pApp);
+    explicit QQMainWindow(QWidget *parent = nullptr, Qt::WindowFlags flags = Qt::WindowFlags());
     const QApplication *gui() const;
     const QCoreApplication *core() const;
     const QObject *object();
@@ -28,7 +28,7 @@ public:
     QMenu * addMenu(const Key key, const QQString &text=QQString());
 
 public slots:
-    void setup();
+    virtual void setup();
     void exit();
 
 signals:
@@ -44,7 +44,6 @@ protected:
     virtual void setupFinish();
 
 private:
-    QApplication *mpApplication=nullptr;
     ActionManager *mpActionManager=nullptr;
     KeyMap<QMenu *> mKeyMenuMap;
 };

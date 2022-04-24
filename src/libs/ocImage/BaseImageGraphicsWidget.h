@@ -4,8 +4,10 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QGraphicsPixmapItem>
+#include <QImage>
+#include <QPixmap>
 class QBrush;
-class QPixmap;
 
 #include <Rect>
 #include <Rational>
@@ -20,7 +22,8 @@ public:
     explicit BaseImageGraphicsWidget(QWidget *parent = nullptr);
 
 public slots:
-    void set(const QPixmap pxmp, const Rational scale=Rational(1,1));
+    void clear();
+    void set(const Image::Type itype, const QImage image, const Rational scale=Rational(1,1));
     void setBackground(const QBrush backBrush, const QPixmap backImage=QPixmap());
     void update();
 
@@ -31,6 +34,8 @@ private:
     Image::Type mType=Image::$nullType;
     QGraphicsScene * mpScene=nullptr;
     QGraphicsView * mpView=nullptr;
+    QGraphicsPixmapItem * mpGraphicsPixmapItem=nullptr;
+    QImage mImage;
     QPixmap mPixmap;
     Rational mPixmapScale;
     Rect mPixmapRect;

@@ -9,7 +9,7 @@ bool Image::isQImageType(const Type itype)
     return itype > $begQImages && itype < $endQImages;
 }
 
-bool Image::isFloatImageType(const Type itype)
+bool Image::isFloatQImageType(const Type itype)
 {
     return itype > $begFloatImages && itype < $endFloatImages;
 }

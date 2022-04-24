@@ -12,6 +12,7 @@ include(../libs.pri)
 
 SOURCES += \
     Ident.cpp \
+    Index.cpp \
     Key.cpp \
     KeyList.cpp \
     KeyMap.h \
@@ -25,6 +26,7 @@ SOURCES += \
 
 HEADERS += \
     ../../include/Ident \
+    ../../include/Index \
     ../../include/Key \
     ../../include/KeyList \
     ../../include/KeyMap \
@@ -37,6 +39,7 @@ HEADERS += \
     ../../include/Sortable \
     ../../include/Uid \
     Ident.h \
+    Index.h \
     Key.h \
     KeyList.h \
     KeyMap.h \

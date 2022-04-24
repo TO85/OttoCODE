@@ -16,27 +16,27 @@ SOURCES += \
     GraphicsLayer.cpp \
     GridDialog.cpp \
     MdiDocument.cpp \
-    MdiGridWidget.cpp \
+    MdiGridSubWin.cpp \
     MdiMainWindow.cpp \
-    MdiSubWinWidget.cpp \
+    QQGridLayout.cpp \
     QQMainWindow.cpp \
     QQMdiArea.cpp \
     ocqWidgets.cpp
 
 HEADERS += \
     ../../include/GridDialog \
-    ../../include/MdiGridWidget \
+    ../../include/MdiGridSubWin \
     ../../include/MdiMainWindow \
-    ../../include/MdiSubWinWidget \
     ../../include/MenuManager \
+    ../../include/QQGridLayout \
     ../../include/QQMainWindow \
     ../../include/QQMdiArea \
     GraphicsLayer.h \
     GridDialog.h \
     MdiDocument.h \
-    MdiGridWidget.h \
+    MdiGridSubWin.h \
     MdiMainWindow.h \
-    MdiSubWinWidget.h \
+    QQGridLayout.h \
     QQMainWindow.h \
     QQMdiArea.h \
     ocqWidgets_global.h \

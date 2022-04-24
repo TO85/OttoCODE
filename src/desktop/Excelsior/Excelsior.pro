@@ -25,14 +25,16 @@ message(INCLUDEPATH = $${INCLUDEPATH})
 message(LIBS = $${LIBS})
 
 SOURCES += \
+    ExcelsiorFrameGridMdiSub.cpp \
+    ExcelsiorFrameWidget.cpp \
     ExcelsiorMain.cpp \
-    FrameImageDocument.cpp \
     FrameViewWidget.cpp \
     main.cpp
 
 HEADERS += \
+    ExcelsiorFrameGridMdiSub.h \
+    ExcelsiorFrameWidget.h \
     ExcelsiorMain.h \
-    FrameImageDocument.h \
     FrameViewWidget.h
 
 # Default rules for deployment.

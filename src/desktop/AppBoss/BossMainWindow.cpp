@@ -11,29 +11,39 @@
 #include <QtWidgets/QToolBar>
 
 #include <ActionManager>
-#include <MdiGridWidget>
+#include <QQMdiArea>
 
-#include "EtcSubWinWidget.h"
+#include "EnvSubWin.h"
+#include "EtcSubWin.h"
 
 BossMainWindow::BossMainWindow(QWidget *parent, Qt::WindowFlags flags)
     : MdiMainWindow(parent, flags)
 {
     setObjectName("AppBoss:MainWindow");
     setWindowTitle("OttoCODE AppBoss");
-    QTimer::singleShot(100, this, &BossMainWindow::setup);
+    QTimer::singleShot(100, this, &QQMainWindow::setup);
 }
 
 BossMainWindow::~BossMainWindow()
 {
 }
 
+void BossMainWindow::viewEnv()
+{
+    Q_ASSERT(this);
+    qDebug() << Q_FUNC_INFO << objectName();
+    EnvSubWin *pEnvSubWin = new EnvSubWin(mdiArea());
+    pEnvSubWin->setup();
+    mdiArea()->addSubWindow(pEnvSubWin);
+}
+
 void BossMainWindow::viewEtc()
 {
     Q_ASSERT(this);
     qDebug() << Q_FUNC_INFO << objectName();
-    EtcSubWinWidget *pEtcWidget = new EtcSubWinWidget(QDir("/etc"), mdiArea());
-    pEtcWidget->setup();
-    mdiArea()->addSubWindow(pEtcWidget);
+    EtcSubWin *pEtcSubWin = new EtcSubWin(mdiArea());
+    pEtcSubWin->setup();
+    mdiArea()->addSubWindow(pEtcSubWin);
 }
 
 void BossMainWindow::aboutOttoCODE()
@@ -57,6 +67,7 @@ void BossMainWindow::setupActions()
     Q_ASSERT(this);
     qDebug() << Q_FUNC_INFO << objectName();
     MdiMainWindow::setupActions();
+    actions()->add("View/Env");
     actions()->add("View/Etc");
     actions()->add("View/Exit");
     actions()->add("Help/AboutQt", "About &Qt6");
@@ -71,6 +82,7 @@ void BossMainWindow::setupMenus()
 
     addMenu("MainMenu50/View");
     QMenu * pViewMenu = menu("MainMenu50/View");
+    pViewMenu->addAction(action("View/Env"));
     pViewMenu->addAction(action("View/Etc"));
     pViewMenu->addSeparator();
     pViewMenu->addAction(action("View/Exit"));
@@ -85,6 +97,7 @@ void BossMainWindow::setupMenus()
     pHelpMenu->addAction(action("Help/AboutQt"));
     pHelpMenu->addAction(action("Help/AboutOttoCode"));
     pHelpMenu->addAction(action("Help/AppBoss"));
+
 }
 
 void BossMainWindow::setupConnections()
@@ -92,7 +105,7 @@ void BossMainWindow::setupConnections()
     Q_ASSERT(this);
     qDebug() << Q_FUNC_INFO << objectName();
     MdiMainWindow::setupConnections();
-
+    actions()->connectSlot("View/Env", this, "viewEnv()", true);
     actions()->connectSlot("View/Etc", this, "viewEtc()");
     actions()->connectSlot("View/Exit", this, "exit()", true);
     actions()->connectSlot("Help/AboutQt", qApp, "aboutQt()");

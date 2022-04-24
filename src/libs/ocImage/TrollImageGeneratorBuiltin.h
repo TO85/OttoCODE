@@ -20,9 +20,9 @@ public:
     virtual Image::TypeList supportedPixmapTypes() const override;
     virtual Color::ComponentList requiredComponents(const Color::Component coco) const override {;}
     virtual Color::ComponentList requiredComponents(const Image::Type itype) const override {;}
-    virtual FloatImage generateQImageImage(const ImagePak & ipak, const Image::Type itype) const override {;}
-    virtual FloatImage generateFloatImage(const ImagePak & ipak, const Image::Type itype) const override {;}
-    virtual FloatImagePlane generateFloatImagePlane(const ImagePak & ipak, const Image::Type itype) const override {;}
+    virtual FloatQImage generateColorQImage(ImagePak & ipak, const Image::Type itype) const override {;}
+    virtual FloatQImage generateFloatQImage(ImagePak & ipak, const Image::Type itype) const override {;}
+    virtual FloatImagePlane generateFloatImagePlane(ImagePak & ipak, const Image::Type itype) const override {;}
     virtual QPixmap generatePixmap(const Image::Type &itype) const override {;}
 
 public:

@@ -1,6 +1,7 @@
 #include "KeySegList.h"
 
-KeySegList::KeySegList()
+KeySegList::KeySegList(const QStringList &qsl)
 {
-
+    for (QString key : qsl)
+        append(KeySeg(key));
 }

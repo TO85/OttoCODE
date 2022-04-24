@@ -9,7 +9,7 @@ ImageFileDialog::ImageFileDialog(const Mode mode, QWidget *parent, Qt::WindowFla
     : GridDialog(parent, flags)
     , mMode(mode)
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     setObjectName("ImageFileDialog");
     qDebug() << Q_FUNC_INFO << mMode << (parent ? parent->objectName() : "{orphan}") << Qt::hex << flags;
     setup();
@@ -19,7 +19,7 @@ ImageFileDialog::ImageFileDialog(const Mode mode, QDialogButtonBox::StandardButt
     : GridDialog(buttons, parent, flags)
     , mMode(mode)
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     setObjectName("ImageFileDialog");
     qDebug() << Q_FUNC_INFO << mMode << (parent ? parent->objectName() : "{orphan}") << Qt::hex << buttons << flags;
     setup();
@@ -27,7 +27,7 @@ ImageFileDialog::ImageFileDialog(const Mode mode, QDialogButtonBox::StandardButt
 
 void ImageFileDialog::setup()
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << mMode;
     mpDirectoryText = new QTextEdit("current directory");
     setupActions();
@@ -37,7 +37,7 @@ void ImageFileDialog::setup()
 
 void ImageFileDialog::setupActions()
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << mMode;
     mpBrowseDirectoryAct = new QAction(this);
     mpDefaultDirectoryAct = new QAction(this);
@@ -45,7 +45,7 @@ void ImageFileDialog::setupActions()
 
 void ImageFileDialog::setupConnections()
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << mMode;
     Q_ASSERT(connect(this, &ImageFileDialog::directoryChanged,
                      this, &ImageFileDialog::doDirectoryChanged));
@@ -57,7 +57,7 @@ void ImageFileDialog::setupConnections()
 
 void ImageFileDialog::setupDirectory()
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << mMode;
     Q_ASSERT(mpDirectoryText);
     mpDirectoryText = new QTextEdit("current directory directory directory directory directory directory");
@@ -86,14 +86,14 @@ void ImageFileDialog::setupDirectory()
 
 void ImageFileDialog::browseDirectory()
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << mMode;
     Q_ASSERT(false); // MUSTDO it
 }
 
 void ImageFileDialog::doDirectoryChanged(const QQDir &newDirectory)
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << newDirectory;
     mDirectory = newDirectory;
     mpDirectoryText->setText(mDirectory.path());
@@ -102,7 +102,7 @@ void ImageFileDialog::doDirectoryChanged(const QQDir &newDirectory)
 
 void ImageFileDialog::doDefaultDirectoryChanged(const QQDir &newDefaultDirectory)
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << newDefaultDirectory;
     if (newDefaultDirectory.notNull())
         mDefaultDirectory = newDefaultDirectory;
@@ -131,7 +131,7 @@ void ImageFileDialog::doDefaultDirectoryChanged(const QQDir &newDefaultDirectory
 
 void ImageFileDialog::defaultDirectory(const QQDir &newDefaultDirectory)
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     if (mDefaultDirectory == newDefaultDirectory)
         return;
     mDefaultDirectory = newDefaultDirectory;
@@ -140,19 +140,19 @@ void ImageFileDialog::defaultDirectory(const QQDir &newDefaultDirectory)
 
 const QQDir &ImageFileDialog::directory() const
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     return mDirectory;
 }
 
 const QQDir &ImageFileDialog::defaultDirectory() const
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     return mDefaultDirectory;
 }
 
 void ImageFileDialog::directory(const QQDir &newDirectory)
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     if (mDirectory == newDirectory)
         return;
     mDirectory = newDirectory;
@@ -161,13 +161,13 @@ void ImageFileDialog::directory(const QQDir &newDirectory)
 
 ImageFileDialog::Mode ImageFileDialog::mode() const
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     return mMode;
 }
 
 void ImageFileDialog::mode(const ImageFileDialog::Mode newMode)
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     mMode = newMode;
     emit modeChanged(newMode);
 }

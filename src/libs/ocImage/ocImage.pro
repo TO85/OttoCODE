@@ -19,8 +19,8 @@ SOURCES += \
     BaseImageGraphicsWidget.cpp \
     ColorFloatQImage.cpp \
     ColorQImage.cpp \
-    FloatImage.cpp \
     FloatImagePlane.cpp \
+    FloatQImage.cpp \
     Frame.cpp \
     FrameGraphicsWidget.cpp \
     Image.cpp \
@@ -35,8 +35,9 @@ SOURCES += \
     ocImage.cpp
 
 HEADERS += \
-    ../../include/FloatImage \
+    ../../include/BaseImageGraphicsWidget \
     ../../include/FloatImagePlane \
+    ../../include/FloatQImage \
     ../../include/FrameGraphicsWidget \
     ../../include/Image \
     ../../include/ImageFileDialog \
@@ -48,8 +49,8 @@ HEADERS += \
     BaseImageGraphicsWidget.h \
     ColorFloatQImage.h \
     ColorQImage.h \
-    FloatImage.h \
     FloatImagePlane.h \
+    FloatQImage.h \
     Frame.h \
     FrameGraphicsWidget.h \
     Image.h \

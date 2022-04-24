@@ -6,6 +6,7 @@
 #include <QQFileInfo>
 
 #include "ImagePak.h"
+class MdiGridWidget;
 
 class ImageMdiDocument : public MdiDocument
 {
@@ -15,10 +16,15 @@ public:
     ImagePak pak() const { return mPak; }
     ImagePak & pak() { return mPak; }
 
-public:
-    virtual void load() override;
+public slots:
+    void load();
+    void showOriginalImage(const QQFileInfo & fileInfo);
+
+signals:
+    void loaded();
 
 private:
+    MdiGridWidget *mpGridWidget=nullptr;
     ImagePak mPak;
 };
 

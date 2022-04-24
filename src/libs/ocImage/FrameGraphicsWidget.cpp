@@ -5,13 +5,3 @@ FrameGraphicsWidget::FrameGraphicsWidget(QWidget *parent)
 {
     setObjectName("ImageGraphicsWidget");
 }
-
-void FrameGraphicsWidget::load(const ColorQImage cqi)
-{
-
-}
-
-void FrameGraphicsWidget::load(const ColorFloatQImage cfqi)
-{
-
-}

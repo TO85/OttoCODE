@@ -4,6 +4,7 @@
 #include <QDir>
 #include <Null>
 
+#include <QList>
 #include <QMetaType>
 
 #include "QQString.h"
@@ -11,11 +12,16 @@
 class OCQCORE_EXPORT QQDir : public QDir, public Null
 {
 public:
+    typedef QList<QQDir> List;
+
+public:
     QQDir(const QDir &other) : QDir(other), Null(false) {;}
     QQDir(const QString &pathName) : QDir(pathName), Null(false) {;}
 
 public:
     QQString lastPath() const;
+    QDir toQDir() const;
+    QVariant toVariant() const;
 
 private:
     QQDir it() const { return *this; }

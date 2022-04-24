@@ -4,57 +4,63 @@
 #include <QApplication>
 #include <QFileDialog>
 #include <QMenu>
+#include <QMenuBar>
 #include <QTimer>
 
 #include <ActionManager>
 #include <ImageFileDialog>
-#include <ImageMdiDocument>
 #include <JsonMap>
 
 
-ExcelsiorMain::ExcelsiorMain(QApplication *pApp)
-    : MdiMainWindow(pApp)
+ExcelsiorMain::ExcelsiorMain(QWidget *parent, Qt::WindowFlags flags)
+    : MdiMainWindow(parent, flags)
 {
     setObjectName("Excelsior:MainWindow");
     qDebug() << Q_FUNC_INFO << objectName();
-    QTimer::singleShot(500, this, &ExcelsiorMain::setup);
 }
+
+/* ------------------- public slots  ---------------------- */
+
+void ExcelsiorMain::start()
+{
+    qDebug() << Q_FUNC_INFO << objectName();
+    setupActions();
+    setupConnections();
+    setupMenus();
+    show();
+}
+
+/* ------------------- private slots  ---------------------- */
 
 void ExcelsiorMain::setupActions()
 {
-    actions()->add("Quit");
-    actions()->add("File/OpenImage", "Open I&mage");
+    ACTMGR->add("Quit");
+    ACTMGR->add("File/OpenImage", "Open I&mage");
 }
 
 void ExcelsiorMain::setupConnections()
 {
-    actions()->connectSlot("Quit", qApp, "quit()", true);
-    actions()->connectSlot("File/OpenImage", this, "openFileAction()");
+    ACTMGR->connectSlot("Quit", qApp, "quit()", true);
+    ACTMGR->connectSlot("File/OpenImage", this, "openFileAction()");
 }
 
 void ExcelsiorMain::setupMenus()
 {
     qDebug() << Q_FUNC_INFO << objectName();
-
-    addMenu("MenuBar10/File");
-    addMenu("MenuBar20/Edit");
-    addMenu("MenuBar50/View");
-    addMenu("MenuBar70/Window");
-    addMenu("MenuBar90/Help");
-
     setupFileMenu();
     setupEditMenu();
     setupViewMenu();
     setupWindowMenu();
     setupHelpMenu();
+    menuBar()->show();
 }
 
 void ExcelsiorMain::setupFileMenu()
 {
-    QMenu * pFileMenu = menu("MenuBar10/File");
-    pFileMenu->addAction(action("File/OpenImage"));
+    QMenu * pFileMenu = menuBar()->addMenu("File");
+    pFileMenu->addAction(ACTMGR->action("File/OpenImage"));
     pFileMenu->addSeparator();
-    pFileMenu->addAction(action("Quit"));
+    pFileMenu->addAction(ACTMGR->action("Quit"));
 }
 
 void ExcelsiorMain::setupEditMenu()
@@ -77,22 +83,36 @@ void ExcelsiorMain::setupHelpMenu()
 
 }
 
+
 void ExcelsiorMain::openFileAction()
 {
-    Q_ASSERT(this);
+    Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << objectName() << mCurrentImageDir << mDefaultImageDir;
 
+    /* ---------- Open File Dialog ----------- */
     QQDir tImageDir = mCurrentImageDir;
     if (tImageDir.isNull()) tImageDir = mDefaultImageDir;
     const QQString tPathFileName
             = QFileDialog::getOpenFileName(this, "Open Image File", tImageDir.path());
+    if (tPathFileName.isEmpty()) return;                            /* cancel /====\ */
     const QQFileInfo tImageFI(tPathFileName);
+    if (tImageFI.notExists()) return;                              /* missing /====\ */
+    mCurrentImageDir = tImageFI.dir();
     qDebug() << tImageFI;
-    ImageMdiDocument *pImageDoc = new ImageMdiDocument(tImageFI, this);
-    Q_ASSERT(pImageDoc);
-    add(tImageFI, pImageDoc);
 
-    pImageDoc->load();
-
-
+    /* ----------- Open & Display ------------- */
+    ExcelsiorFrameGridMdiSub * pMdiSub = addSubWindow(tImageFI);
+    if (pMdiSub) mFileInfoSubWinMap.insert(tImageFI, pMdiSub);
 }
+
+ExcelsiorFrameGridMdiSub *ExcelsiorMain::addSubWindow(const QQFileInfo &fi)
+{
+    ExcelsiorFrameGridMdiSub * result=nullptr;
+
+    return result;
+}
+
+/* ------------------- private ---------------------- */
+
+
+

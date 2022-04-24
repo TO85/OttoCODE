@@ -3,7 +3,7 @@
 #include <QtDebug>
 
 MdiGridWidget::MdiGridWidget(const Key &key, QQMdiArea *parent, Qt::WindowFlags flags)
-    : MdiSubWinWidget(key, parent, flags)
+    : MdiSubWinGrid(key, parent, flags)
     , mpGridLayout(new QGridLayout())
     , mKey(key)
 {
@@ -25,7 +25,7 @@ void MdiGridWidget::setup()
     Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << objectName();
     setWindowTitle(key().last().toQString());
-    MdiSubWinWidget::setup();
+    MdiSubWinGrid::setup();
 
 }
 

@@ -6,6 +6,18 @@ QQString QQDir::lastPath() const
     return tPath.isEmpty() ? QQString() : path().split('/').last();
 }
 
+QDir QQDir::toQDir() const
+{
+    return (QDir)it();
+}
+
+QVariant QQDir::toVariant() const
+{
+    QVariant result;
+    result.setValue(toQDir());
+    return result;
+}
+
 QQString QQDir::attributes() const
 {
     QString result = isAbsolute() ? "Absolute" : "Relative";

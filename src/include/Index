@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/Index
+#include "../libs/ocBase/Index.h"

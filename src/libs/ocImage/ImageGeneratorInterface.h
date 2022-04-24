@@ -4,7 +4,7 @@
 
 #include <Color>
 #include <Ident>
-#include <FloatImage>
+#include <FloatQImage>
 #include <FloatImagePlane>
 #include <Image>
 
@@ -21,9 +21,9 @@ public:
     virtual Image::TypeList supportedPixmapTypes() const = 0;
     virtual Color::ComponentList requiredComponents(const Color::Component coco) const = 0;
     virtual Color::ComponentList requiredComponents(const Image::Type itype) const = 0;
-    virtual FloatImage generateQImageImage(const ImagePak & ipak, const Image::Type itype) const = 0;
-    virtual FloatImage generateFloatImage(const ImagePak & ipak, const Image::Type itype) const = 0;
-    virtual FloatImagePlane generateFloatImagePlane(const ImagePak & ipak, const Image::Type itype) const = 0;
+    virtual FloatQImage generateColorQImage(ImagePak & ipak, const Image::Type itype) const = 0;
+    virtual FloatQImage generateFloatQImage(ImagePak & ipak, const Image::Type itype) const = 0;
+    virtual FloatImagePlane generateFloatImagePlane(ImagePak & ipak, const Image::Type itype) const = 0;
     virtual QPixmap generatePixmap(const Image::Type &itype) const = 0;
 };
 

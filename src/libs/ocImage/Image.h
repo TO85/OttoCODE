@@ -62,12 +62,12 @@ public:
 
 public: // const
     bool isQImageType() const { return isQImageType(mType); }
-    bool isFloatImageType() const { return isFloatImageType(mType); }
+    bool isFloatImageType() const { return isFloatQImageType(mType); }
     bool isFloatPlaneType() const { return isFloatPlaneType(mType); }
 
 public: // static
     static bool isQImageType(const Type itype);
-    static bool isFloatImageType(const Type itype);
+    static bool isFloatQImageType(const Type itype);
     static bool isFloatPlaneType(const Type itype);
 
 private:

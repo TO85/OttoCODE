@@ -2,21 +2,28 @@
 
 #include <MdiMainWindow>
 
+class QMdiSubWindow;
+
 #include <QQDir>
-class QQFileInfo;
+#include <QQFileInfo>
+class ActionManager;
+class Key;
+
+class ExcelsiorFrameGridMdiSub;
 
 class ExcelsiorMain : public MdiMainWindow
 {
     Q_OBJECT
 public:
-    ExcelsiorMain(QApplication *pApp);
+    ExcelsiorMain(QWidget *parent = nullptr, Qt::WindowFlags flags = Qt::WindowFlags());
 
 public slots:
+    void start();
 
 private slots:
-    virtual void setupActions() override;
-    virtual void setupConnections() override;
-    virtual void setupMenus() override;
+    void setupActions();
+    void setupConnections();
+    void setupMenus();
 
     void setupFileMenu();
     void setupEditMenu();
@@ -27,7 +34,11 @@ private slots:
     void openFileAction();
 
 private:
+    ExcelsiorFrameGridMdiSub * addSubWindow(const QQFileInfo & fi);
+
+private:
     QQDir mCurrentImageDir;
-    QQDir mDefaultImageDir;
+    QQDir mDefaultImageDir = QQDir("/data/vdata/INDIface/INDIin");
+    QMap<QQFileInfo, ExcelsiorFrameGridMdiSub *> mFileInfoSubWinMap;
 };
 
