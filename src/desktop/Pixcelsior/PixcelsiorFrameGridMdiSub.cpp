@@ -1,4 +1,4 @@
-#include "ExcelsiorFrameGridMdiSub.h"
+#include "PixcelsiorFrameGridMdiSub.h"
 
 #include <QMdiArea>
 #include <QMdiSubWindow>

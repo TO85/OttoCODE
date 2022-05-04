@@ -4,10 +4,10 @@
 
 #include <ActionManager>
 
-#include "MdiGridSubWin.h"
+#include "hold-MdiGridSubWin.h"
 #include "QQMdiArea.h"
 
-MdiMainWindow::MdiMainWindow(QWidget *parent, Qt::WindowFlags flags)
+hold-MdiMainWindow::hold-MdiMainWindow(QWidget *parent, Qt::WindowFlags flags)
     : QQMainWindow(parent, flags)
     , mpMdiArea(new QQMdiArea(this))
 {
@@ -18,24 +18,24 @@ MdiMainWindow::MdiMainWindow(QWidget *parent, Qt::WindowFlags flags)
     mpMdiArea->setViewMode(QMdiArea::TabbedView);
 }
 
-QObject * MdiMainWindow::object()
+QObject * hold-MdiMainWindow::object()
 {
     return qobject_cast<QObject *>(this);
 }
 
-QQMdiArea * MdiMainWindow::mdiArea() const
+QQMdiArea * hold-MdiMainWindow::mdiArea() const
 {
     Q_CHECK_PTR(mpMdiArea);
     return mpMdiArea;
 }
 
-void MdiMainWindow::add(const QQFileInfo &fileInfo)
+void hold-MdiMainWindow::add(const QQFileInfo &fileInfo)
 {
     Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << objectName() << fileInfo;
 }
 
-void MdiMainWindow::add(MdiGridSubWin *pSubWinWidget)
+void hold-MdiMainWindow::add(hold-MdiGridSubWin *pSubWinWidget)
 {
     Q_CHECK_PTR(this);
     Q_CHECK_PTR(pSubWinWidget);
@@ -43,7 +43,7 @@ void MdiMainWindow::add(MdiGridSubWin *pSubWinWidget)
     mSubWinWidgetKeyMap.insert(pSubWinWidget->key(), pSubWinWidget);
 }
 
-void MdiMainWindow::setupActions()
+void hold-MdiMainWindow::setupActions()
 {
     Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << objectName();
@@ -51,7 +51,7 @@ void MdiMainWindow::setupActions()
     actions()->add("Window/Tabbed", "&Tabbed");
 }
 
-void MdiMainWindow::setupConnections()
+void hold-MdiMainWindow::setupConnections()
 {
     Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << objectName();
@@ -60,7 +60,7 @@ void MdiMainWindow::setupConnections()
 }
 
 
-void MdiMainWindow::windowTabbed()
+void hold-MdiMainWindow::windowTabbed()
 {
     Q_CHECK_PTR(this);
     Q_ASSERT(mdiArea());
@@ -68,7 +68,7 @@ void MdiMainWindow::windowTabbed()
     mdiArea()->setViewMode(QMdiArea::TabbedView);
 }
 
-void MdiMainWindow::windowSubView()
+void hold-MdiMainWindow::windowSubView()
 {
     Q_CHECK_PTR(this);
     Q_ASSERT(mdiArea());

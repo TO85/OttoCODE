@@ -4,7 +4,7 @@
 
 #include <QQMainWindow>
 
-#include "MdiGridSubWin.h"
+#include "hold-MdiGridSubWin.h"
 
 QQMdiArea::QQMdiArea(QQMainWindow *pMain)
 {
@@ -23,9 +23,9 @@ QQMainWindow * QQMdiArea::mainWindow()
     return mpMainWindow;
 }
 
-MdiGridSubWin *QQMdiArea::subWin(const Key &key)
+hold-MdiGridSubWin *QQMdiArea::subWin(const Key &key)
 {
-    MdiGridSubWin * result = nullptr;
+    hold-MdiGridSubWin * result = nullptr;
     Q_CHECK_PTR(this);
     Q_ASSERT(contains(key));
     result = mKeySubWinMap.value(key);
@@ -39,7 +39,7 @@ bool QQMdiArea::contains(const Key &key)
     return mKeySubWinMap.contains(key);
 }
 
-void QQMdiArea::registerSubWin(MdiGridSubWin * pSubWin)
+void QQMdiArea::registerSubWin(hold-MdiGridSubWin * pSubWin)
 {
     Q_CHECK_PTR(this);
     Q_ASSERT(pSubWin);

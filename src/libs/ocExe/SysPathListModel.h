@@ -4,11 +4,9 @@
 #include <QAbstractListModel>
 
 #include <QModelIndex>
-#include <QProcessEnvironment>
 #include <QSize>
+#include <QFont>
 #include <QVariant>
-
-#include <KeySegList>
 
 #include "SysProcessEnv.h"
 
@@ -29,6 +27,7 @@ signals:
 
 private:
     QSize mCountSize=QSize(0,0);
+    QFont mFont=QFont("Courier", 10, 300);
 
 
 };

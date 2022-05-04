@@ -42,8 +42,12 @@ void EnvSubWin::setup()
     grid()->addWidget(pPathLabel, PathLabelRow, TitleViewCol);
     grid()->addWidget(mpPathListView, PathListViewRow, TitleViewCol);
     MdiGridSubWin::setup();
-    for (int row = 0; row < mpSysEnvModel->rowCount(); ++row)
-        mpKeyValueTableView->setRowHeight(row, 10);
+//    for (int row = 0; row < mpSysEnvModel->rowCount(); ++row)
+  //      mpKeyValueTableView->setRowHeight(row, 10); TODO: Didn't work
+    // TODO: Headings
+    // TODO: Get rid of selection boxes
+    mpKeyValueTableView->setColumnWidth(0, 200);
+    mpKeyValueTableView->setColumnWidth(1, 500);
     mpKeyValueTableView->setWordWrap(false);
     mpKeyValueTableView->setModel(mpSysEnvModel);
     mpPathListView->setModel(mpSysPathModel);

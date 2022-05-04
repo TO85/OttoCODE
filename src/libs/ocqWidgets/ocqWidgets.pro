@@ -13,32 +13,32 @@ include(../useBase.pri)
 include(../useGui.pri)
 
 SOURCES += \
-    GraphicsLayer.cpp \
-    GridDialog.cpp \
-    MdiDocument.cpp \
-    MdiGridSubWin.cpp \
-    MdiMainWindow.cpp \
+#    del-GraphicsLayer.cpp \
     QQGridLayout.cpp \
     QQMainWindow.cpp \
     QQMdiArea.cpp \
+#    del-GridDialog.cpp \
+#    del-MdiDocument.cpp \
+#    del-MdiGridSubWin.cpp \
+#    del-MdiMainWindow.cpp \
     ocqWidgets.cpp
 
 HEADERS += \
-    ../../include/GridDialog \
-    ../../include/MdiGridSubWin \
-    ../../include/MdiMainWindow \
-    ../../include/MenuManager \
+#    ../../include/GridDialog \
+#    ../../include/MdiGridSubWin \
+#    ../../include/MdiMainWindow \
+#    ../../include/MenuManager \
     ../../include/QQGridLayout \
     ../../include/QQMainWindow \
     ../../include/QQMdiArea \
-    GraphicsLayer.h \
-    GridDialog.h \
-    MdiDocument.h \
-    MdiGridSubWin.h \
-    MdiMainWindow.h \
+#    del-GraphicsLayer.h \
     QQGridLayout.h \
     QQMainWindow.h \
     QQMdiArea.h \
+#    del-GridDialog.h \
+#    del-MdiDocument.h \
+#    del-MdiGridSubWin.h \
+#    del-MdiMainWindow.h \
     ocqWidgets_global.h \
     ocqWidgets.h
 

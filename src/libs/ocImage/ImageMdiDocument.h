@@ -8,11 +8,11 @@
 #include "ImagePak.h"
 class MdiGridWidget;
 
-class ImageMdiDocument : public MdiDocument
+class ImageMdiDocument : public hold-MdiDocument
 {
     Q_OBJECT
 public:
-    explicit ImageMdiDocument(const QQFileInfo &fileInfo, MdiMainWindow *parent=nullptr);
+    explicit ImageMdiDocument(const QQFileInfo &fileInfo, hold-MdiMainWindow *parent=nullptr);
     ImagePak pak() const { return mPak; }
     ImagePak & pak() { return mPak; }
 
@@ -24,7 +24,7 @@ signals:
     void loaded();
 
 private:
-    MdiGridWidget *mpGridWidget=nullptr;
+    hold-MdiGridSubWin *mpMdiGridSubWin=nullptr;
     ImagePak mPak;
 };
 

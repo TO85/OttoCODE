@@ -4,7 +4,6 @@
 #include <QAbstractTableModel>
 
 #include <QSize>
-
 #include <QFont>
 #include <QModelIndex>
 #include <QVariant>

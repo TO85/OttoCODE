@@ -13,7 +13,7 @@ SUBDIRS += \
         ocPixel \
         ocExe \
         ocImage \
-        Excelsior \
+        Pixcelsior \
 
 ocBase.subdir           = libs/ocBase
 ocType.subdir           = libs/ocType
@@ -25,7 +25,7 @@ ocColor.subdir          = libs/ocColor
 ocPixel.subdir          = libs/ocPixel
 ocExe.subdir            = libs/ocExe
 ocImage.subdir          = libs/ocImage
-Excelsior.subdir        = desktop/Excelsior
+Pixcelsior.subdir       = desktop/Pixcelsior
 
 ocBase.depends          = #none
 ocType.depends          =
@@ -37,5 +37,5 @@ ocExe.depends           = #tbd
 ocColor.depends         =                                                           ocqGui  ocqCore         ocBase
 ocPixel.depends         =                           ocColor                         ocqGui          ocType  ocBase
 ocImage.depends         =                   ocPixel ocColor ocOpenCV                ocqGui  ocqCore ocType  ocBase
-Excelsior.depends       =   ocImage ocExe   ocPixel ocColor ocOpenCV    ocqWidgets  ocqGui  ocqCore ocType  ocBase
+Pixcelsior.depends      =   ocImage ocExe   ocPixel ocColor ocOpenCV    ocqWidgets  ocqGui  ocqCore ocType  ocBase
 

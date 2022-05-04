@@ -10,7 +10,7 @@ class GridDialog : public QDialog
 {
     Q_OBJECT
 public:
-    GridDialog(QWidget * parent=nullptr, Qt::WindowFlags flags=Qt::WindowFlags());
+    hold-GridDialog(QWidget * parent=nullptr, Qt::WindowFlags flags=Qt::WindowFlags());
     GridDialog(QDialogButtonBox::StandardButtons buttons, QWidget * parent=nullptr, Qt::WindowFlags flags=Qt::WindowFlags());
 
 public:

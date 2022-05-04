@@ -5,7 +5,7 @@
 #include <QQGridLayout>
 #include <QQMdiArea>
 
-MdiGridSubWin::MdiGridSubWin(const Key &aKey, QQMdiArea * parent, Qt::WindowFlags flags)
+hold-MdiGridSubWin::hold-MdiGridSubWin(const Key &aKey, QQMdiArea * parent, Qt::WindowFlags flags)
     : QMdiSubWindow((QWidget *)(parent), flags)
     , mpMdiArea(parent)
     , mKey(aKey)
@@ -24,7 +24,7 @@ MdiGridSubWin::MdiGridSubWin(const Key &aKey, QQMdiArea * parent, Qt::WindowFlag
     setAttribute(Qt::WA_DeleteOnClose);
 }
 
-QQMdiArea *MdiGridSubWin::mdiArea()
+QQMdiArea *hold-MdiGridSubWin::mdiArea()
 {
     Q_CHECK_PTR(this);
     Q_CHECK_PTR(mpMdiArea);
@@ -32,7 +32,7 @@ QQMdiArea *MdiGridSubWin::mdiArea()
     return mpMdiArea;
 }
 
-QQGridLayout *MdiGridSubWin::grid()
+QQGridLayout *hold-MdiGridSubWin::grid()
 
 {
     Q_CHECK_PTR(this);
@@ -41,14 +41,14 @@ QQGridLayout *MdiGridSubWin::grid()
     return mpGridLayout;
 }
 
-QWidget *MdiGridSubWin::gridWidget()
+QWidget *hold-MdiGridSubWin::gridWidget()
 {
     Q_CHECK_PTR(this);
     Q_CHECK_PTR(mpGridWidget);
     qDebug() << Q_FUNC_INFO << objectName() << mpGridWidget->objectName();
     return mpGridWidget;
 }
-void MdiGridSubWin::setup()
+void hold-MdiGridSubWin::setup()
 {
     Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << objectName() << gridWidget()->objectName() << grid()->objectName();

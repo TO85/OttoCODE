@@ -1,18 +1,18 @@
 #include "ImageMdiDocument.h"
 
-#include <MdiGridWidget>
+#include <MdiGridSubWin>
 
-ImageMdiDocument::ImageMdiDocument(const QQFileInfo &fileInfo, MdiMainWindow *parent)
-    : MdiDocument{fileInfo, parent}
+ImageMdiDocument::ImageMdiDocument(const QQFileInfo &fileInfo, hold-MdiMainWindow *parent)
+    : hold-MdiDocument{fileInfo, parent}
 {
     setObjectName("ImageMdiDocument:"+fileInfo.baseName());
     mPak.set(fileInfo);
-    mpGridWidget = new MdiGridWidget(mPak.fileInfo().baseName(), mdiArea());
+    mpMdiGridSubWin = new MdiGridSubWin(mPak.fileInfo().baseName(), mdiArea());
 }
 
 void ImageMdiDocument::load()
 {
-    MdiDocument::load();
+    hold-MdiDocument::load();
 }
 
 void ImageMdiDocument::showOriginalImage(const QQFileInfo &fileInfo)

@@ -1,4 +1,4 @@
-#include "ExcelsiorFrameWidget.h"
+#include "PixcelsiorFrameWidget.h"
 
 ExcelsiorFrameWidget::ExcelsiorFrameWidget(QWidget *parent)
     : BaseImageGraphicsWidget(parent)

@@ -1,7 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-##    AppBoss \
-    Excelsior \
+    AppBoss \
+    Pixcelsior \
     GuiApp \
     

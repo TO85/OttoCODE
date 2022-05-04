@@ -12,22 +12,22 @@
 #include <KeyMap>
 #include <QQFileInfo>
 
-class MdiDocument;
+class hold-MdiDocument;
 class MdiGridWidget;
-class MdiGridSubWin;
+class hold-MdiGridSubWin;
 class QQMdiArea;
 
-class OCQWIDGETS_EXPORT MdiMainWindow : public QQMainWindow
+class OCQWIDGETS_EXPORT hold-MdiMainWindow : public QQMainWindow
 {
     Q_OBJECT
 public:
-    MdiMainWindow(QWidget *parent = nullptr, Qt::WindowFlags flags = Qt::WindowFlags());
+    hold-MdiMainWindow(QWidget *parent = nullptr, Qt::WindowFlags flags = Qt::WindowFlags());
     QObject * object();
     QQMdiArea * mdiArea() const;
 
 public:
     void add(const QQFileInfo &fileInfo);
-    void add(MdiGridSubWin *pSubWinWidget);
+    void add(hold-MdiGridSubWin *pSubWinWidget);
 
 public slots:
 
@@ -43,6 +43,6 @@ public slots: // actions
 private:
     QQMdiArea *mpMdiArea;
     QMap<QQFileInfo, QMdiSubWindow *> mFileSubWindowMap;
-    KeyMap<MdiGridSubWin *> mSubWinWidgetKeyMap;
+    KeyMap<hold-MdiGridSubWin *> mSubWinWidgetKeyMap;
 };
 

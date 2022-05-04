@@ -9,11 +9,11 @@
 class QQMdiArea;
 class QQGridLayout;
 
-class OCQWIDGETS_EXPORT MdiGridSubWin : public QMdiSubWindow
+class OCQWIDGETS_EXPORT hold-MdiGridSubWin : public QMdiSubWindow
 {
     Q_OBJECT
 public:
-    MdiGridSubWin(const Key & key, QQMdiArea *parent,
+    hold-MdiGridSubWin(const Key & key, QQMdiArea *parent,
                     Qt::WindowFlags flags = Qt::WindowFlags());
     QQMdiArea * mdiArea();
     QQGridLayout * grid();

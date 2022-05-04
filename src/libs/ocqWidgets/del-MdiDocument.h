@@ -9,17 +9,17 @@
 #include <QQFileInfo>
 #include <QQString>
 
-class MdiMainWindow;
+class hold-MdiMainWindow;
 class MdiGridWidget;
 class QQMdiArea;
 
-class OCQWIDGETS_EXPORT MdiDocument : public QObject
+class OCQWIDGETS_EXPORT hold-MdiDocument : public QObject
 {
     Q_OBJECT
 public:
-    explicit MdiDocument(MdiMainWindow * parent=nullptr);
-    MdiDocument(const QQFileInfo & fi, MdiMainWindow * parent=nullptr);
-    ~MdiDocument();
+    explicit hold-MdiDocument(MdiMainWindow * parent=nullptr);
+    hold-MdiDocument(const QQFileInfo & fi, MdiMainWindow * parent=nullptr);
+    ~hold-MdiDocument();
 
 public:
     MdiMainWindow * mainWin() const { return mpMainWindow; }
@@ -40,7 +40,7 @@ signals:
     void fileLoad(const QQFileInfo & fileInfo, const bool success);
 
 public: // static
-    static MdiDocument * document(const QQFileInfo &fi);
+    static hold-MdiDocument * document(const QQFileInfo &fi);
 
 protected:
     MdiMainWindow * mpMainWindow=nullptr;
@@ -48,6 +48,6 @@ protected:
     QFile * mpFile=nullptr;
     QByteArray mBytes;
     KeyMap<MdiGridWidget *> mKeyWidgetMap;
-    static QMap<QQFileInfo, MdiDocument *> smFileInfoDocumentMap;
+    static QMap<QQFileInfo, hold-MdiDocument *> smFileInfoDocumentMap;
 };
 

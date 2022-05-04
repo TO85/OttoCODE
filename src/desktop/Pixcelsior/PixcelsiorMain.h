@@ -11,7 +11,7 @@ class Key;
 
 class ExcelsiorFrameGridMdiSub;
 
-class ExcelsiorMain : public MdiMainWindow
+class ExcelsiorMain : public hold-MdiMainWindow
 {
     Q_OBJECT
 public:

@@ -1,9 +1,9 @@
-#include "GridDialog.h"
+#include "hold-GridDialog.h"
 
 #include <QGridLayout>
 #include <QVBoxLayout>
 
-GridDialog::GridDialog(QWidget *parent, Qt::WindowFlags flags)
+GridDialog::hold-GridDialog(QWidget *parent, Qt::WindowFlags flags)
     : QDialog(parent, flags)
     , mpButtonBox(new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this))
 {

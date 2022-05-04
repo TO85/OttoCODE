@@ -6,7 +6,7 @@
 #include <QTextEdit>
 
 ImageFileDialog::ImageFileDialog(const Mode mode, QWidget *parent, Qt::WindowFlags flags)
-    : GridDialog(parent, flags)
+    : hold-GridDialog(parent, flags)
     , mMode(mode)
 {
     Q_CHECK_PTR(this);

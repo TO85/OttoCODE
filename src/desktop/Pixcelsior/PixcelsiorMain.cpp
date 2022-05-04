@@ -1,4 +1,4 @@
-#include "ExcelsiorMain.h"
+#include "PixcelsiorMain.h"
 
 #include <QtDebug>
 #include <QApplication>
@@ -13,7 +13,7 @@
 
 
 ExcelsiorMain::ExcelsiorMain(QWidget *parent, Qt::WindowFlags flags)
-    : MdiMainWindow(parent, flags)
+    : hold-MdiMainWindow(parent, flags)
 {
     setObjectName("Excelsior:MainWindow");
     qDebug() << Q_FUNC_INFO << objectName();

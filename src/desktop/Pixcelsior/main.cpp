@@ -1,4 +1,4 @@
-#include "ExcelsiorMain.h"
+#include "PixcelsiorMain.h"
 
 #include <QApplication>
 #include <QFileInfo>

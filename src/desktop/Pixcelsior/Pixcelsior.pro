@@ -25,17 +25,15 @@ message(INCLUDEPATH = $${INCLUDEPATH})
 message(LIBS = $${LIBS})
 
 SOURCES += \
-    ExcelsiorFrameGridMdiSub.cpp \
-    ExcelsiorFrameWidget.cpp \
-    ExcelsiorMain.cpp \
-    FrameViewWidget.cpp \
+    PixcelsiorFrameGridMdiSub.cpp \
+    PixcelsiorFrameWidget.cpp \
+    PixcelsiorMain.cpp \
     main.cpp
 
 HEADERS += \
-    ExcelsiorFrameGridMdiSub.h \
-    ExcelsiorFrameWidget.h \
-    ExcelsiorMain.h \
-    FrameViewWidget.h
+    PixcelsiorFrameGridMdiSub.h \
+    PixcelsiorFrameWidget.h \
+    PixcelsiorMain.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
