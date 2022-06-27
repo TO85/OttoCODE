@@ -1,7 +1,8 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    AppBoss \
-    Pixcelsior \
+#    AppBoss \ ### tabled for now
+    Merlin \
+#    Pixcelsior \
     GuiApp \
-    
+    lirview  \

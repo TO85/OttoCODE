@@ -4,9 +4,6 @@ QT += gui \
 TEMPLATE = lib
 DEFINES += OCIMAGE_LIBRARY
 
-CONFIG += c++11
-
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 include(../libs.pri)
 include(../useBase.pri)
@@ -16,55 +13,30 @@ include(../useColor.pri)
 include(../usePixel.pri)
 
 SOURCES += \
-    BaseImageGraphicsWidget.cpp \
-    ColorFloatQImage.cpp \
-    ColorQImage.cpp \
-    FloatImagePlane.cpp \
-    FloatQImage.cpp \
-    Frame.cpp \
-    FrameGraphicsWidget.cpp \
-    Image.cpp \
-    ImageFileDialog.cpp \
-    ImageFileFormat.cpp \
-    ImageFileFormatManager.cpp \
-    ImageInfo.cpp \
-    ImageMdiDocument.cpp \
-    ImagePak.cpp \
-    TrollImageGeneratorBuiltin.cpp \
-    VideoFileFormat.cpp \
+    BaseColorTable.cpp \
+    BaseImage.cpp \
+    BaseImageObject.cpp \
+    BaseImagePlane.cpp \
+    ColorImage.cpp \
+    GreyImage.cpp \
+    GreyImagePlane.cpp \
+    ImageViewWidget.cpp \
+    ocImage.cpp \
     ocImage.cpp
 
 HEADERS += \
-    ../../include/BaseImageGraphicsWidget \
-    ../../include/FloatImagePlane \
-    ../../include/FloatQImage \
-    ../../include/FrameGraphicsWidget \
-    ../../include/Image \
-    ../../include/ImageFileDialog \
-    ../../include/ImageFileFormat \
-    ../../include/ImageInfo \
-    ../../include/ImageMdiDocument \
-    ../../include/ImagePak \
-    ../../include/VideoFileFormat \
-    BaseImageGraphicsWidget.h \
-    ColorFloatQImage.h \
-    ColorQImage.h \
-    FloatImagePlane.h \
-    FloatQImage.h \
-    Frame.h \
-    FrameGraphicsWidget.h \
-    Image.h \
-    ImageFileDialog.h \
-    ImageFileFormat.h \
-    ImageFileFormatManager.h \
-    ImageGeneratorInterface.h \
-    ImageInfo.h \
-    ImageMdiDocument.h \
-    ImagePak.h \
-    TrollImageGeneratorBuiltin.h \
-    VideoFileFormat.h \
+    AbstractImageProcessInterface.h \
+    BaseColorTable.h \
+    BaseImage.h \
+    BaseImageObject.h \
+    BaseImagePlane.h \
+    ColorImage.h \
+    GreyImage.h \
+    GreyImagePlane.h \
+    ImageViewWidget.h \
     ocImage_global.h \
-    ocImage.h
+    ocImage.h \
+    typedefs.h
 
 # Default rules for deployment.
 unix {

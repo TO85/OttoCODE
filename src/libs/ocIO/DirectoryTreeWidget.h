@@ -49,11 +49,11 @@ public:
     DirectoryTreeWidget(QWidget * parent=nullptr);
 
 public slots:
-    void clear();
+    void clear() {Q_ASSERT(!"TODO");}
     void configure(const VariableMap & config);
-    void setup();
-    void add(const DirectoryTreeWidget::Item & item);
-    void set(const QList<KeySeg> & columnNames);
+    void setup() {Q_ASSERT(!"TODO");}
+    void add(const DirectoryTreeWidget::Item & item) {Q_ASSERT(!"TODO");}
+    void set(const QList<KeySeg> & columnNames) {Q_ASSERT(!"TODO");}
     void set(const FileSystemTree & tree);
 
 private:

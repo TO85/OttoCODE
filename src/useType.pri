@@ -2,6 +2,7 @@
 
 message(----------------In useType.pri)
 
+windows:LIBS *= -locType1
 linux:LIBS *= -locType
 
 #message(LIBS = $$LIBS)

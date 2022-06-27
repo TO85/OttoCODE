@@ -5,11 +5,12 @@
 #include <QStringList>
 
 #include "KeySeg.h"
+#include "KeySegList.h"
 
 class OCBASE_EXPORT Key
 {
 public:
-    Key() {;}
+    explicit Key() {;}
     Key(const KeySeg &seg);
     Key(const QList<KeySeg> &segs);
     Key(const QString &qs);
@@ -26,10 +27,10 @@ public: // const
     KeySeg::List list() const;
     Key appended(const KeySeg &seg) const;
     Key appended(const Key &key) const;
+    QString toQString(const QChar &sep=QChar()) const;
     bool equal(const Key &other) const;
     bool less(const Key &other) const;
-    QString toQString() const;
-    operator QString() const { return toQString(); }
+    QString operator ()() const { return toQString(); }
     bool operator == (const Key &other) const { return equal(other); }
     bool operator < (const Key &other) const { return less(other); }
 
@@ -58,7 +59,7 @@ protected:
     static QChar smSeparator;
 
 private:
-    KeySeg::List mSegments;
+    KeySegList mSegments;
 };
 
 

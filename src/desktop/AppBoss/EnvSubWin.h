@@ -1,15 +1,15 @@
 #pragma once
 
-#include <MdiGridSubWin>
+#include <QQMainWindow>
 
 class QListView;
 class QTableView;
 
-class QQMdiArea;
+#include <QQMdiArea>
 class SysEnvTableModel;
 class SysPathListModel;
 
-class EnvSubWin : public MdiGridSubWin
+class EnvSubWin : public QQMdiArea
 {
     Q_OBJECT
 public:

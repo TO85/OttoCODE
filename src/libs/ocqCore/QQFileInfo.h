@@ -10,13 +10,15 @@
 #include "QQString.h"
 #include "QQStringList.h"
 
-class OCQCORE_EXPORT QQFileInfo : public QFileInfo, public Null
+class OCQCORE_EXPORT QQFileInfo : public QFileInfo
 {
 public:
     QQFileInfo(const QQString &fileName);
     QQFileInfo(const QQDir &dir, const QQString &fileName);
 
 public:
+    bool isNull() const;
+    bool notNull() const { return ! isNull(); }
     bool notExists() const { return ! exists(); }
     bool notReadable() const { return ! isReadable(); }
 

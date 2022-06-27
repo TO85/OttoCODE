@@ -7,9 +7,11 @@
 template <typename T> class SizeT
 {
 public:
-    SizeT() : mWidth(0), mHeight(0) {;}
-    SizeT(const T tWidth, const T tHeight) : mWidth(tWidth), mHeight(tHeight) {;}
-    SizeT<T> & operator = (const QSize qsize) { mWidth = qsize.width(), mHeight = qsize.height(); }
+    SizeT() { set(0, 0); }
+    SizeT(const QSize sz) { (void)set(sz.width(), sz.height()); }
+    SizeT(const T tWidth, const T tHeight) { (void)set(tWidth, tHeight); }
+    SizeT(const SizeT baseSize, const int maxDim);
+    SizeT<T> & operator = (const QSize qsize) { set(qsize.width(), qsize.height()); return it(); }
 
 public:
     T width() const { return mWidth; }
@@ -19,8 +21,18 @@ public:
     QSize toQSize() const { return QSize(width(), height()); }
     operator QSize() const { return toQSize(); }
 
+public:
+    void set(const T tWidth, const T tHeight) { mWidth = tWidth, mHeight = tHeight; }
+    SizeT<T> andAssign(const T tFactor) { mWidth &= tFactor - 1, mHeight &= tFactor - 1; return it(); }
+    SizeT<T> operator &=(const T tFactor) { return andAssign(tFactor); }
+
+
+public: // static
+    static SizeT<T> sizeFor(const SizeT<T> baseSize, const int maxDim);
+
 private:
     SizeT<T> it() const { return *this; }
+    SizeT<T> & it() { return *this; }
 
 private:
     T mWidth;

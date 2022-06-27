@@ -62,6 +62,18 @@ bool QQString::less(const QQString &other) const
     return Sortable(qstring()).less(Sortable(other.qstring()));
 }
 
+bool QQString::operator ==(const QQString &other) const
+{
+    return Sortable(qstring()).equal(Sortable(other.qstring()));
+//    return equal(other);
+}
+
+bool QQString::operator <(const QQString &other) const
+{
+    return Sortable(qstring()).less(Sortable(other.qstring()));
+//    return less(other);
+}
+
 QQString QQString::replaced(QChar before, QChar after) const
 {
     QQString result = qstring();

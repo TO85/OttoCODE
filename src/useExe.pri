@@ -2,7 +2,7 @@
 
 message(----------------In useExe.pri)
 
-#windows:include(../useExe.pri)
+windows:LIBS *= -locExe1
 linux:LIBS *= -locExe
 
 #message(LIBS = $$LIBS)

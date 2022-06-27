@@ -1,2 +1,0 @@
-// file: {Lancelot}./src/include/ImageMdiDocument
-#include "../libs/ocImage/ImageMdiDocument.h"

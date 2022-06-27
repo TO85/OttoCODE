@@ -17,7 +17,7 @@
 #include "EtcSubWin.h"
 
 BossMainWindow::BossMainWindow(QWidget *parent, Qt::WindowFlags flags)
-    : MdiMainWindow(parent, flags)
+    : QQMainWindow(parent, flags)
 {
     setObjectName("AppBoss:MainWindow");
     setWindowTitle("OttoCODE AppBoss");

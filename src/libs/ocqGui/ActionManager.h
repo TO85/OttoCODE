@@ -37,5 +37,4 @@ private:
     QMap<QString, QAction *> mKeyActionMap;
 };
 
-Q_GLOBAL_STATIC(ActionManager, ACTMGR);
 

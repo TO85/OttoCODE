@@ -4,11 +4,9 @@ QT *= network ## QHostInfo
 TEMPLATE = lib
 DEFINES += OCTYPE_LIBRARY
 
-CONFIG += c++11
-
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 include(../libs.pri)
+include(../useBase.pri)
 
 SOURCES += \
     AsciiChar.cpp \
@@ -46,6 +44,7 @@ HEADERS += \
     ../../include/AsciiChar \
     ../../include/AsciiString \
     ../../include/Boolean \
+    ../../include/CRect \
     ../../include/CommaString \
     ../../include/DualMap \
     ../../include/HostId \
@@ -60,7 +59,6 @@ HEADERS += \
     ../../include/Point \
     ../../include/ProcessId \
     ../../include/Rational \
-    ../../include/Rect \
     ../../include/Size \
     ../../include/SortableMap \
     ../../include/Success \
@@ -72,6 +70,7 @@ HEADERS += \
     AsciiString.h \
     BaseString.h \
     Boolean.h \
+    CRect.h \
     CommaString.h \
     DualMap.h \
     FourCC.h \
@@ -88,7 +87,6 @@ HEADERS += \
     Point.h \
     ProcessId.h \
     Rational.h \
-    Rect.h \
     Size.h \
     SortableMap.h \
     StringTree.h \

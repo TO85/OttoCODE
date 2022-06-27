@@ -17,10 +17,7 @@ class VariableMap;
 class OCTYPE_EXPORT VariablePak
 {
 public:
-    VariablePak();
-    VariablePak(const VariablePak &);
-    VariablePak &operator=(const VariablePak &);
-    ~VariablePak();
+    VariablePak(const int variantReserve, const int variableReserve);
 
 public:
     const Uid uid() const;
@@ -58,6 +55,12 @@ public:
 private:
     Uid mUid;
     QSharedDataPointer<VariablePakData> data;
+
+public: // QMetaType
+    VariablePak();
+    VariablePak(const VariablePak &);
+    VariablePak &operator=(const VariablePak &);
+    ~VariablePak();
 };
 
 

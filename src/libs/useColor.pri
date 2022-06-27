@@ -4,7 +4,5 @@ message(----------------In useColor.pri)
 
 windows:LIBS *= -locColor1
 linux:LIBS *= -locColor
-#linux:LIBS *= $$DESTDIR/libocqGui.so
 
-message(LIBS = $$LIBS)
 

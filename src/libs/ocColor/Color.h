@@ -97,8 +97,8 @@ public:
     Model & model() { return mModel; }
     ColorRationalType & component(const int ix);
     ColorRationalType & operator [] (const int ix) { return component(ix); }
-    void set();
-    void set(const QColor &qcolor);
+    void set() {Q_ASSERT(!"TODO");}
+    void set(const QColor &qcolor) {Q_ASSERT(!"TODO");}
 
 public slots:
 

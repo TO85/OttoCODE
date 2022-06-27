@@ -4,10 +4,7 @@ QT *= gui
 TEMPLATE = lib
 DEFINES += OCQWIDGETS_LIBRARY
 
-CONFIG += c++11
-
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
-
+message(================In libs.pri)
 include(../libs.pri)
 include(../useBase.pri)
 include(../useGui.pri)
@@ -21,6 +18,7 @@ SOURCES += \
 #    del-MdiDocument.cpp \
 #    del-MdiGridSubWin.cpp \
 #    del-MdiMainWindow.cpp \
+    QQMdiSubWindow.cpp \
     ocqWidgets.cpp
 
 HEADERS += \
@@ -32,6 +30,7 @@ HEADERS += \
     ../../include/QQMainWindow \
     ../../include/QQMdiArea \
 #    del-GraphicsLayer.h \
+    ../../include/QQMdiSubWindow \
     QQGridLayout.h \
     QQMainWindow.h \
     QQMdiArea.h \
@@ -39,6 +38,7 @@ HEADERS += \
 #    del-MdiDocument.h \
 #    del-MdiGridSubWin.h \
 #    del-MdiMainWindow.h \
+    QQMdiSubWindow.h \
     ocqWidgets_global.h \
     ocqWidgets.h
 

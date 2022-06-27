@@ -1,5 +1,7 @@
 #include "Key.h"
 
+//#include "Sortable.h"
+
 Key::Key(const KeySeg &first) { set(first); }
 Key::Key(const QList<KeySeg> &segments) : mSegments(segments) {;}
 Key::Key(const QString &qs) { set(qs); }
@@ -90,12 +92,14 @@ Key Key::appended(const KeySeg &seg) const
 
 bool Key::equal(const Key &other) const
 {
-    return toQString() == other.toQString();
+    return toQString().compare(other.toQString()) == 0;
+//    return Sortable(it()).equal(Sortable(other));
 }
 
 bool Key::less(const Key &other) const
 {
-    return toQString() < other.toQString();
+    return toQString().compare(other.toQString()) < 0;
+//    return Sortable(it()).less(Sortable(other));
 }
 
 void Key::clear()
@@ -106,15 +110,16 @@ void Key::clear()
 #endif
 }
 
-QString Key::toQString() const
+QString Key::toQString(const QChar &sep) const
 {
     QString result;
-    if (notEmpty())
+    const QString tSeperator = sep.isNull() ? separator() : sep;
+     if (notEmpty())
     {
         result = mSegments.first().toQString();
         if (count() > 1)
             for (KeySeg seg : mSegments.mid(1))
-                result.append(separator() + seg.toQString());
+                result.append(tSeperator + seg.toQString());
     }
     return result;
 }

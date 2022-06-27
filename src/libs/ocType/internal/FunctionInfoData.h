@@ -18,7 +18,7 @@ private:
     void processPostParen();
 
 private:
-    QQFileInfo dmFuncFileInfo;
+    QFileInfo dmFuncFileInfo;
     int dmFuncFileLine;
     QQString dmQFuncInfo;
     QQString dmQFuncInfoAnteParen;

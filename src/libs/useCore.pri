@@ -6,5 +6,5 @@ windows:LIBS *= -locqCore1
 linux:LIBS *= -locqCore
 #linux:LIBS *= $$DESTDIR/libocqCore.so
 
-message(LIBS = $$LIBS)
+#message(LIBS = $$LIBS)
 

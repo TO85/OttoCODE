@@ -39,7 +39,7 @@ void FunctionInfo::process()
 void FunctionInfo::funcFileName(const QString &fnfiName)
 {
     Q_ASSERT(data);
-    data->dmFuncFileInfo = QQFileInfo(fnfiName);
+    data->dmFuncFileInfo = QFileInfo(fnfiName);
 }
 
 void FunctionInfo::funcFileLine(const int &fnfiLine)

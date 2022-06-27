@@ -12,22 +12,37 @@
 
 bool Sortable::equal(const Sortable &other) const
 {
-    return mString == other.mString;
+    return 0 == mSortableString.compare(other.mSortableString);
 }
 
 bool Sortable::less(const Sortable &other) const
 {
-    return mString < other.mString;
+    return mSortableString.compare(other.mSortableString) < 0;
+//    return mSortableString < other.mSortableString;
+}
+
+bool Sortable::operator ==(const Sortable &other) const
+{
+    return 0 == mSortableString.compare(other.mSortableString);
+//    return mSortableString == other.mSortableString;
+//    return equal(other);
+}
+
+bool Sortable::operator<(const Sortable &other) const
+{
+    return mSortableString.compare(other.mSortableString) < 0;
+//    return mSortableString < other.mSortableString;
+//    return less(other);
 }
 
 void Sortable::clear()
 {
-    mString.clear();
+    mSortableString.clear();
 }
 
 void Sortable::set(const QString &string)
 {
-    mString = string.toCaseFolded();
+    mSortableString = string.toCaseFolded();
 }
 
 void Sortable::set(const QVariant &variant)

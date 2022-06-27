@@ -2,11 +2,11 @@
 
 message(----------------In dest.pri)
 
-message(OTTOCODE_BASEBINDIR = $$OTTOCODE_BASEBINDIR)
-message(CTOOL = $$CTOOL)
-message(OC_VER_STRING = $$OC_VER_STRING)
-message(OC_VER_TRUNKNAME = $$OC_VER_TRUNKNAME)
-message(OC_VER_BRANCHNAME = $$OC_VER_BRANCHNAME)
+#message(OTTOCODE_BASEBINDIR = $$OC_BASEBINDIR)
+#message(CTOOL = $$CTOOL)
+#message(OC_VER_STRING = $$OC_VER_STRING)
+#message(OC_VER_TRUNKNAME = $$OC_VER_TRUNKNAME)
+#message(OC_VER_BRANCHNAME = $$OC_VER_BRANCHNAME)
 
 OURDEST = <base>/<ctool><qtmain>-<bld>-<ver>-<trunk>+<branch>
 OURDEST = $$replace(OURDEST, <base>, $$OTTOCODE_BASEBINDIR)
@@ -27,4 +27,4 @@ OURDEST = $$replace(OURDEST, <branch>, $$OC_VER_BRANCHNAME)
 DESTDIR = $$OURDEST
 LIBS *= -L$$OURDEST
 
-message(OURDEST = $$OURDEST)
+#message(OURDEST = $$OURDEST)

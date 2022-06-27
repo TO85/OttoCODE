@@ -3,15 +3,15 @@ QT -= gui
 TEMPLATE = lib
 DEFINES += OCQCORE_LIBRARY
 
-CONFIG += c++11
-
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 include(../libs.pri)
+include(../useBase.pri)
+include(../useType.pri)
 
 SOURCES += \
     ObjectHelper.cpp \
     QQDir.cpp \
+    QQFile.cpp \
     QQFileInfo.cpp \
     QQFileInfoList.cpp \
     QQSize.cpp \
@@ -23,6 +23,7 @@ HEADERS += \
     ../../include/ErrorObject \
     ../../include/ObjectHelper \
     ../../include/QQDir \
+    ../../include/QQFile \
     ../../include/QQFileInfo \
     ../../include/QQFileInfoList \
     ../../include/QQSize \
@@ -30,6 +31,7 @@ HEADERS += \
     ../../include/QQStringList \
     ObjectHelper.h \
     QQDir.h \
+    QQFile.h \
     QQFileInfo.h \
     QQFileInfoList.h \
     QQSize.h \

@@ -21,21 +21,15 @@ public:
     Sortable(const Key &key)                { set(key); }
     Sortable(const KeySeg &seg)             { set(seg); }
     Sortable(const QQDir &dir)              { set(dir); }
-    Sortable() = default;
-    ~Sortable() = default;
-    Sortable(const Sortable &other) = default;
-    Sortable &operator = (const Sortable &other) = default;
 
 public: // access
-    operator QString () const { return mString; }
-    operator QString () { return mString; }
+//    operator QString () const { return mSortableString; }
+  //  operator QString () { return mSortableString; }
 
     bool equal(const Sortable & other) const;
     bool less(const Sortable & other) const;
-    bool operator == (const Sortable & other) const { return equal(other); }
-    bool operator <  (const Sortable & other) const { return less(other); }
-
-public:
+    bool operator == (const Sortable & other) const;
+    bool operator <  (const Sortable & other) const;
     void clear();
     void set(const QString &string);
     void set(const QVariant &variant);
@@ -49,7 +43,13 @@ public: // static
     static QByteArray random();
 
 private:
-    QString mString=random();
+    QString mSortableString=random();
+
+public: // QMetaType
+    Sortable() = default;
+    ~Sortable() = default;
+    Sortable(const Sortable &other) = default;
+    Sortable &operator = (const Sortable &other) = default;
 };
 
 extern OCBASE_EXPORT bool operator == (const Sortable & lhs, const Sortable & rhs);

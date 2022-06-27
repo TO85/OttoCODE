@@ -1,6 +1,5 @@
 #include "Null.h"
 
-
 bool Null::isNull() const
 {
     if (isInvalid()) return true;

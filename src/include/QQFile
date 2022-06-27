@@ -1,0 +1,2 @@
+// file: {OttoCODE}./src/include/QQFile
+#include "../libs/ocqCore/QQFile.h"

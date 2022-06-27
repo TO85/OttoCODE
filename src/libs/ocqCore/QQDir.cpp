@@ -18,6 +18,11 @@ QVariant QQDir::toVariant() const
     return result;
 }
 
+bool QQDir::isNull() const
+{
+    return QDir::currentPath() == path();
+}
+
 QQString QQDir::attributes() const
 {
     QString result = isAbsolute() ? "Absolute" : "Relative";

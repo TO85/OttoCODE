@@ -1,6 +1,6 @@
 #pragma once
 
-#include <MdiMainWindow>
+#include <QQMainWindow>
 
 class QMdiSubWindow;
 
@@ -8,10 +8,11 @@ class QMdiSubWindow;
 #include <QQFileInfo>
 class ActionManager;
 class Key;
+class QQMdiArea;
 
-class ExcelsiorFrameGridMdiSub;
+class PixcelsiorImageDocument;
 
-class ExcelsiorMain : public hold-MdiMainWindow
+class ExcelsiorMain : public QQMainWindow
 {
     Q_OBJECT
 public:
@@ -20,10 +21,15 @@ public:
 public slots:
     void start();
 
+signals:
+    void openFile(const QQFileInfo &fileInfo);
+    void documentOpened(const QQFileInfo &fileInfo);
+
 private slots:
     void setupActions();
     void setupConnections();
     void setupMenus();
+    void setupUI();
 
     void setupFileMenu();
     void setupEditMenu();
@@ -32,13 +38,14 @@ private slots:
     void setupHelpMenu();
 
     void openFileAction();
+    void openDocument(const QQFileInfo &fileInfo);
 
 private:
-    ExcelsiorFrameGridMdiSub * addSubWindow(const QQFileInfo & fi);
 
 private:
     QQDir mCurrentImageDir;
-    QQDir mDefaultImageDir = QQDir("/data/vdata/INDIface/INDIin");
-    QMap<QQFileInfo, ExcelsiorFrameGridMdiSub *> mFileInfoSubWinMap;
+    QQDir mDefaultImageDir=QQDir("/data/vdata/INDIface/INDIin");
+    QQMdiArea * mpMdiArea=nullptr;
+    QMap<QQFileInfo, PixcelsiorImageDocument *> mFileInfoImageDocumentMap;
 };
 

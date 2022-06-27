@@ -3,11 +3,11 @@
 
 #include <QMdiArea>
 
+#include <QMdiSubWindow>
+
 #include <KeyMap>
 
 class QQMainWindow;
-
-class hold-MdiGridSubWin;
 
 class OCQWIDGETS_EXPORT QQMdiArea : public QMdiArea
 {
@@ -15,16 +15,15 @@ class OCQWIDGETS_EXPORT QQMdiArea : public QMdiArea
 public:
     QQMdiArea(QQMainWindow *pMain);
     QQMainWindow * mainWindow();
-    hold-MdiGridSubWin * subWin(const Key & key);
 
 public:
     bool contains(const Key &key);
 
 public slots:
-    void registerSubWin(hold-MdiGridSubWin *pSubWin);
+    void registerSubWin(QMdiSubWindow *pSubWin);
 
 private:
     QQMainWindow * mpMainWindow=nullptr;
-    KeyMap<hold-MdiGridSubWin *> mKeySubWinMap;
+    KeyMap<QMdiSubWindow *> mKeySubWindowMap;
 };
 

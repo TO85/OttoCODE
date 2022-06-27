@@ -3,14 +3,17 @@
 
 QQFileInfo::QQFileInfo(const QQString &fileName)
     : QFileInfo(fileName)
-    , Null(false)
 {
 }
 
 QQFileInfo::QQFileInfo(const QQDir &dir, const QQString &fileName)
     : QFileInfo(dir, fileName)
-    , Null(false)
 {
+}
+
+bool QQFileInfo::isNull() const
+{
+    return fileName().isNull() && dir() == QDir::current();
 }
 
 /* ------------------------- debug ------------------------ */

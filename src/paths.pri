@@ -4,4 +4,4 @@ message(----------------In paths.pri)
 
 INCLUDEPATH *= ../../include
 INCLUDEPATH *= ../../libs
-message(INCLUDEPATH = $${INCLUDEPATH})
+#message(INCLUDEPATH = $${INCLUDEPATH})

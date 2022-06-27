@@ -25,8 +25,8 @@ public:
     QStringList sectionList() const;
     bool equal(const QQString &other) const;
     bool less(const QQString &other) const;
-    bool operator == (const QQString &other) const { return equal(other); }
-    bool operator <  (const QQString &other) const { return less(other); }
+    bool operator == (const QQString &other) const;
+    bool operator <  (const QQString &other) const;
     QQString replaced(QChar before, QChar after) const;
     QQString formatMessage(const QVariantList &vv) const;
     QQString formatMessage(const QVariant &v1,

@@ -4,9 +4,9 @@ SUBDIRS += \
     ocBase \
     ocColor \
     ocExe \
-    ocIO \
+#    ocIO \
     ocImage \
-##    ocLog \
+#    ocLog \
     ocMath \
     ocOpenCV \
     ocPixel \

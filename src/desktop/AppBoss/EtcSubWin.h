@@ -1,10 +1,11 @@
 #pragma once
 
-#include <MdiGridSubWin>
-
 #include <QQDir>
+#include <QQMdiSubWindow>
+#include <QQMdiSubWindow>
+class QQMdiArea;
 
-class EtcSubWin : public MdiGridSubWin
+class EtcSubWin : public QQMdiSubWindow
 {
     Q_OBJECT
 public:

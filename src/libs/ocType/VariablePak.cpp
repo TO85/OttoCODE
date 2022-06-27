@@ -22,15 +22,16 @@ public:
     VariableMap dmVariableMap;
 };
 
-VariablePak::VariablePak() : data(new VariablePakData)
+VariablePak::VariablePak() : data(new VariablePakData) {;}
+VariablePak::VariablePak(const VariablePak &other) : data{other.data} {;}
+VariablePak::~VariablePak() {;}
+
+VariablePak::VariablePak(const int variantReserve, const int variableReserve)
+    : data(new VariablePakData)
 {
-
-}
-
-VariablePak::VariablePak(const VariablePak &other)
-    : data{other.data}
-{
-
+    Q_ASSERT(data);
+    data->dmDataList.reserve(variantReserve);
+    data->dmVariableList.reserve(variableReserve);
 }
 
 VariablePak &VariablePak::operator=(const VariablePak &rhs)
@@ -40,10 +41,7 @@ VariablePak &VariablePak::operator=(const VariablePak &rhs)
     return *this;
 }
 
-VariablePak::~VariablePak()
-{
 
-}
 
 const QByteArray VariablePak::bytes() const
 {

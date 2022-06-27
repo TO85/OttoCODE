@@ -9,19 +9,20 @@
 
 #include "QQString.h"
 
-class OCQCORE_EXPORT QQDir : public QDir, public Null
+class OCQCORE_EXPORT QQDir : public QDir
 {
 public:
     typedef QList<QQDir> List;
 
 public:
-    QQDir(const QDir &other) : QDir(other), Null(false) {;}
-    QQDir(const QString &pathName) : QDir(pathName), Null(false) {;}
+    QQDir(const QDir &other) : QDir(other) {;}
+    QQDir(const QString &pathName) : QDir(pathName) {;}
 
 public:
     QQString lastPath() const;
     QDir toQDir() const;
     QVariant toVariant() const;
+    bool isNull() const;
 
 private:
     QQDir it() const { return *this; }
@@ -43,6 +44,6 @@ extern OCQCORE_EXPORT bool operator == (const QQDir &lhs, const QQDir &rhs);
 
 Q_DECLARE_METATYPE(QQDir);
 
-extern OCTYPE_EXPORT QDebug operator<<(QDebug dbg, const QQDir &dir);
+extern QDebug operator<<(QDebug dbg, const QQDir &dir);
 
 

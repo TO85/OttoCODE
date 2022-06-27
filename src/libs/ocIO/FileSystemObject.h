@@ -15,7 +15,8 @@ class OCIO_EXPORT FileSystemObject : public QObject
     Q_OBJECT
 public:
     explicit FileSystemObject(QObject *parent = nullptr);
-    explicit FileSystemObject(const QString &rootPath, QObject *parent = nullptr);
+    FileSystemObject(const QString &rootPath, QObject *parent = nullptr);
+    ~FileSystemObject() {;}
     FileSystemTree tree() const { return mTree; }
     FileSystemTree & tree() { return mTree; }
 

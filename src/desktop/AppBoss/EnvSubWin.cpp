@@ -4,14 +4,14 @@
 #include <QListView>
 #include <QTableView>
 
-#include <MdiGridSubWin>
+#include <QQMdiArea>
 #include <QQGridLayout>
 #include <QQMdiArea>
 #include <SysEnvTableModel>
 #include <SysPathListModel>
 
 EnvSubWin::EnvSubWin(QQMdiArea *parent, Qt::WindowFlags flags)
-    : MdiGridSubWin("SysEnv", parent, flags)
+    : QQMdiArea("SysEnv", parent, flags)
     , mpSysEnvModel(new SysEnvTableModel(this))
     , mpSysPathModel(new SysPathListModel(this))
 {

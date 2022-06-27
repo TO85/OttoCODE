@@ -2,6 +2,7 @@
 
 message(----------------In useGui.pri)
 
+windows:LIBS *= -locqGui1
 linux:LIBS *= -locqGui
 
 #message(LIBS = $$LIBS)

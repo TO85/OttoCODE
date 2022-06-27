@@ -1,10 +1,10 @@
 #pragma once
 
-#include <MdiMainWindow>
+#include <QQMainWindow>
 
 class MdiGridWidget;
 
-class BossMainWindow : public MdiMainWindow
+class BossMainWindow : public QQMainWindow
 {
     Q_OBJECT
 public:
