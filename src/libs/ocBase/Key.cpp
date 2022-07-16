@@ -113,15 +113,20 @@ void Key::clear()
 QString Key::toQString(const QChar &sep) const
 {
     QString result;
-    const QString tSeperator = sep.isNull() ? separator() : sep;
-     if (notEmpty())
+    if (notEmpty())
     {
         result = mSegments.first().toQString();
+        const QString tSeperator = sep.isNull() ? separator() : sep;
         if (count() > 1)
             for (KeySeg seg : mSegments.mid(1))
                 result.append(tSeperator + seg.toQString());
     }
     return result;
+}
+
+QByteArray Key::toQByteArray(const QChar &sep) const
+{
+    return toQString(sep).toUtf8();
 }
 
 /* ----------------------- static --------------------------- */

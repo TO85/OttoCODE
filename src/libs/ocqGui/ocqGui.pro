@@ -11,12 +11,10 @@ include(../../useType.pri)
 include(../../useExe.pri)
 
 SOURCES += \
-    BaseActionMenu.cpp \
     ocqGui.cpp
 
 HEADERS += \
     ../../include/BaseActionMenu \
-    BaseActionMenu.h \
     ocqGui_global.h \
     ocqGui.h
 

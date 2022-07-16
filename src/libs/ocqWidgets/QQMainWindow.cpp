@@ -5,12 +5,10 @@
 #include <QMenuBar>
 #include <QTimer>
 
-#include <ActionManager>
 #include <QQString>
 
 QQMainWindow::QQMainWindow(QWidget *parent, Qt::WindowFlags flags)
     : QMainWindow(parent, flags)
-    , mpActionManager(new ActionManager(this))
 {
     Q_CHECK_PTR(this);
     setObjectName("QQMainWindow");
@@ -31,37 +29,18 @@ const QObject *QQMainWindow::object()
     return result;
 }
 
-ActionManager *QQMainWindow::actions() const
-{
-    Q_CHECK_PTR(this);
-    Q_ASSERT(mpActionManager);
-    qDebug() << Q_FUNC_INFO << objectName() << mpActionManager->objectName();
-    return mpActionManager;
-}
-
-QAction *QQMainWindow::action(const Key key)
-{
-    Q_CHECK_PTR(this);
-    Q_ASSERT(actions()->contains(key));
-    return actions()->action(key);
-}
-
 QMenu *QQMainWindow::menu(const Key key)
 {
-    Q_CHECK_PTR(this);
     Q_ASSERT(mKeyMenuMap.contains(key));
     return mKeyMenuMap.value(key);
 }
 
 QMenu * QQMainWindow::addMenu(const Key key, const QQString &text)
 {
-    Q_CHECK_PTR(this);
-    qDebug() << Q_FUNC_INFO << objectName() << actions()->objectName();
+    qDebug() << Q_FUNC_INFO << objectName();
     if (mKeyMenuMap.contains(key)) return menu(key);                    /* /====\ */
     const QString tMenuText = text.isEmpty() ? ("&"+key.last()) : text;
     QMenu * result = new QMenu(tMenuText, this);
-    QAction * pMenuAction = actions()->add(key, tMenuText);
-    pMenuAction->setMenu(result);
     menuBar()->addMenu(result);
     mKeyMenuMap.insert(key, result);
     return result;
@@ -71,13 +50,6 @@ void QQMainWindow::setup()
 {
     Q_CHECK_PTR(this);
     qDebug() << Q_FUNC_INFO << objectName();
-    setupStart();
-    setupActions();
-    setupConnections();
-    setupMenus();
-    setupToolbars();
-    setupWidgets();
-    setupFinish();
     emit setupComplete();
 }
 
@@ -86,44 +58,3 @@ void QQMainWindow::exit()
     QTimer::singleShot(10, qApp, &QCoreApplication::quit);
 }
 
-void QQMainWindow::setupStart()
-{
-    qDebug() << Q_FUNC_INFO << objectName();
-
-}
-
-void QQMainWindow::setupActions()
-{
-    qDebug() << Q_FUNC_INFO << objectName();
-
-}
-
-void QQMainWindow::setupConnections()
-{
-    qDebug() << Q_FUNC_INFO << objectName();
-
-}
-
-void QQMainWindow::setupMenus()
-{
-    qDebug() << Q_FUNC_INFO << objectName();
-}
-
-void QQMainWindow::setupToolbars()
-{
-    qDebug() << Q_FUNC_INFO << objectName();
-
-}
-
-
-void QQMainWindow::setupWidgets()
-{
-    qDebug() << Q_FUNC_INFO << objectName();
-
-}
-
-void QQMainWindow::setupFinish()
-{
-    qDebug() << Q_FUNC_INFO << objectName();
-    menuBar()->show();
-}

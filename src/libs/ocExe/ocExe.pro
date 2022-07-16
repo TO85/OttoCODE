@@ -9,7 +9,6 @@ include(../useBase.pri)
 include(../useType.pri)
 
 SOURCES += \
-    ActionManager.cpp \
     CommandLine.cpp \
     SysEnvTableModel.cpp \
     SysPathListModel.cpp \
@@ -20,7 +19,6 @@ HEADERS += \
     ../../include/CommandLine \
     ../../include/SysEnvTableModel \
     ../../include/SysPathListModel \
-    ActionManager.h \
     CommandLine.h \
     SysEnvTableModel.h \
     SysPathListModel.h \

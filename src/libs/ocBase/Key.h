@@ -1,6 +1,7 @@
 #pragma once
 #include "ocBase.h"
 
+#include <QByteArray>
 #include <QString>
 #include <QStringList>
 
@@ -28,6 +29,7 @@ public: // const
     Key appended(const KeySeg &seg) const;
     Key appended(const Key &key) const;
     QString toQString(const QChar &sep=QChar()) const;
+    QByteArray toQByteArray(const QChar &sep=QChar()) const;
     bool equal(const Key &other) const;
     bool less(const Key &other) const;
     QString operator ()() const { return toQString(); }
